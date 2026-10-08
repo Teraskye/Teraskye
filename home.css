@@ -369,6 +369,10 @@ main{ position:relative; z-index:2; }
 }
 @media (max-width:560px){
   .hsec{ padding:clamp(4.5rem,11vh,6rem) var(--pad) clamp(2rem,6vh,3.5rem); align-items:flex-start; }
+  /* the NAME hero (#s01 on every page) stays vertically centred — name sits mid-screen, still left-aligned */
+  #s01{ align-items:center; padding-top:clamp(3.5rem,9vh,5rem); padding-bottom:clamp(3.5rem,9vh,5rem); }
+  /* a clear breather between sections so the page reads as distinct screens, not one long scroll */
+  .hsec + .hsec{ margin-top:clamp(2rem,6vh,3.6rem); }
   .paths{ grid-template-columns:1fr; }
   .flow{ padding-left:1.9rem; }
 }
