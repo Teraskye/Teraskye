@@ -1,5 +1,5 @@
 /* ============================================================
-   TERASKYE — PORTFOLIO · "The Stone Archive" controller
+   TERAMERGE — PORTFOLIO · "The Stone Archive" controller
    Scroll SCRUBS the real cave footage forward a fixed amount
    per scroll (deterministic, Blob-loaded so seeking is smooth).
    Two scrolls reach the door → CTA → click opens the door at
@@ -18,7 +18,7 @@
   const loadEl = $('#load'), loadBar = $('#loadBar');
 
   const BOARDS = {
-    'p-enter': ['The Portfolio of', 'Teraskye', 'A decade, carved in stone', false],
+    'p-enter': ['The Portfolio of', 'Teramerge', 'A decade, carved in stone', false],
     'p-found': ['Chamber I', 'The Foundation', 'Proven track record', false],
     'p-multi': ['Chamber II', 'Multifamily', 'Live in market', false],
     'p-under': ['Chamber III', 'Under Contract', 'Scaling · coming soon', false],

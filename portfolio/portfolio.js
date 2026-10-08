@@ -1,5 +1,5 @@
 /* ============================================================
-   TERASKYE — PORTFOLIO · THE HAND-DRAWN FOLIO
+   TERAMERGE — PORTFOLIO · THE HAND-DRAWN FOLIO
    Loader → pencil-sketch entrance (click the door) → walk a
    sketched corridor of asset doors → open one to read the asset
    → view the whole portfolio. Content is ILLUSTRATIVE of the
@@ -96,7 +96,7 @@
         <div><div class="pv__market">${a.market}</div><h2 class="pv__name" id="pName">${a.name}</h2></div>
         <span class="pv__status">${a.status}</span>
       </div>
-      <p class="pv__illus">Illustrative of Teraskye's target acquisition criteria — units, class and vintage reflect the target profile. Deal-level economics are shown as targets or in review, never as owned positions or results.</p>
+      <p class="pv__illus">Illustrative of Teramerge's target acquisition criteria — units, class and vintage reflect the target profile. Deal-level economics are shown as targets or in review, never as owned positions or results.</p>
       <div class="pv__grid">
         <div>
           <div class="bld">${Array.from({length:floors}).map(()=>'<div class="bld__floor"></div>').join('')}</div>

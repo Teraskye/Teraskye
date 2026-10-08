@@ -1,9 +1,9 @@
 /* ============================================================
-   TERASKYE — TIDE
+   TERAMERGE — TIDE
    Platform architecture: the single source of truth.
    Every count on the page (domains / agents / processes) is
    derived from this object at runtime — never hard-coded.
-   Data supplied by Teraskye (22 agents · 205 processes).
+   Data supplied by Teramerge (22 agents · 205 processes).
    ============================================================ */
 window.PLATFORM = {
   master: {

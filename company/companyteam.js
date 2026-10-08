@@ -1,5 +1,5 @@
 /* ============================================================
-   TERASKYE — COMPANY · embedded TEAM scan (scroll-reveal)
+   TERAMERGE — COMPANY · embedded TEAM scan (scroll-reveal)
    As the #team track scrolls in, the world dissolves from the
    dawn horizon into a black-and-blue data-point space where the
    team's portraits appear as volumetric 3D face-scans. Scroll
@@ -14,7 +14,7 @@ const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ---------------- team data (roles are the headline; add names when ready) ---------------- */
 const TEAM=[
-  { no:'01', role:'Chief Executive Officer',        bio:"Sets the vision and leads Teraskye's growth.",                                   img:'../team/img/p1.jpg' },
+  { no:'01', role:'Chief Executive Officer',        bio:"Sets the vision and leads Teramerge's growth.",                                   img:'../team/img/p1.jpg' },
   { no:'02', role:'Chief Technology Officer',       bio:'Builds the systems that turn real-estate data into intelligence.',               img:'../team/img/p2.jpg' },
   { no:'03', role:'Chief Investment Officer',       bio:'Leads opportunity evaluation, investment strategy, and capital decisions.',      img:'../team/img/p3.jpg' },
   { no:'04', role:'Chief Operating Officer',        bio:'Turns strategy into disciplined execution across assets and operations.',        img:'../team/img/p4.jpg' },

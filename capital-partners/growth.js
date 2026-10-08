@@ -1,5 +1,5 @@
 /* ============================================================
-   TERASKYE — THE GROWTH  ·  engine (isolated)
+   TERAMERGE — THE GROWTH  ·  engine (isolated)
    SCROLL = camera (parallax) + story (reveals)
    TIME   = the living land (video loop + drifting haze + motes)
    ============================================================ */
@@ -78,7 +78,7 @@
         <circle class="fw__track" cx="50" cy="50" r="${R}"/>
         <circle class="fw__flow" cx="50" cy="50" r="${R}" pathLength="100"/>
       </svg>
-      <div class="fw__core"><span class="fw__coretag">The technology</span><span class="fw__corename">Teraskye</span></div>`;
+      <div class="fw__core"><span class="fw__coretag">The technology</span><span class="fw__corename">Teramerge</span></div>`;
     nodes.forEach((n,i)=>{
       const a=(-90 + i*60)*Math.PI/180, dx=Math.cos(a), dy=Math.sin(a);
       const nx=50+R*dx, ny=50+R*dy, lx=50+(R+14)*dx, ly=50+(R+14)*dy;

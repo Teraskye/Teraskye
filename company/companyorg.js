@@ -1,5 +1,5 @@
 /* ============================================================
-   TERASKYE — COMPANY
+   TERAMERGE — COMPANY
    · leadership constellation: click a person → their departments
      & experience open in a centered panel (data-driven)
    · bottom-right section index (like every other page)

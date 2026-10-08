@@ -1,5 +1,5 @@
 /* ============================================================
-   TERASKYE — THE WILD  ·  engine (isolated)
+   TERAMERGE — THE WILD  ·  engine (isolated)
    SCROLL = camera (parallax) + story (reveals)
    TIME   = the living valley (video loop + mist + drifting motes)
    ============================================================ */

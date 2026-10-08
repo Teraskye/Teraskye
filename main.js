@@ -1,5 +1,5 @@
 /* ============================================================
-   TERASKYE — CANOPY  ·  interaction engine
+   TERAMERGE — CANOPY  ·  interaction engine
    TWO INDEPENDENT SYSTEMS:
      SCROLL  -> camera push, story/scene reveals, network reveal, grade
      TIME    -> leaves/mist/motes/light + network's living pulse

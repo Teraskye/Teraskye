@@ -1,5 +1,5 @@
 /* ============================================================
-   TERASKYE — PORTFOLIO · "The Stone Archive"
+   TERAMERGE — PORTFOLIO · "The Stone Archive"
    ONE continuous torch-lit cave, walked in real-time 3D.
    Scroll = step forward along the same cave. Near a stone door
    a CTA appears; click it and the door grinds open and you
@@ -297,7 +297,7 @@ function scatterRock(){
 function buildEntranceSign(){
   const tex = tabletTexture((x,w,h)=>{
     stoneBase(x,w,h,false);
-    engrave(x, 'THE TERASKYE', w/2, h*0.36, "600 64px 'Cinzel'", '#e2a85c');
+    engrave(x, 'THE TERAMERGE', w/2, h*0.36, "600 64px 'Cinzel'", '#e2a85c');
     engrave(x, 'PORTFOLIO', w/2, h*0.62, "700 110px 'Cinzel'", BONE);
   }, 1200, 640);
   const sign = new THREE.Mesh(new THREE.PlaneGeometry(5, 2.7),

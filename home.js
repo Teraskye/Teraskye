@@ -1,5 +1,5 @@
 /* ============================================================
-   TERASKYE — CANOPY (home) engine
+   TERAMERGE — CANOPY (home) engine
    Ambient forest video (theme) + scroll reveals + section index
    + progress + a gentle continuous camera drift. No build.
    ============================================================ */

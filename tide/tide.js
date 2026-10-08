@@ -1,5 +1,5 @@
 /* ============================================================
-   TERASKYE — TIDE · page interactions
+   TERAMERGE — TIDE · page interactions
    Everything is derived from window.PLATFORM (single source of
    truth). No count is hard-coded in the markup.
    ============================================================ */

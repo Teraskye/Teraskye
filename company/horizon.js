@@ -1,5 +1,5 @@
 /* ============================================================
-   TERASKYE — THE HORIZON  ·  engine (isolated)
+   TERAMERGE — THE HORIZON  ·  engine (isolated)
    SCROLL = video time (scrubbed) + camera rise + story reveals
    TIME   = warm atmospheric haze + a faint sun shimmer, kept alive
    ============================================================ */

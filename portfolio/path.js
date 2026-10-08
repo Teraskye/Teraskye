@@ -1,5 +1,5 @@
 /* ============================================================
-   TERASKYE — PORTFOLIO · "The Vault of Paths" controller
+   TERAMERGE — PORTFOLIO · "The Vault of Paths" controller
    Fixed-stage scene machine: init → path (scroll to approach,
    step-play the approach video, click to open the door) →
    chamber (reference-style data) → archive hub. Interactive,

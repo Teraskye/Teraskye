@@ -1,5 +1,5 @@
 /* ============================================================
-   TERASKYE — shared presentation FX engine (fx.js)
+   TERAMERGE — shared presentation FX engine (fx.js)
    Self-initialising, additive, reduced-motion aware. Does NOT
    redo each page's existing reveal; adds premium extras only.
    Opt-in via data-attributes:

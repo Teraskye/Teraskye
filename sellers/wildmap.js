@@ -1,5 +1,5 @@
 /* ============================================================
-   TERASKYE — THE WILD · glowing US market map
+   TERAMERGE — THE WILD · glowing US market map
    Renders the 50-state map (from usa-map.js) and lights markets
    up as active / expanding / future. Implies a widening national
    footprint — never claims it outright.

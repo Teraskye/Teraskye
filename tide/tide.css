@@ -1,11 +1,11 @@
 /* ============================================================
-   TERASKYE — TIDE ("Teraskye Intelligence") · page visuals
+   TERAMERGE — TIDE ("Teramerge Intelligence") · page visuals
    Layered on ../home.css (centered sections, chips, cta).
    The network, made calm: one operator → three domains →
    twenty-two agents → two hundred five processes.
    ============================================================ */
 
-/* ---- brand label highlight: "Teraskye Intelligence" reads as the product ---- */
+/* ---- brand label highlight: "Teramerge Intelligence" reads as the product ---- */
 #s01 .name__tag, #s02 .eyebrow.is-brand{
   color:rgba(232,201,154,0.98);
   background:rgba(232,201,154,0.09);
@@ -179,7 +179,7 @@
 .opmap .ndom__agents{ margin-top:0.55rem; max-height:min(40vh,360px); overflow-y:auto; display:grid; gap:0.28rem; padding-right:4px; }
 @media (max-width:860px){ .opmap__doms{ grid-template-columns:1fr; } .opmap__fan{ display:none; } }
 
-/* s1 name — dial "Teraskye Intelligence" back a touch (premium/elegant, not oversized) */
+/* s1 name — dial "Teramerge Intelligence" back a touch (premium/elegant, not oversized) */
 #s01 .name__word{ font-size:clamp(2.3rem,5.6vw,4.9rem); letter-spacing:0.06em; font-weight:200; line-height:1.02; }
 
 /* s5 — "Who decides": setup stats → punchline. Better hierarchy than a run-on line. */
@@ -230,7 +230,7 @@
 
 /* ============================================================
    Section 2 — two columns: a short, punchy message on the LEFT and, on the
-   RIGHT, a hub pictograph (TERASKYE at the centre connecting the proven,
+   RIGHT, a hub pictograph (TERAMERGE at the centre connecting the proven,
    purpose-built technologies it integrates). The point it makes visually:
    we don't build the tech — we make proven tech work as one intelligence.
    ============================================================ */
@@ -276,7 +276,7 @@
 @keyframes hubflow{ to{ stroke-dashoffset:-7.6; } }
 @keyframes hubspin{ to{ transform:rotate(360deg); } }
 
-/* the centre is a MICROCHIP — gold IC package + pins + die, branded "TERASKYE
+/* the centre is a MICROCHIP — gold IC package + pins + die, branded "TERAMERGE
    INTELLIGENCE". The proven technologies plug into one purpose-built processor. */
 .hub__core{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); z-index:2;
   width:clamp(126px,33%,166px); aspect-ratio:1; }

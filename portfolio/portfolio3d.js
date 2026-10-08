@@ -1,5 +1,5 @@
 /* ============================================================
-   TERASKYE — PORTFOLIO · immersive 3D walkthrough
+   TERAMERGE — PORTFOLIO · immersive 3D walkthrough
    WHITE PENCIL-SKETCH theme · SCROLL-ON-RAILS navigation.
    Scroll to travel a WINDING route (turns left & right); asset
    DOORS sit along the walls with their details engraved on them;
@@ -16,7 +16,7 @@ const clamp = (v,a,b)=> v<a?a:v>b?b:v;
 
 /* ---------------- portfolio data (modular) ---------------- */
 const AP=['Acquire','Operate','Optimize','Scale'];
-const atlStory=(n)=>[['01','The opportunity',`A Class-B Atlanta asset with real operating upside.`],['02','The acquisition','Acquired to a disciplined basis, illustrative of the target criteria.'],['03','The transformation','Renovation and repositioning against one operating standard.'],['04','The operation','Leasing, pricing and maintenance run on Teraskye Intelligence.'],['05','The current position','Operating — part of the Atlanta cluster.'],['06','The next opportunity','Stabilize, then evaluate refinance, sale or growth.']];
+const atlStory=(n)=>[['01','The opportunity',`A Class-B Atlanta asset with real operating upside.`],['02','The acquisition','Acquired to a disciplined basis, illustrative of the target criteria.'],['03','The transformation','Renovation and repositioning against one operating standard.'],['04','The operation','Leasing, pricing and maintenance run on Teramerge Intelligence.'],['05','The current position','Operating — part of the Atlanta cluster.'],['06','The next opportunity','Stabilize, then evaluate refinance, sale or growth.']];
 const pipeStory=(m)=>[['01','The opportunity',`Entry into ${m}.`],['02','The acquisition','In pipeline — illustrative of target criteria.'],['03','The transformation','Repositioning plan defined pre-close.'],['04','The operation','Onto the same intelligent standard at close.'],['05','The current position','Pipeline — under evaluation.'],['06','The next opportunity',`Anchor the ${m} market.`]];
 const PORTFOLIO = {
   assets: [
@@ -201,7 +201,7 @@ function openDetail(d){
       <div class="a__k"><span class="l">Configuration</span><span class="v">${a.config}</span></div>
       <div class="a__k"><span class="l">Status</span><span class="v">${a.status}</span></div>
       <div class="a__k"><span class="l">Market</span><span class="v">${a.market}</span></div></div>
-    <div class="a__sec"><h4>Teraskye approach</h4><div class="a__approach">${a.approach.map(s=>`<span>${s}</span>`).join('')}</div></div>
+    <div class="a__sec"><h4>Teramerge approach</h4><div class="a__approach">${a.approach.map(s=>`<span>${s}</span>`).join('')}</div></div>
     <div class="a__sec"><h4>The story</h4><div class="a__story">${a.story.map(([n,tt,dd])=>`<div class="a__step"><span class="no">${n}</span><span class="t"><b>${tt}</b><span class="d">${dd}</span></span></div>`).join('')}</div></div>
     <p class="a__note">Illustrative of the target acquisition criteria — not an owned position or a statement of results.</p>`;
   $('asset').hidden=false; setTimeout(()=>$('asset').classList.add('show'),16);

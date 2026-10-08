@@ -1,5 +1,5 @@
 /* ============================================================
-   TERASKYE — THE HORIZON  (/company/)  ·  the final page
+   TERAMERGE — THE HORIZON  (/company/)  ·  the final page
    Arriving at the horizon. The company becomes the focus.
    ONE continuous ascent: SCROLL = camera rise + video time + story.
    TIME = subtle warm haze / sun shimmer that keeps the dawn alive.
@@ -700,6 +700,8 @@ main{ position:relative; z-index:2; }
 .role__cols li{ position:relative; padding-left:1.1rem; font-size:0.8rem; color:var(--paper-soft); line-height:1.45; }
 .role__cols li::before{ content:""; position:absolute; left:0; top:0.52em; width:5px; height:5px; border-radius:50%;
   background:rgba(var(--gold),0.8); }
+.role__note{ margin-top:clamp(1rem,2vh,1.4rem); font-size:0.78rem; line-height:1.55;
+  color:var(--paper-soft); font-style:italic; max-width:74ch; }
 .role__apply{ margin-top:clamp(1.1rem,2.2vh,1.6rem); padding-top:clamp(0.9rem,1.6vh,1.2rem);
   border-top:1px solid rgba(var(--gold),0.16); font-size:0.76rem; letter-spacing:0.08em; line-height:1.6;
   color:rgba(var(--gold),0.95); font-weight:500; text-transform:uppercase; }

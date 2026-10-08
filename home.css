@@ -1,5 +1,5 @@
 /* ============================================================
-   TERASKYE — CANOPY (home) · cinematic scrolling narrative
+   TERAMERGE — CANOPY (home) · cinematic scrolling narrative
    Section 1 = NAME ONLY. Sections 2–7 = the approved copy, each
    composed to fit inside ONE viewport frame (2-column text+visual
    where content is heavy). Forest video stays as the fixed theme.
@@ -8,7 +8,7 @@
   --bone:#F1ECE2; --bone-soft:rgba(241,236,226,0.82); --bone-faint:rgba(241,236,226,0.5);
   --ink:8,11,9; --signal:201,212,181; --ember:232,201,154; --edge:rgba(236,230,218,0.14);
   --pad:clamp(1.4rem,5vw,6rem);
-  --s-name:clamp(2.3rem,5.6vw,4.9rem);   /* matches Bloom's "Teraskye Intelligence" — same size on every first section */
+  --s-name:clamp(2.3rem,5.6vw,4.9rem);   /* matches Bloom's "Teramerge Intelligence" — same size on every first section */
   --s-hero:clamp(1.75rem,3.1vw,2.7rem);
   --s-lg:clamp(1.4rem,2.6vw,2.15rem);
   --fs-lead:clamp(0.95rem,1.15vw,1.12rem);

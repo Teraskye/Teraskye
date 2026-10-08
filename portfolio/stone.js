@@ -1,5 +1,5 @@
 /* ============================================================
-   TERASKYE — PORTFOLIO · "The Cave of a Decade"
+   TERAMERGE — PORTFOLIO · "The Cave of a Decade"
    Torch-fire canvas (realistic flames on the rock walls) ·
    cave env toggle · sliding rock-door CTAs · carved reveals ·
    count-ups · section index. GSAP + ScrollTrigger (optional).

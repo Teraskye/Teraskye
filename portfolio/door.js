@@ -1,5 +1,5 @@
 /* ============================================================
-   TERASKYE — PORTFOLIO · "The Asset Vault" controller
+   TERAMERGE — PORTFOLIO · "The Asset Vault" controller
    No loader. Vault door + CTA → the lock spins and the round
    door swings open → next chamber door → inside the asset.
    Data-driven: every chamber (Foundation/Multifamily/Under
@@ -31,7 +31,7 @@
     multi: { no:'02', pill:'Live in market', name:'Multifamily', img:'assets/asset-multifamily-blend.png',
       markets:['North Carolina','Alabama'],
       lead:'The core strategy, in market.',
-      fields:[['Status','Assets Under Management'],['Scale',{chips:[['$11M+',1],['110+ Doors',1]]}],['Entry','Acquired below value. Equity on day one.'],['Execution','Underwritten, closed and operated on the Teraskye intelligence platform.']],
+      fields:[['Status','Assets Under Management'],['Scale',{chips:[['$11M+',1],['110+ Doors',1]]}],['Entry','Acquired below value. Equity on day one.'],['Execution','Underwritten, closed and operated on the Teramerge intelligence platform.']],
       strategy:['Acquire','Transform','Operate','Scale'], stratList:['Value-Add & Appreciate'] },
     under: { no:'03', pill:'Scaling now · Coming soon', name:'Under Contract', img:'assets/asset-undercontract-blend.png',
       markets:['Atlanta, GA','Austin, TX','Florida'],

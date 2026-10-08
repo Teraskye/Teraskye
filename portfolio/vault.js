@@ -1,5 +1,5 @@
 /* ============================================================
-   TERASKYE — THE ASSET VAULT
+   TERAMERGE — THE ASSET VAULT
    A cinematic institutional-vault portfolio experience.
    Loader → entrance vault → archive corridor → asset chambers
    → next-opportunity door. Data-driven; no fabricated metrics.
@@ -47,7 +47,7 @@ const ASSETS = [
     overview:[
       ['Scale', { chips:[{t:'$11 Mil+',hi:1}, {t:'110+ Doors',hi:1}] }],
       ['Entry', { lines:['Acquired below value.', 'Equity on day one.'] }],
-      ['Execution', 'Underwritten, closed and operated on the Teraskye intelligence platform.'],
+      ['Execution', 'Underwritten, closed and operated on the Teramerge intelligence platform.'],
     ],
     stratLabel:'Value-creation path',
     stratList:['Value-Add & Appreciate'],
@@ -217,7 +217,7 @@ function buildVaultDoor(radius, opts={}){
     const cap = new THREE.Mesh(new THREE.SphereGeometry(radius*0.05, 16, 12), M.light);
     cap.position.set(Math.cos(a)*radius*0.64, Math.sin(a)*radius*0.64, 0.08); lock.add(cap);
   }
-  // center emblem (Teraskye pip)
+  // center emblem (Teramerge pip)
   const pip = new THREE.Mesh(new THREE.CircleGeometry(radius*0.05, 24), MAT.glowSoft);
   pip.position.z = 0.33; lock.add(pip);
 

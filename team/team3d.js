@@ -1,5 +1,5 @@
 /* ============================================================
-   TERASKYE — TEAM · immersive 3D experience
+   TERAMERGE — TEAM · immersive 3D experience
    An ORIGINAL dark architectural WebGL space. The team's real
    portraits float in spatial depth; drag / swipe / arrows move
    between them with a cinematic spatial transition, mouse

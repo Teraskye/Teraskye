@@ -1,5 +1,5 @@
 /* ============================================================
-   TERASKYE — CANOPY hero · "digital operating system" (WebGL)
+   TERAMERGE — CANOPY hero · "digital operating system" (WebGL)
    A real 3D object for the sentence "plug assets into our digital
    operating system": a central intelligence CORE, slim asset-
    TOWERS orbiting it on tilted rings, thin data-LINES connecting

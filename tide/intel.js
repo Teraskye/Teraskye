@@ -1,5 +1,5 @@
 /* ============================================================
-   TERASKYE — TIDE · Specialist Network explorer (section 06)
+   TERAMERGE — TIDE · Specialist Network explorer (section 06)
    Builds all 18 agents (grouped by domain) as a one-screen
    selector from window.PLATFORM; selecting an agent reveals its
    specialist processes in the detail panel. Defaults to

@@ -1,5 +1,5 @@
 /* ============================================================
-   TERASKYE — THE CLEARING  ·  engine (isolated)
+   TERAMERGE — THE CLEARING  ·  engine (isolated)
    SCROLL = video time (scrubbed) + camera + story reveals
    TIME   = rain, mist and lightning that keep living when you stop
    ============================================================ */
