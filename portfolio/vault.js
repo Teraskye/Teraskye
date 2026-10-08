@@ -808,9 +808,10 @@ $('#finaleBack').addEventListener('click', ()=> returnToCorridor());
 
 
 // scroll to walk (corridor) / zoom (chamber)
+const MB = () => innerWidth <= 760;   // on phones the chamber scrolls its content instead of rotating the diorama
 addEventListener('wheel', e=>{
   if (mode==='corridor'){ targetZ = THREE.MathUtils.clamp(targetZ - e.deltaY*0.01, forwardZ(), START_Z); }
-  else if (mode==='chamber'){
+  else if (mode==='chamber' && !MB()){
     if (chamberEl.classList.contains('has-img')) chImgSpin = THREE.MathUtils.clamp(chImgSpin + e.deltaY*0.06, -34, 34);
     else chamberDist = THREE.MathUtils.clamp(chamberDist + e.deltaY*0.004, 4.5, 11);
   }
@@ -821,7 +822,7 @@ let ty=0;
 addEventListener('touchstart', e=>{ ty=e.touches[0].clientY; }, {passive:true});
 addEventListener('touchmove', e=>{ const dy=ty-e.touches[0].clientY; ty=e.touches[0].clientY;
   if (mode==='corridor') targetZ=THREE.MathUtils.clamp(targetZ - dy*0.03, forwardZ(), START_Z);
-  else if (mode==='chamber'){
+  else if (mode==='chamber' && !MB()){
     if (chamberEl.classList.contains('has-img')) chImgSpin=THREE.MathUtils.clamp(chImgSpin - dy*0.2, -34, 34);
     else chamberDist=THREE.MathUtils.clamp(chamberDist-dy*0.01,4.5,11);
   } }, {passive:true});

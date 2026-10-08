@@ -208,13 +208,38 @@ body{ font-family:var(--sans); color:var(--bone); background:var(--void); overfl
 .chamber__cue{ position:fixed; right:clamp(1.2rem,4vw,3rem); bottom:clamp(1.4rem,4vh,2.4rem);
   font-size:0.6rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--bone-faint); }
 @media (max-width:760px){
-  /* head moves to the TOP on phones: a long market list (The Foundation · 10 markets)
-     then sits in the open upper area and never collides with the bottom panel/tabs */
-  .chamber__head{ top:clamp(11.5rem,27vh,13rem); bottom:auto; transform:none; max-width:min(420px,90vw); }
-  .chamber__panel{ position:fixed; right:0.9rem; left:0.9rem; top:auto; bottom:9.5rem; width:auto; transform:none; }
+  /* ===== CHAMBER → clean scrollable vertical layout on phones (no overlap) =====
+     The fixed desktop composition (head left · diorama centre · panel right) can't fit a
+     phone, so here it stacks and scrolls: header → diorama → data panel → notes, with the
+     Return pill fixed on top and the tabs fixed at the bottom. vault.js disables the
+     touch-rotate in chamber mode on mobile (MB()), so this container scrolls naturally. */
+  .chamber{ display:flex; flex-direction:column; overflow-y:auto; overflow-x:hidden;
+    -webkit-overflow-scrolling:touch; pointer-events:none; background:#070605; }
+  .chamber.is-on{ pointer-events:auto; }
+  .chamber__scrim{ display:none; }
+  /* 1 · header (no + phase + name + markets) */
+  .chamber__head{ position:static; order:1; transform:none; max-width:none; width:100%; box-sizing:border-box;
+    margin:0; padding:clamp(5rem,15vh,6.2rem) 1.3rem 0.4rem; }
+  .chamber__region.is-list{ flex-flow:row wrap; gap:0.4rem 0.9rem; margin-top:0.6rem; }
+  /* 2 · diorama (sized block, not full-bleed) */
+  .chamber__asset-wrap{ position:relative; inset:auto; order:2; width:100%; flex:0 0 auto;
+    height:clamp(210px,36vh,310px); overflow:hidden; }
+  .chamber__asset-bg{ width:min(560px,98%); height:100%; }
+  .chamber__asset{ position:relative; left:auto; top:auto; width:auto; max-width:88vw; max-height:100%; transform:none; }
+  .chamber__asset-vid{ width:auto; max-width:88vw; max-height:96%; }
+  /* 3 · data panel */
+  .chamber__panel{ position:static; order:3; right:auto; left:auto; top:auto; bottom:auto; width:auto;
+    transform:none; box-sizing:border-box; padding:0.5rem 1.3rem 0.8rem; }
+  /* 4 · footer notes */
+  .chamber__foot{ order:4; box-sizing:border-box; padding:0.2rem 1.3rem clamp(5.4rem,15vh,6.4rem); }
+  /* fixed controls on top of the scroll */
+  .chamber__return{ position:fixed; top:clamp(0.9rem,3vh,1.4rem); left:clamp(1rem,4vw,1.6rem); z-index:35; }
+  .chamber__tabs{ position:fixed; left:50%; right:auto; bottom:clamp(0.8rem,2.6vh,1.3rem); z-index:35;
+    max-width:calc(100vw - 1rem); padding:0.25rem; }
+  .ctab{ padding:0.44rem 0.5rem; letter-spacing:0.04em; font-size:0.55rem; }
   .chamber__cue{ display:none; }
-  .chamber__region.is-list{ gap:0.28rem; }
 }
+@media (max-width:360px){ .ctab{ padding:0.42rem 0.38rem; font-size:0.5rem; } }
 
 /* panel content */
 .pfield{ padding:0.85rem 0; border-bottom:1px solid rgba(199,154,91,0.14); }
@@ -758,6 +783,15 @@ body{ font-family:var(--sans); color:var(--bone); background:var(--void); overfl
     linear-gradient(to bottom, #000 79%, rgba(0,0,0,0) 97%);
   -webkit-mask-composite:source-in; mask-composite:intersect;
   -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat;
+}
+/* mobile: the diorama becomes a sized block in the scrolling chamber column
+   (placed after the base asset rules so it wins on source order) */
+@media (max-width:760px){
+  .chamber__asset-wrap{ position:relative; inset:auto; order:2; width:100%; flex:0 0 auto;
+    height:clamp(210px,36vh,300px); overflow:hidden; }
+  .chamber__asset-bg{ width:min(560px,98%); height:100%; }
+  .chamber__asset{ position:relative; left:auto; top:auto; width:auto; max-width:88vw; max-height:100%; transform:none; }
+  .chamber__asset-vid{ width:auto; max-width:88vw; max-height:96%; }
 }
 
 .nav__name{ color:inherit; }
