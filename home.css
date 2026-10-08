@@ -377,7 +377,8 @@ main{ position:relative; z-index:2; }
   .flow{ padding-left:1.9rem; }
   /* the icon rows → an even grid: 4 items = 2×2, 2 items = side-by-side, 3 items = 2 + 1 centred */
   .flow.flow--row{ display:grid !important; grid-template-columns:repeat(2,1fr);
-    gap:clamp(1.5rem,5vw,2.2rem) clamp(0.9rem,3vw,1.4rem); justify-items:center; align-items:start; }
+    gap:clamp(1.5rem,5vw,2.2rem) clamp(0.9rem,3vw,1.4rem); justify-items:center; align-items:start;
+    padding-left:0 !important; justify-content:center; max-width:min(440px,96%); margin-inline:auto; }
   .flow.flow--row .step{ max-width:220px; width:100%; }
   /* a lone 3rd item (exactly 3 total) spans both columns and centres */
   .flow.flow--row .step:nth-child(3):last-child{ grid-column:1 / -1; }

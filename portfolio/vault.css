@@ -159,7 +159,14 @@ body{ font-family:var(--sans); color:var(--bone); background:var(--void); overfl
 .pindex__list li.on{ color:var(--bone); }
 .pindex__list li.on::before{ content:""; position:absolute; left:-clamp(1.2rem,3vw,2.6rem); left:-10px; top:50%;
   width:4px; height:4px; border-radius:50%; background:var(--bronze); box-shadow:0 0 10px var(--bronze); transform:translateY(-50%); }
-@media (max-width:640px){ .pindex{ right:0.8rem; width:150px; } .plaque{ left:1rem; } }
+@media (max-width:640px){
+  /* corridor door view: move the plaque BELOW the door and the index to the top — nothing over the door */
+  .plaque{ left:1rem; right:1rem; top:auto; bottom:clamp(5.5rem,16vh,8rem); transform:none;
+    max-width:none; text-align:center; }
+  .plaque.is-on{ transform:none; }
+  .plaque__region{ margin:0.5rem auto 1.1rem; }
+  .pindex{ right:1rem; left:auto; top:clamp(4.6rem,13vh,6rem); bottom:auto; transform:none; width:min(44vw,180px); }
+}
 
 /* ---------- chamber UI ---------- */
 .chamber{ position:fixed; inset:0; z-index:16; pointer-events:none; opacity:0; visibility:hidden;
@@ -220,9 +227,9 @@ body{ font-family:var(--sans); color:var(--bone); background:var(--void); overfl
     -webkit-overflow-scrolling:touch; pointer-events:none; background:#070605; }
   .chamber.is-on{ pointer-events:auto; }
   .chamber__scrim{ display:none; }
-  /* 0 · Return pill — sticks just UNDER the fixed nav, never overlapping the brand */
-  .chamber__return{ position:sticky; order:0; align-self:flex-start; z-index:36;
-    top:clamp(3.5rem,10vh,4.3rem); left:auto; right:auto; bottom:auto;
+  /* 0 · Return pill — a NORMAL CTA in the scroll flow (scrolls away with content, not fixed) */
+  .chamber__return{ position:static; order:0; align-self:flex-start; z-index:36;
+    left:auto; right:auto; bottom:auto; top:auto;
     margin:clamp(4.2rem,12vh,5rem) 0 0 1.3rem; }
   /* 1 · header (no + phase + name + markets) */
   .chamber__head{ position:static; order:1; transform:none; max-width:none; width:100%; box-sizing:border-box;

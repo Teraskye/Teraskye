@@ -185,7 +185,11 @@
 .opmap .ndom__agents{ margin-top:0.55rem; max-height:min(40vh,360px); overflow-y:auto; display:grid; gap:0.28rem; padding-right:4px; }
 @media (max-width:860px){
   /* §4 network: stack the 3 domain boxes CENTRED with a down-arrow connector between each */
-  .opmap__doms{ grid-template-columns:1fr; gap:clamp(2.6rem,8vw,3.2rem); justify-items:center; max-width:400px; margin-inline:auto; }
+  .opmap{ width:100% !important; max-width:none !important; margin-inline:auto !important; padding-inline:0 !important; }
+  .opmap__orb, .opmap__doms{ margin-inline:auto !important; }
+  .opmap__doms{ grid-template-columns:1fr !important; gap:clamp(2.6rem,8vw,3.2rem); justify-items:center;
+    max-width:min(340px,92vw) !important; padding-left:0 !important; padding-right:0 !important; }
+  .opmap__doms .opdom{ margin-inline:auto !important; }
   .opmap__fan{ display:none; }
   .opmap__orb{ margin-bottom:clamp(2rem,6vw,2.6rem); }
   .opmap__doms .opdom{ position:relative; width:100%; max-width:360px; }

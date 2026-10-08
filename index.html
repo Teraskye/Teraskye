@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="home.css?v=33" />
+<link rel="stylesheet" href="home.css?v=34" />
 <link rel="stylesheet" href="assets/fx.css?v=4" />
 <style>
   /* Section 4 (The lifecycle) — lift the eyebrow and headline clearly above the flywheel,
@@ -40,6 +40,20 @@
   100%{ left:calc(100% - 16px); opacity:0; transform:scale(0.6); } }
 /* slightly smaller HOW IT WORKS caption */
 .pdiagram__cap{ font-size:0.62rem !important; }
+/* MOBILE: keep "How it works" HORIZONTAL (3 columns in one box), not stacked vertically */
+@media (max-width:560px){
+  .pdiagram{ padding:1.5rem 0.7rem 1.6rem !important; gap:1.1rem !important; }
+  .pflow3{ flex-direction:row !important; align-items:flex-start !important; gap:0 !important; }
+  .pflow3 .pcol{ flex:1 1 0 !important; min-width:0 !important; max-width:none !important; }
+  .pflow3 .pflow__arr{ flex:0 0 20px !important; min-width:20px !important; width:20px !important;
+    transform:none !important; align-self:flex-start !important; margin-top:16px !important; }
+  .pflow3 .pflow__arr::before{ left:1px !important; right:7px !important; }
+  .pflow3 .pflow__arr::after{ right:3px !important; width:8px !important; height:8px !important; margin-top:-4px !important; }
+  .pflow3 .icb--lg{ width:40px !important; height:40px !important; }
+  .pcol__l{ font-size:0.56rem !important; min-height:3.4em !important; letter-spacing:0.05em !important; }
+  .pflow3 .beat--out{ font-size:0.56rem !important; padding:0.3rem 0.35rem !important; }
+  .pcol__drop{ display:none !important; }
+}
 </style>
 </head>
 <body data-fx-scene3d=".hwrap">
