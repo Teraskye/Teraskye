@@ -281,12 +281,13 @@ main{ position:relative; z-index:2; }
 /* ===== RESPONSIVE ===== */
 @media (max-width:1180px){ .nav__link.is-soon{ display:none; } }
 @media (max-width:760px){
+  html{ scroll-padding-top:5.8rem; }
   :root{ --pad:1.4rem; }
   .nav{ padding:calc(env(safe-area-inset-top, 0px) + 0.9rem) var(--pad) 1rem; }
   .nav__brand{ position:relative; z-index:21; }
   .nav__links{ gap:0.85rem; }
   .nav__link:not(.is-active){ display:none; }
-  .s{ padding:calc(var(--pad)+4.8rem) var(--pad) calc(var(--pad) + 1.2rem); }
+  .s{ padding:calc(var(--pad)+6.1rem) var(--pad) calc(var(--pad) + 1.2rem) !important; }
   .s--tall{ min-height:auto; }
   .lead{ max-width:100%; }
   .tier__items{ gap:0.4rem 0; }
