@@ -55,4 +55,9 @@
 .lf__note.is-err{ color:#e8a08c; }
 
 @media (max-width:900px){ .formsplit{ grid-template-columns:1fr; } }
+/* mobile: the message and the form read as two separate screens */
+@media (max-width:560px){
+  .formsplit{ gap:clamp(2.6rem,10vh,4.8rem); }
+  .formsplit__text{ min-height:66vh; display:flex; flex-direction:column; justify-content:center; }
+}
 @media (max-width:520px){ .lf__row{ grid-template-columns:1fr; } }

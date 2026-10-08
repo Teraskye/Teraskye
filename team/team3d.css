@@ -116,7 +116,12 @@ body{ font-family:var(--sans); background:var(--bg); color:var(--text); -webkit-
 
 @media (max-width:720px){
   .watermark{ top:auto; bottom:34%; font-size:2.6rem; }
-  .info{ left:clamp(1.2rem,5vw,2rem); bottom:7.5rem; max-width:70vw; }
+  .info{ left:clamp(1.2rem,5vw,2rem); right:clamp(1.2rem,5vw,2rem); bottom:6rem; max-width:none; }
+  .info__name{ font-size:clamp(1.25rem,6vw,1.7rem); text-shadow:0 2px 16px rgba(5,8,14,0.96), 0 0 34px rgba(5,8,14,0.85); }
+  .info__title{ text-shadow:0 2px 14px rgba(5,8,14,0.96), 0 0 30px rgba(5,8,14,0.85); line-height:1.6; }
+  /* bottom scrim so the stacked designations never read as "on top of" the face */
+  .info::after{ content:""; position:fixed; left:0; right:0; bottom:0; height:46vh; z-index:-1; pointer-events:none;
+    background:linear-gradient(0deg, rgba(5,8,14,0.94) 0%, rgba(5,8,14,0.6) 44%, rgba(5,8,14,0) 100%); }
   .blurb{ display:none; }
   .nav{ right:auto; left:50%; transform:translateX(-50%); bottom:1.4rem; }
   .dots{ bottom:5.6rem; } .swipehint{ bottom:7.4rem; }

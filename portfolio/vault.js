@@ -715,6 +715,11 @@ function startTreasuryFx(){
     var target = +el.getAttribute('data-count');
     var pre = el.getAttribute('data-pre') || '';
     var suf = el.getAttribute('data-suf') || '';
+    // reserve the FINAL width first so the number never reflows/jitters while counting (smooth, no glitch)
+    el.textContent = pre + target.toLocaleString() + suf;
+    el.style.display = 'inline-block';
+    el.style.minWidth = Math.ceil(el.getBoundingClientRect().width) + 'px';
+    el.style.textAlign = 'center';
     el.textContent = pre + '0' + suf;
     setTimeout(function(){
       var t0 = performance.now(), dur = 2400;
@@ -786,7 +791,11 @@ function showTab(tab){
   chPanel.innerHTML = panelHTML(ASSETS[current], tab);
   if (chamberEl){ ['overview','strategy','performance','asset'].forEach(t=> chamberEl.classList.toggle('tab-'+t, t===tab)); }
 }
-chTabs.addEventListener('click', e=>{ const b=e.target.closest('.ctab'); if(b) showTab(b.dataset.tab); });
+chTabs.addEventListener('click', e=>{ const b=e.target.closest('.ctab'); if(!b) return; showTab(b.dataset.tab);
+  // on mobile the chamber scrolls — jump down to the freshly-changed data so the user sees it change
+  if (innerWidth <= 760 && chamberEl){ setTimeout(()=>{ const pr=chPanel.getBoundingClientRect();
+    chamberEl.scrollBy({ top: pr.top - 96, behavior:'smooth' }); }, 70); }
+});
 
 /* ---------------------------------------------------------------
    INPUT

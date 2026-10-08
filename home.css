@@ -375,6 +375,15 @@ main{ position:relative; z-index:2; }
   .hsec + .hsec{ margin-top:clamp(2rem,6vh,3.6rem); }
   .paths{ grid-template-columns:1fr; }
   .flow{ padding-left:1.9rem; }
+  /* the icon rows → an even grid: 4 items = 2×2, 2 items = side-by-side, 3 items = 2 + 1 centred */
+  .flow.flow--row{ display:grid !important; grid-template-columns:repeat(2,1fr);
+    gap:clamp(1.5rem,5vw,2.2rem) clamp(0.9rem,3vw,1.4rem); justify-items:center; align-items:start; }
+  .flow.flow--row .step{ max-width:220px; width:100%; }
+  /* a lone 3rd item (exactly 3 total) spans both columns and centres */
+  .flow.flow--row .step:nth-child(3):last-child{ grid-column:1 / -1; }
+  /* 5-card decks (Risk & discipline · Diligence) → 2 + 2 + 1, the 5th centred */
+  .deck--5{ grid-template-columns:repeat(2,1fr); gap:clamp(0.7rem,2.4vw,1rem); }
+  .deck--5 .d3:nth-child(5):last-child{ grid-column:1 / -1; max-width:calc(50% - 0.5rem); margin-inline:auto; }
 }
 @media (prefers-reduced-motion:reduce){ html{ scroll-behavior:auto; } .r{ opacity:1 !important; transform:none !important; transition:none; } }
 
@@ -534,7 +543,20 @@ main{ position:relative; z-index:2; }
 .sflow__repeat .loopglyph{ font-size:1.3em; color:rgba(var(--ember),0.98);
   display:inline-block; animation:loopSpin 6s linear infinite; }
 @keyframes loopSpin{ to{ transform:rotate(360deg); } }
-@media (max-width:680px){ .sflow{ flex-wrap:wrap; gap:0.8rem 0; } .sflow::before,.sflow::after{ display:none; } .sstep{ flex:1 1 45%; } }
+@media (max-width:680px){
+  /* The strategy flow: stack the 5 steps with a VERTICAL connecting rail + a travelling pulse
+     (the connection the desktop row has, adapted down) */
+  .sflow{ flex-direction:column; flex-wrap:nowrap; align-items:stretch; gap:clamp(1.4rem,5vw,2rem);
+    padding-left:clamp(0.3rem,1.6vw,0.6rem); }
+  .sflow::before{ display:block; left:clamp(6px,2vw,7px); right:auto; top:0.4rem; bottom:0.4rem; width:2px; height:auto;
+    background:linear-gradient(180deg, rgba(var(--ember),0.65), rgba(var(--ember),0.18)); }
+  .sflow::after{ display:block; left:clamp(2px,2vw,3px); top:0; width:10px; height:10px;
+    animation:sflowDown 3.4s var(--ease) infinite; }
+  .sstep{ flex:none; width:100%; position:relative; padding:0 0 0 clamp(1.9rem,7vw,2.5rem); }
+  .sstep__no{ display:inline; margin-right:0.55rem; }
+  .sstep__dot{ position:absolute; left:clamp(2px,2vw,3px); top:0.4rem; margin:0; }
+}
+@keyframes sflowDown{ 0%{ top:0; opacity:0; } 12%{ opacity:1; } 86%{ opacity:1; } 100%{ top:100%; opacity:0; } }
 @media (prefers-reduced-motion:reduce){ .sflow::after,.sflow__repeat .loopglyph{ animation:none; } }
 
 /* ---- clarity: bump the smallest descriptor/label fonts (readability) ---- */

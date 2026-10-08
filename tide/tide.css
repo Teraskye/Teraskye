@@ -183,7 +183,26 @@
 .opdom__hint{ letter-spacing:0.04em; text-transform:none; color:var(--bone-faint); font-size:0.58rem; }
 /* scrollable agent list inside each domain table (equal heights, click to expand) */
 .opmap .ndom__agents{ margin-top:0.55rem; max-height:min(40vh,360px); overflow-y:auto; display:grid; gap:0.28rem; padding-right:4px; }
-@media (max-width:860px){ .opmap__doms{ grid-template-columns:1fr; } .opmap__fan{ display:none; } }
+@media (max-width:860px){
+  /* §4 network: stack the 3 domain boxes CENTRED with a down-arrow connector between each */
+  .opmap__doms{ grid-template-columns:1fr; gap:clamp(2.6rem,8vw,3.2rem); justify-items:center; max-width:400px; margin-inline:auto; }
+  .opmap__fan{ display:none; }
+  .opmap__orb{ margin-bottom:clamp(2rem,6vw,2.6rem); }
+  .opmap__doms .opdom{ position:relative; width:100%; max-width:360px; }
+  .opmap__doms .opdom::before{ content:""; position:absolute; top:calc(-1 * clamp(1.9rem,5.5vw,2.3rem)); left:50%;
+    width:1px; height:clamp(1.1rem,3.4vw,1.5rem); transform:translateX(-50%);
+    background:linear-gradient(rgba(150,190,222,0.55), rgba(150,190,222,0.1)); }
+  .opmap__doms .opdom::after{ content:""; position:absolute; top:calc(-1 * clamp(1.1rem,3vw,1.3rem)); left:50%;
+    width:7px; height:7px; transform:translateX(-50%) rotate(45deg);
+    border-right:1.5px solid rgba(150,190,222,0.65); border-bottom:1.5px solid rgba(150,190,222,0.65); }
+}
+@media (max-width:560px){
+  /* §3 model: Master Operator · Domains · Agents · Processes → even 2×2 */
+  .statstrip{ display:grid; grid-template-columns:repeat(2,1fr); gap:clamp(1.4rem,5vw,2rem) clamp(1rem,4vw,1.6rem); }
+  /* §5 who decides: everything centred */
+  .decide__stack{ text-align:center; align-items:center; }
+  .decidehead, .decide__stack .lead{ margin-inline:auto; }
+}
 
 /* s1 name — dial "Teramerge Intelligence" back a touch (premium/elegant, not oversized) */
 #s01 .name__word{ font-size:clamp(2.3rem,5.6vw,4.9rem); letter-spacing:0.06em; font-weight:200; line-height:1.02; }
