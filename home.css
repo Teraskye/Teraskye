@@ -686,6 +686,11 @@ main{ position:relative; z-index:2; }
   .psplit__r{ justify-content:flex-start; }
   .pdiagram{ max-width:100%; }
 }
+@media (max-width:760px){
+  .nav{ padding:calc(env(safe-area-inset-top, 0px) + 0.9rem) var(--pad) 1rem; }
+  .nav__brand{ position:relative; z-index:21; }
+  .hsec, .s{ padding-top:calc(var(--pad) + 4.8rem); padding-bottom:calc(var(--pad) + 1.2rem); }
+}
 @media (max-width:480px){
   .pflow3{ flex-direction:column; align-items:center; gap:0.5rem; }
   .pflow3 .pflow__arr{ align-self:center; margin:0; transform:rotate(90deg); }

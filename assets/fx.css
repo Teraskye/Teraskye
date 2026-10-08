@@ -69,6 +69,10 @@
 .nav__burger{ display:none; }
 @media (max-width:940px){
   .nav{ z-index:40; }
+  /* scrim behind the fixed nav so scrolling content fades out under the logo/name (no overlap) */
+  .nav::before{ content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
+    background:linear-gradient(180deg, rgba(8,10,12,0.96) 0%, rgba(8,10,12,0.78) 45%, rgba(8,10,12,0) 100%); }
+  .nav.is-open::before{ opacity:0; }
   .nav__brand{ position:relative; z-index:42; }
   /* hamburger button (sits at the right of the bar) */
   .nav__burger{ display:flex; flex-direction:column; justify-content:center; gap:5px;

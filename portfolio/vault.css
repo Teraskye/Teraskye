@@ -38,6 +38,9 @@ body{ font-family:var(--sans); color:var(--bone); background:var(--void); overfl
 .vn__burger{ display:none; }
 @media (max-width:900px){
   .vn{ mix-blend-mode:normal; z-index:40; }
+  .vn::before{ content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
+    background:linear-gradient(180deg, rgba(10,8,5,0.96) 0%, rgba(10,8,5,0.78) 45%, rgba(10,8,5,0) 100%); }
+  .vn.is-open::before{ opacity:0; }
   .vn__brand{ position:relative; z-index:42; }
   .vn__burger{ display:flex; flex-direction:column; justify-content:center; gap:5px;
     width:46px; height:46px; padding:12px; margin:-6px -8px -6px 0; box-sizing:border-box;

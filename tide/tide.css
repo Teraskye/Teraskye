@@ -89,8 +89,13 @@
 .exhint{ margin-top:0.7rem; font-size:0.68rem; letter-spacing:0.02em; color:var(--bone-faint); text-align:center; }
 
 @media (max-width:720px){
+  .nav{ padding:calc(env(safe-area-inset-top, 0px) + 0.8rem) var(--pad) 1rem; }
+  .nav__brand{ position:relative; z-index:21; }
+  .hsec, .s{ padding-top:calc(var(--pad) + 4.8rem); }
+  .aurorasplit{ grid-template-columns:1fr; }
   .arch__domains{ grid-template-columns:1fr; }
   .exgrid{ grid-template-columns:1fr; }
+  .hub{ width:min(360px,90%); }
 }
 @media (prefers-reduced-motion:reduce){ .arch__master .pip{ animation:none; } }
 

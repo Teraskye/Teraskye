@@ -229,10 +229,11 @@ main{ position:relative; z-index:2; }
 /* ===== RESPONSIVE ===== */
 @media (max-width:760px){
   :root{ --pad:1.4rem; }
-  .nav{ padding:1rem var(--pad); }
+  .nav{ padding:calc(env(safe-area-inset-top, 0px) + 0.9rem) var(--pad) 1rem; }
+  .nav__brand{ position:relative; z-index:21; }
   .nav__links{ gap:0.85rem; }
-  .nav__link:not(.is-active):not(.nav__link--keep){ display:none; }  /* keep it minimal on phones */
-  .s{ padding:calc(var(--pad)+4.2rem) var(--pad); }
+  .nav__link:not(.is-active):not(.nav__link--keep){ display:none; }
+  .s{ padding:calc(var(--pad)+4.8rem) var(--pad) calc(var(--pad) + 1.2rem); }
   .form__grid{ grid-template-columns:1fr; }
   .buy{ max-width:100%; }
   .lead{ max-width:100%; }

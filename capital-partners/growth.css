@@ -244,10 +244,11 @@ main{ position:relative; z-index:2; }
 /* ===== RESPONSIVE ===== */
 @media (max-width:760px){
   :root{ --pad:1.4rem; }
-  .nav{ padding:1rem var(--pad); }
+  .nav{ padding:calc(env(safe-area-inset-top, 0px) + 0.9rem) var(--pad) 1rem; }
+  .nav__brand{ position:relative; z-index:21; }
   .nav__links{ gap:0.85rem; }
   .nav__link:not(.is-active){ display:none; }
-  .s{ padding:calc(var(--pad)+4.2rem) var(--pad); }
+  .s{ padding:calc(var(--pad)+4.8rem) var(--pad) calc(var(--pad) + 1.2rem); }
   .principle{ max-width:100%; }
   .lead{ max-width:100%; }
   .shift{ grid-template-columns:1fr; text-align:left; max-width:100%; gap:0.9rem; }
