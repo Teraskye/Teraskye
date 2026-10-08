@@ -18,9 +18,9 @@ if (EMBED) document.documentElement.classList.add('embed');
 
 /* ---------------- team data (swap names / bios here) ---------------- */
 const TEAM = [
-  { no:'01', name:'Vamsi Vemoori', title:'Founder · Chief Executive Officer\n& Chief Technology Officer',  bio:'As CEO he sets the vision and strategy; as CTO he builds the intelligence platform that turns real estate into a system.', img:'img/vamsi.jpg?v=3' },
-  { no:'02', name:'Anitha Ravala',  title:'Co-Founder · Chief Investment Officer',                 bio:'Leads investment strategy, capital and fund management.',                          img:'img/anitha.jpg?v=2' },
-  { no:'03', name:'Srinath Ambati', title:'Co-Founder · Chief Operating Officer\n& Chief Financial Officer',  bio:'As COO he turns strategy into disciplined execution; as CFO he runs the finances that keep every asset accountable.',          img:'img/srinath.jpg?v=2' },
+  { no:'01', name:'Vamsi Vemoori', title:'The Founder\nChief Executive Officer\nChief Technology Officer',  bio:'As CEO he sets the vision and strategy; as CTO he builds the intelligence platform that turns real estate into a system.', img:'img/vamsi.jpg?v=3' },
+  { no:'02', name:'Anitha Ravala',  title:'Co-Founder\nChief Investment Officer',                 bio:'Leads investment strategy, capital and fund management.',                          img:'img/anitha.jpg?v=2' },
+  { no:'03', name:'Srinath Ambati', title:'Co-Founder\nChief Operating Officer\nChief Financial Officer',  bio:'As COO he turns strategy into disciplined execution; as CFO he runs the finances that keep every asset accountable.',          img:'img/srinath.jpg?v=2' },
 ];
 const N = TEAM.length;
 
