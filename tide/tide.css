@@ -197,6 +197,10 @@
     border-right:1.5px solid rgba(150,190,222,0.65); border-bottom:1.5px solid rgba(150,190,222,0.65); }
 }
 @media (max-width:560px){
+  /* §2 intelligence: tighten so the Teramerge chip sits fully in view (not split across the fold) */
+  .aurorasplit{ gap:clamp(1.3rem,3.6vh,2rem) !important; }
+  #main .aurorasplit__text .statement{ font-size:clamp(1.45rem,6.2vw,1.95rem); line-height:1.12; }
+  .aurorasplit .hub{ width:min(248px,70%) !important; margin:0 auto; }
   /* §3 model: Master Operator · Domains · Agents · Processes → even 2×2 */
   .statstrip{ display:grid; grid-template-columns:repeat(2,1fr); gap:clamp(1.4rem,5vw,2rem) clamp(1rem,4vw,1.6rem); }
   /* §5 who decides: everything centred */
