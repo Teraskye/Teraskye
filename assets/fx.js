@@ -153,4 +153,19 @@
   });
 
   });
+
+  /* ---------- mobile hamburger nav (shared across .nav / .vn pages) ---------- */
+  function initBurger(){
+    document.querySelectorAll('.nav__burger, .vn__burger').forEach(b=>{
+      if(b.__wired) return; b.__wired = true;
+      const nav = b.closest('.nav, .vn'); if(!nav) return;
+      const close = ()=>{ nav.classList.remove('is-open'); b.setAttribute('aria-expanded','false'); };
+      b.addEventListener('click', e=>{ e.stopPropagation();
+        const open = nav.classList.toggle('is-open'); b.setAttribute('aria-expanded', open ? 'true' : 'false'); });
+      nav.querySelectorAll('.nav__link, .vn__link').forEach(a=> a.addEventListener('click', close));
+      document.addEventListener('keydown', e=>{ if(e.key === 'Escape') close(); });
+    });
+  }
+  if(document.readyState !== 'loading') initBurger();
+  else document.addEventListener('DOMContentLoaded', initBurger);
 })();

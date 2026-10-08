@@ -364,7 +364,7 @@ main{ position:relative; z-index:2; }
   .wheel{ max-width:340px; }
   .diffs{ grid-template-columns:1fr; }
   .paths{ grid-template-columns:repeat(2,minmax(0,1fr)); }
-  .nav__links{ display:none; }
+  /* .nav__links now become the mobile slide-down panel (see fx.css hamburger) */
   .secindex{ display:none; }
 }
 @media (max-width:560px){

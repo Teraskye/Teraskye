@@ -34,7 +34,34 @@ body{ font-family:var(--sans); color:var(--bone); background:var(--void); overfl
 .vn__link{ pointer-events:auto; text-decoration:none; font-size:var(--lab); letter-spacing:0.24em; text-transform:uppercase;
   font-weight:500; color:var(--bone-faint); transition:color .3s var(--ease); white-space:nowrap; }
 .vn__link:hover,.vn__link.is-active{ color:var(--bone); }
-@media (max-width:900px){ .vn__links{ display:none; } }
+/* mobile hamburger nav (portfolio .vn — matches the shared fx.css pattern) */
+.vn__burger{ display:none; }
+@media (max-width:900px){
+  .vn{ mix-blend-mode:normal; z-index:40; }
+  .vn__brand{ position:relative; z-index:42; }
+  .vn__burger{ display:flex; flex-direction:column; justify-content:center; gap:5px;
+    width:46px; height:46px; padding:12px; margin:-6px -8px -6px 0; box-sizing:border-box;
+    pointer-events:auto; background:transparent; border:0; cursor:pointer; z-index:42; }
+  .vn__burger span{ display:block; width:100%; height:2px; border-radius:2px;
+    background:rgba(246,238,220,0.95); box-shadow:0 1px 4px rgba(0,0,0,0.6);
+    transition:transform .35s var(--ease), opacity .25s ease; }
+  .vn.is-open .vn__burger span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .vn.is-open .vn__burger span:nth-child(2){ opacity:0; }
+  .vn.is-open .vn__burger span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+  .vn__links{ position:fixed; inset:0 0 auto 0; z-index:41;
+    display:flex; flex-direction:column; align-items:stretch; gap:0;
+    padding:clamp(4.6rem,13vh,6rem) clamp(1.4rem,6vw,2.6rem) clamp(1.6rem,5vh,2.4rem);
+    background:linear-gradient(180deg, rgba(14,10,6,0.985), rgba(14,10,6,0.95));
+    -webkit-backdrop-filter:blur(16px); backdrop-filter:blur(16px);
+    box-shadow:0 24px 54px rgba(0,0,0,0.6);
+    transform:translateY(-102%); opacity:0; visibility:hidden;
+    transition:transform .5s var(--ease), opacity .35s ease, visibility .5s; }
+  .vn.is-open .vn__links{ transform:translateY(0); opacity:1; visibility:visible; }
+  .vn__links .vn__link{ width:100%; padding:1rem 0.2rem; font-size:1.02rem; letter-spacing:0.2em;
+    color:rgba(246,238,220,0.92); border-bottom:1px solid rgba(226,190,120,0.16); }
+  .vn__links .vn__link:last-child{ border-bottom:0; }
+  .vn__links .vn__link.is-active{ color:#fff; }
+}
 
 /* ---------- generic buttons ---------- */
 .vbtn{ pointer-events:auto; display:inline-flex; align-items:center; gap:0.7rem; cursor:pointer; font:inherit;
@@ -866,4 +893,12 @@ body{ font-family:var(--sans); color:var(--bone); background:var(--void); overfl
   .tz-ln{ display:none; }
   .tz-v{ white-space:normal; }
   .tz-hero{ flex-wrap:wrap; }
+}
+/* treasury finale: on small screens the stacked content exceeds the viewport —
+   let it scroll and clear the fixed nav (desktop keeps the centred, non-scrolling frame) */
+@media (max-width:760px){
+  .finale{ overflow-y:auto; overflow-x:hidden; -webkit-overflow-scrolling:touch; justify-content:flex-start !important; }
+  .tz-wrap{ margin-top:0; margin-bottom:0;
+    padding-top:clamp(5rem,14vh,6.5rem); padding-bottom:clamp(2.4rem,6vh,3.4rem); }
+  .tz-bg{ position:fixed; }   /* keep the rays/glow/stars behind the scrolling text */
 }

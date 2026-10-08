@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@200;300;400;500;600;700&family=Sora:wght@300;400;500;600&family=Cormorant+Garamond:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="vault.css?v=33" />
+<link rel="stylesheet" href="vault.css?v=34" />
 <script type="importmap">
 {
   "imports": {
@@ -39,6 +39,7 @@
     <a class="vn__link is-active" href="./">Portfolio</a>
     <a class="vn__link" href="../company/">Company</a>
   </div>
+  <button class="vn__burger" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- 0 · LOADER -->
@@ -165,5 +166,17 @@
 <noscript><div class="scr is-on" style="z-index:999"><div class="loader__mark">TERASKYE</div><div class="loader__sub">This experience requires JavaScript.</div></div></noscript>
 
 <script type="module" src="vault.js?v=15"></script>
+<script>
+/* mobile hamburger (portfolio .vn — fx.js isn't loaded here) */
+(function(){
+  var b=document.querySelector('.vn__burger'); if(!b) return;
+  var nav=b.closest('.vn'); if(!nav) return;
+  function close(){ nav.classList.remove('is-open'); b.setAttribute('aria-expanded','false'); }
+  b.addEventListener('click',function(e){ e.stopPropagation();
+    var o=nav.classList.toggle('is-open'); b.setAttribute('aria-expanded',o?'true':'false'); });
+  nav.querySelectorAll('.vn__link').forEach(function(a){ a.addEventListener('click',close); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
+})();
+</script>
 </body>
 </html>
