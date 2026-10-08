@@ -1,0 +1,86 @@
+/* ============================================================
+   TERASKYE — PORTFOLIO · "The Stone Archive"
+   One continuous torch-lit cave, walked in real-time 3D.
+   This stylesheet is ONLY the thin control layer (loader, CTA,
+   HUD, hints). All portfolio DATA is carved into the 3D stone.
+   ============================================================ */
+:root{
+  --bone:#efe6d4; --bone-soft:rgba(239,230,212,.78); --bone-faint:rgba(239,230,212,.46);
+  --gold:#e2a85c; --gold-bright:#f6d67e; --ember:#c9884a;
+  --carve:'Cinzel',serif; --disp:'Cormorant Garamond',Georgia,serif; --sans:'Archivo',system-ui,sans-serif;
+  --lab:clamp(.62rem,.86vw,.74rem); --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{ box-sizing:border-box; }
+html,body{ margin:0; height:100%; background:#060402; color:var(--bone); font-family:var(--sans); -webkit-font-smoothing:antialiased; overflow:hidden; overscroll-behavior:none; }
+#scene{ position:fixed; inset:0; width:100%; height:100%; display:block; z-index:1; touch-action:none; }
+button{ font:inherit; color:inherit; cursor:pointer; }
+::selection{ background:rgba(226,168,92,.3); color:#fff; }
+
+/* ---------------- top nav (slim, unobtrusive) ---------------- */
+.nav{ position:fixed; top:0; left:0; right:0; z-index:30; display:flex; align-items:center; justify-content:space-between; padding:clamp(1rem,2.4vh,1.6rem) clamp(1.2rem,4vw,3rem); pointer-events:none; transition:opacity .6s var(--ease); }
+.nav.is-dim{ opacity:0; pointer-events:none; }
+.nav__brand{ pointer-events:auto; display:inline-flex; align-items:center; gap:.5rem; text-decoration:none; font-size:var(--lab); letter-spacing:.34em; text-transform:uppercase; font-weight:700; color:var(--bone); text-shadow:0 1px 10px rgba(0,0,0,.9); }
+.nav__brand .dot{ width:5px; height:5px; border-radius:50%; background:var(--gold); box-shadow:0 0 12px var(--gold); }
+.nav__links{ pointer-events:auto; display:flex; gap:clamp(.9rem,1.8vw,1.7rem); }
+.nav__link{ text-decoration:none; font-size:var(--lab); letter-spacing:.22em; text-transform:uppercase; color:var(--bone-faint); transition:color .3s var(--ease); text-shadow:0 1px 8px rgba(0,0,0,.9); }
+.nav__link:hover{ color:var(--bone); } .nav__link.is-active{ color:var(--gold-bright); }
+@media (max-width:980px){ .nav__links{ display:none; } }
+
+/* ---------------- return to archive ---------------- */
+.rtn{ position:fixed; top:clamp(0.9rem,2.2vh,1.5rem); left:clamp(1.2rem,4vw,3rem); z-index:32; padding:0.7rem 1.15rem; border-radius:3px; font-size:var(--lab); letter-spacing:0.2em; text-transform:uppercase; color:var(--bone-soft);
+  background:rgba(12,8,4,0.5); border:1px solid rgba(226,168,92,0.4); backdrop-filter:blur(6px); transition:all .3s var(--ease); }
+.rtn:hover{ color:#fff; border-color:var(--gold-bright); transform:translateY(-1px); }
+.rtn[hidden]{ display:none; }
+
+/* ---------------- chamber index rail ---------------- */
+.rail{ position:fixed; right:clamp(1rem,2.4vw,2rem); top:50%; transform:translateY(-50%); z-index:28; display:flex; flex-direction:column; gap:.2rem; opacity:0; transition:opacity .6s var(--ease); }
+.rail.is-on{ opacity:1; }
+.rail__i{ display:flex; align-items:center; gap:.7rem; justify-content:flex-end; background:none; border:0; padding:.4rem .2rem; text-align:right; opacity:.45; transition:opacity .3s var(--ease); }
+.rail__i:hover,.rail__i.is-on{ opacity:1; }
+.rail__i em{ order:2; font-family:var(--carve); font-style:normal; font-size:.7rem; width:22px; height:22px; display:grid; place-items:center; border-radius:50%; border:1px solid rgba(226,168,92,.5); color:var(--gold-bright); }
+.rail__i span{ order:1; font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; color:var(--bone-soft); max-width:0; overflow:hidden; white-space:nowrap; opacity:0; transition:all .35s var(--ease); }
+.rail__i:hover span,.rail__i.is-on span{ max-width:150px; opacity:1; }
+.rail__i.is-on em{ background:var(--gold-bright); color:#180f06; box-shadow:0 0 14px rgba(246,214,126,.8); }
+@media (max-width:760px){ .rail{ display:none; } }
+
+/* ---------------- HUD (depth marker) ---------------- */
+.hud{ position:fixed; right:clamp(1.2rem,4vw,3rem); bottom:clamp(1.1rem,3.4vh,2rem); z-index:26; text-align:right; pointer-events:none; opacity:0; transition:opacity .5s var(--ease); }
+.hud.is-on{ opacity:1; }
+.hud__name{ display:block; font-size:var(--lab); letter-spacing:.24em; text-transform:uppercase; color:var(--bone-soft); }
+.hud__n{ display:block; font-family:var(--carve); font-size:clamp(1.3rem,2.4vw,1.9rem); color:var(--gold-bright); line-height:1; }
+
+/* ---------------- scroll cue ---------------- */
+.cue{ position:fixed; left:50%; bottom:clamp(1.6rem,5vh,3rem); transform:translateX(-50%); z-index:26; display:inline-flex; align-items:center; gap:.8rem; font-size:var(--lab); letter-spacing:.3em; text-transform:uppercase; color:var(--bone-soft); text-shadow:0 1px 10px #000; opacity:0; transition:opacity .5s var(--ease); }
+.cue.is-on{ opacity:1; }
+.cue__rail{ width:46px; height:1px; background:rgba(239,230,212,.3); position:relative; overflow:hidden; }
+.cue__rail::after{ content:""; position:absolute; inset:0; width:40%; background:linear-gradient(90deg,transparent,var(--gold)); animation:cue 2.4s var(--ease) infinite; }
+@keyframes cue{ 0%{transform:translateX(-120%)} 70%{transform:translateX(300%)} 100%{transform:translateX(300%)} }
+
+/* ---------------- the OPEN-DOOR CTA ---------------- */
+.cta{ position:fixed; left:50%; bottom:clamp(2.4rem,9vh,5rem); transform:translateX(-50%) translateY(14px); z-index:27; opacity:0; pointer-events:none; transition:opacity .5s var(--ease), transform .5s var(--ease);
+  font-family:var(--carve); font-weight:500; font-size:clamp(.74rem,1vw,.9rem); letter-spacing:.22em; text-transform:uppercase;
+  display:inline-flex; align-items:center; gap:.7rem; padding:1.05rem 2.1rem; border-radius:3px; color:var(--bone);
+  background:linear-gradient(160deg, rgba(74,53,33,.82), rgba(16,10,5,.86)); border:1px solid rgba(226,168,92,.55);
+  box-shadow:inset 0 1px 0 rgba(255,240,214,.1), 0 20px 48px -18px rgba(0,0,0,.9); }
+.cta.is-on{ opacity:1; pointer-events:auto; transform:translateX(-50%); animation:ctaPulse 2.4s ease-in-out infinite; }
+.cta:hover{ border-color:var(--gold-bright); color:#fff; }
+.cta__x{ transition:transform .3s var(--ease); } .cta:hover .cta__x{ transform:translateX(4px); }
+.cta--gold.is-on{ color:#180f06; font-weight:600; background:linear-gradient(135deg,var(--gold-bright),var(--ember)); border-color:transparent; }
+@keyframes ctaPulse{ 0%,100%{ box-shadow:inset 0 1px 0 rgba(255,240,214,.1), 0 20px 48px -18px rgba(0,0,0,.9), 0 0 0 0 rgba(232,168,92,.35); } 50%{ box-shadow:inset 0 1px 0 rgba(255,240,214,.1), 0 20px 48px -18px rgba(0,0,0,.9), 0 0 0 11px rgba(232,168,92,0); } }
+
+/* ---------------- loader ---------------- */
+.load{ position:fixed; inset:0; z-index:50; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1.1rem; background:radial-gradient(60% 60% at 50% 50%, #140c06, #060402 75%); transition:opacity .8s var(--ease); }
+.load.is-done{ opacity:0; pointer-events:none; }
+.load__k{ font-family:var(--carve); font-size:clamp(.72rem,1vw,.84rem); letter-spacing:.42em; text-transform:uppercase; color:var(--gold); }
+.load__bar{ width:min(240px,60vw); height:2px; background:rgba(226,168,92,.18); border-radius:2px; overflow:hidden; }
+.load__bar i{ display:block; height:100%; width:0; background:linear-gradient(90deg,var(--ember),var(--gold-bright)); box-shadow:0 0 12px var(--gold); transition:width .3s var(--ease); }
+.load__t{ font-size:var(--lab); letter-spacing:.24em; text-transform:uppercase; color:var(--bone-faint); }
+
+/* ---------------- first scroll hint ---------------- */
+.begin{ position:fixed; inset:0; z-index:24; display:flex; align-items:center; justify-content:center; pointer-events:none; opacity:0; transition:opacity .8s var(--ease); }
+.begin.is-on{ opacity:1; }
+.begin__in{ text-align:center; }
+.begin__k{ font-family:var(--carve); font-size:var(--lab); letter-spacing:.4em; text-transform:uppercase; color:var(--gold); }
+.begin__t{ font-family:var(--disp); font-weight:300; font-size:clamp(1.6rem,4vw,2.8rem); color:var(--bone); margin:.5rem 0 0; text-shadow:0 2px 24px #000; }
+
+@media (prefers-reduced-motion:reduce){ *{ animation-duration:.001s !important; } }

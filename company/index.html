@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>TERASKYE — Company</title>
+<meta name="description" content="The biggest asset class on earth is about to be rebuilt. $393 trillion of real estate still runs on gut, paperwork and delay. We're a technology company that took aim at the world's largest, slowest market — and built the machine to win it." />
+<meta name="theme-color" content="#1b2733" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="horizon.css?v=19" />
+<link rel="stylesheet" href="../assets/fx.css?v=1" />
+</head>
+<body data-fx-scene3d=".s__wrap:not(.tilt3d)">
+
+<div class="boot" id="boot"><div class="boot__mark">TERASKYE · COMPANY</div></div>
+
+<!-- ===== the horizon (fixed — scroll-scrubbed sunrise + living haze) ===== -->
+<div class="env" aria-hidden="true">
+  <div class="env__inner" id="envInner">
+    <video class="env__video" id="sky" poster="assets/company-bg.jpg?v=3"
+           muted playsinline preload="auto" data-src="assets/company-bg.mp4?v=3"></video>
+    <canvas class="env__fx" id="fx"></canvas>
+  </div>
+  <div class="env__grade"></div>
+</div>
+
+<!-- ===== global nav ===== -->
+<div class="progress" id="progress"></div>
+<nav class="nav" aria-label="Primary">
+  <a class="nav__brand" href="../index.html"><object class="nav__logo" data="../assets/logo.svg" type="image/svg+xml" aria-label="Teraskye" tabindex="-1" style="height:34px;width:auto;display:block;pointer-events:none;filter:drop-shadow(0 1px 5px rgba(0,0,0,0.5))"></object></a>
+  <div class="nav__links">
+    <a class="nav__link" href="../index.html">Canopy</a>
+    <a class="nav__link" href="../tide/">Aurora</a>
+    <a class="nav__link" href="../sellers/">The Wild</a>
+    <a class="nav__link" href="../capital-partners/">For Investors</a>
+    <a class="nav__link" href="../buyers/">For Buyers</a>
+    <a class="nav__link" href="../portfolio/">Portfolio</a>
+    <div class="nav__grp">
+      <a class="nav__link is-active" href="./">Company</a>
+      <div class="nav__menu" role="menu">
+        <a class="nav__mlink" role="menuitem" href="#thesis" data-sec="thesis">About</a>
+        <a class="nav__mlink" role="menuitem" href="#leadership" data-sec="leadership">Leadership</a>
+        <a class="nav__mlink" role="menuitem" href="#careers" data-sec="careers">Careers</a>
+        <a class="nav__mlink" role="menuitem" href="#close" data-sec="close">Contact</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="secindex" id="secindex" aria-hidden="true">
+  <span class="secindex__name" id="secName">Company</span>
+  <span class="secindex__no"><b id="secNo">01</b> <em>/ 08</em></span>
+</div>
+
+<main id="main">
+
+  <!-- 01 · NAME -->
+  <section class="s s--center" id="hero" data-name="Company">
+    <div class="scrim scrim--c"></div>
+    <div class="s__wrap stack">
+      <span class="eyebrow r">Company</span>
+      <h1 class="pagename r" style="--d:.08s">Teraskye</h1>
+      <div class="scroll-cue r" style="--d:.4s; margin-top:clamp(1.2rem,3vh,2.4rem)">
+        <span class="scroll-cue__rail"></span> Scroll to the horizon
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 · THE REBUILD -->
+  <section class="s s--center s--tight" id="rebuild" data-name="The rebuild">
+    <div class="scrim scrim--field"></div>
+    <div class="s__wrap stack">
+      <span class="cat r">The rebuild</span>
+      <h2 class="statement s-hero r" style="--d:.1s">The biggest asset class on earth<br><span class="gold">is about to be rebuilt.</span></h2>
+      <div class="bigstat r" style="--d:.22s; justify-content:center">
+        <div class="bigstat__n">$393<span class="bigstat__u">Trillion</span></div>
+        <div class="bigstat__l">of real estate — worth more than every stock, bond<br>and ounce of gold <b>combined</b>.</div>
+      </div>
+      <div class="runson r" style="--d:.32s; justify-content:center">
+        <span class="runson__lb">Still runs on</span>
+        <span class="runson__p"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-6-4.2-8-8.5C2.6 8.3 4.4 5 7.5 5 9.4 5 11 6.3 12 7.6 13 6.3 14.6 5 16.5 5 19.6 5 21.4 8.3 20 11.5 18 15.8 12 20 12 20z"/></svg> Gut</span>
+        <span class="runson__p"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="1.5"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg> Paperwork</span>
+        <span class="runson__p"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg> Delay</span>
+      </div>
+      <p class="lead r" style="--d:.42s; margin-inline:auto; text-align:center; max-width:46ch"><span class="em">We're the ones rebuilding it.</span><br>And we're just getting started.</p>
+    </div>
+  </section>
+
+  <!-- 03 · THE THESIS -->
+  <section class="s s--center s--tight" id="thesis" data-name="The thesis">
+    <div class="scrim scrim--field"></div>
+    <div class="s__wrap stack">
+      <span class="cat r">The thesis</span>
+      <h2 class="statement r thesis__h" style="--d:.1s">
+        <span class="thesis__setup">We're not here to improve real estate.</span>
+        <span class="thesis__punch gold">We're here to rebuild it.</span>
+      </h2>
+      <p class="lead r" style="--d:.26s; margin-inline:auto; text-align:center; max-width:56ch">Every other firm is a real estate company dabbling in software. We're a <span class="em">technology company</span> that took aim at the world's largest, slowest market — and built the machine to win it.</p>
+      <div class="thline r" style="--d:.4s; justify-content:center">
+        <span>Buy right.</span><i>&rarr;</i><span>Run it on intelligence.</span><i>&rarr;</i><span class="thline__end">Compound it into billions.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 · THE TEAM (embedded cinematic WebGL people-scan — the Lusion effect) -->
+  <section class="s" id="build" data-name="The team">
+    <div class="teamembed">
+      <iframe class="teamembed__frame" src="../team/?embed=1" title="The founding team — cinematic scan" loading="lazy" tabindex="-1" aria-hidden="true"></iframe>
+      <div class="teamembed__grade"></div>
+      <div class="teamembed__body">
+        <span class="cat r">The founders</span>
+        <h2 class="statement s-lg r" style="--d:.1s">The people building<br><span class="gold">the machine.</span></h2>
+        <p class="lead r" style="--d:.24s">Founding partners building the operating system for the world's largest asset class.</p>
+        <a class="talk r" style="--d:.36s" href="../team/">Meet the team <span class="arrow">&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 · THE PEOPLE — leadership constellation -->
+  <section class="s" id="leadership" data-name="The people">
+    <div class="scrim scrim--field"></div>
+    <div class="s__wrap orgc">
+      <div class="orgc__stage r" id="orgStage" style="--d:.2s">
+        <div class="tree">
+
+          <!-- top · Vamsi (Founder) -->
+          <div class="tree__root">
+            <article class="pod pod--root" data-person="ceo" tabindex="0" role="button" aria-expanded="false">
+              <div class="pod__photo"><span style="background-image:url(../team/img/vamsi.jpg?v=3); background-position:50% 38%"></span></div>
+              <div class="pod__nm">Vamsi Vemoori</div>
+              <div class="pod__rl">Founder &middot; Chief Executive Officer</div>
+              <div class="pod__card">
+                <span class="pod__ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg></span>
+                <div><div class="pod__dv">Office of the CEO</div><div class="pod__tg">Vision · Strategy</div></div>
+              </div>
+              <span class="pod__cue">Click for departments</span>
+            </article>
+          </div>
+
+          <!-- connector: trunk + bus + three drops -->
+          <div class="tree__conn" aria-hidden="true"></div>
+
+          <!-- middle · leadership triad (Anitha · Vamsi · Srinath) -->
+          <div class="tree__kids">
+            <article class="pod" data-person="cap" tabindex="0" role="button" aria-expanded="false">
+              <div class="pod__photo"><span style="background-image:url(../team/img/anitha.jpg?v=2); background-position:50% 40%"></span></div>
+              <div class="pod__nm">Anitha Ravala</div>
+              <div class="pod__rl">Co-Founder &middot; Chief Investment Officer</div>
+              <div class="pod__card">
+                <span class="pod__ic"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg></span>
+                <div><div class="pod__dv">Investments &amp; Capital</div><div class="pod__tg">Acquisitions · Capital Markets</div></div>
+              </div>
+              <span class="pod__cue">Click for departments</span>
+            </article>
+
+            <article class="pod pod--mid" data-person="cto" tabindex="0" role="button" aria-expanded="false">
+              <div class="pod__photo"><span style="background-image:url(../team/img/vamsi.jpg?v=3); background-position:50% 38%"></span></div>
+              <div class="pod__nm">Vamsi Vemoori</div>
+              <div class="pod__rl">Chief Technology Officer</div>
+              <div class="pod__card">
+                <span class="pod__ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg></span>
+                <div><div class="pod__dv">Technology &amp; Product</div><div class="pod__tg">Intelligence · Product · Engineering</div></div>
+              </div>
+              <span class="pod__cue">Click for departments</span>
+            </article>
+
+            <article class="pod" data-person="ops" tabindex="0" role="button" aria-expanded="false">
+              <div class="pod__photo"><span style="background-image:url(../team/img/srinath.jpg?v=2); background-position:50% 40%"></span></div>
+              <div class="pod__nm">Srinath Ambati</div>
+              <div class="pod__rl">Co-Founder &middot; Chief Operating Officer &amp; Chief Financial Officer</div>
+              <div class="pod__card">
+                <span class="pod__ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v3M12 17.5v3M3.5 12h3M17.5 12h3"/><circle cx="12" cy="12" r="3"/></svg></span>
+                <div><div class="pod__dv">Operations &amp; Finance</div><div class="pod__tg">Execution · Asset Management</div></div>
+              </div>
+              <span class="pod__cue">Click for departments</span>
+            </article>
+          </div>
+
+          <!-- connector down from the centre -->
+          <div class="tree__conn2" aria-hidden="true"></div>
+
+          <!-- below · Pravalika -->
+          <div class="tree__leaf">
+            <article class="pod" data-person="ea" tabindex="0" role="button" aria-expanded="false">
+              <div class="pod__photo"><span style="background-image:url(../team/img/pravalika.jpg?v=2); background-position:50% 40%"></span></div>
+              <div class="pod__nm">Pravalika</div>
+              <div class="pod__rl">Executive Assistant to CEO</div>
+              <div class="pod__card">
+                <span class="pod__ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0M16 6a3 3 0 0 1 0 5.6M20.5 20a5.5 5.5 0 0 0-3.6-5.2"/></svg></span>
+                <div><div class="pod__dv">Business Development</div><div class="pod__tg">Growth · Partnerships</div></div>
+              </div>
+              <span class="pod__cue">Click for departments</span>
+            </article>
+          </div>
+
+          <div class="orgc__detail" id="orgDetail" hidden></div>
+        </div>
+      </div>
+
+      <aside class="orgc__side">
+        <span class="cat r">The structure</span>
+        <h2 class="statement s-md r" style="--d:.06s">Built like a firm. <span class="gold">Structured to scale.</span></h2>
+        <p class="lead r" style="--d:.16s">Real departmental depth — capital, intelligence and execution — led by founding partners, with the advisory board alongside.</p>
+        <div class="orgc__prins r" style="--d:.24s">
+          <div class="prin"><b>Leadership</b><span>drives vision</span></div>
+          <div class="prin"><b>Partners</b><span>build value</span></div>
+          <div class="prin"><b>Execution</b><span>creates impact</span></div>
+        </div>
+        <div class="orgc__adv r" style="--d:.32s">
+          <div class="orgc__advt">Advisory Board</div>
+          <div class="orgc__advn">100+ years <em>combined industry experience</em></div>
+          <div class="orgc__advf"><span>Real Estate</span><span>Capital</span><span>Technology</span><span>Legal &amp; Governance</span></div>
+          <span class="orgc__advsoon">Announced soon</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 06 · ADVISORY BOARD -->
+  <section class="s s--center s--tight" id="advisory" data-name="Advisory board">
+    <div class="scrim scrim--field"></div>
+    <div class="s__wrap stack">
+      <span class="cat r">Advisory Board</span>
+      <h2 class="statement s-lg r" style="--d:.1s"><span class="gold">100+ years</span> of combined<br>industry experience.</h2>
+      <p class="lead r" style="--d:.24s; margin-inline:auto; text-align:center">Our board of advisors is being assembled deliberately — for depth across real estate, capital, and technology.</p>
+      <div class="advfocus r" style="--d:.34s">
+        <span>Real Estate</span><span>Capital</span><span>Technology</span><span>Legal &amp; Governance</span>
+      </div>
+      <span class="advsoon r" style="--d:.44s">Announced soon</span>
+    </div>
+  </section>
+
+  <!-- 07 · CAREERS -->
+  <section class="s s--center s--tight" id="careers" data-name="Careers">
+    <div class="scrim scrim--field"></div>
+    <div class="s__wrap stack">
+      <span class="cat r">Careers</span>
+      <h2 class="statement s-lg r" style="--d:.1s">We're hiring the people who'll help<br><span class="gold">rebuild the world's largest market.</span></h2>
+      <div class="roles r" style="--d:.24s">
+        <details name="roles" class="role">
+          <summary class="role__head">
+            <div class="role__team">Strategy &amp; Intelligence</div>
+            <div class="role__t">Chief of Staff — Strategy &amp; AI</div>
+            <div class="role__d">Think with the CEO. Build with the technology team.</div>
+            <span class="role__more" aria-hidden="true"></span>
+          </summary>
+          <div class="role__full">
+            <div class="role__reports">Reports to: CEO</div><p class="role__lead">Act as a senior strategic and technology partner to the CEO, combining the responsibilities of strategy, business analysis, AI and automation. Move from strategic question to research, from research to decision, and from decision to a working system.</p>
+            <div class="role__cols"><div><div class="role__sub">Key responsibilities</div><ul><li>Work directly with the CEO on business strategy and priorities.</li><li>Lead deep research across markets, business models, risk, strategy, legal and people.</li><li>Identify creative solutions to complex business problems.</li><li>Support acquisition work from target screening through operations, value creation and exit.</li><li>Translate business problems into AI and technology opportunities.</li><li>Build and deploy AI agents and automations.</li><li>Evaluate the AI landscape and determine what to use, when, where and why.</li><li>Drive implementation of AI-enabled workflows.</li><li>Prepare concise, decision-useful briefings on AI and technology.</li><li>Execute strategic and technical initiatives directly.</li><li>Help build the company’s technology capabilities as the technical team grows.</li><li>Turn ideas into working systems quickly.</li></ul></div><div><div class="role__sub">What we’re looking for</div><ul><li>Management consulting, strategy or equivalent analytical background.</li><li>Practical, hands-on AI capability.</li><li>Experience building agents and automations.</li><li>Broad business knowledge.</li><li>Global perspective and local compliance awareness.</li><li>Exceptional written and verbal communication.</li><li>Strong strategic and business judgment.</li><li>Creative problem-solving ability.</li><li>Builder’s bias — ideas become working things quickly.</li><li>Comfortable working directly with the CEO.</li></ul></div></div>
+            <p class="role__apply">IF YOU BELIEVE YOU’RE THE RIGHT FIT FOR THIS ROLE, REACH OUT TO US AT <a href="mailto:operations@epochsinc.com?subject=Chief%20of%20Staff%20Strategy%20and%20AI%20%E2%80%94%20Teraskye">OPERATIONS@EPOCHSINC.COM</a></p>
+          </div>
+        </details>
+        <details name="roles" class="role">
+          <summary class="role__head">
+            <div class="role__team">Investment &amp; Operations</div>
+            <div class="role__t">Head of Investment &amp; Operations</div>
+            <div class="role__d">Make the CFO/COO faster across investment and operations.</div>
+            <span class="role__more" aria-hidden="true"></span>
+          </summary>
+          <div class="role__full">
+            <div class="role__reports">Reports to: CFO/COO</div><p class="role__lead">Act as the senior execution partner to the CFO/COO across investment analysis, underwriting, financing, operations and executive priorities. Combine the analytical responsibilities of the Investment Analyst with the execution and coordination responsibilities of Operations.</p>
+            <div class="role__cols"><div><div class="role__sub">Key responsibilities</div><ul><li>Lead and oversee deal underwriting and financial analysis.</li><li>Build and stress-test investment and deal models.</li><li>Evaluate acquisition opportunities and investment returns.</li><li>Analyze debt, assumable loans, non-recourse, JV, LP/GP and private-equity structures.</li><li>Model financing alternatives and determine structures that maximize returns.</li><li>Monitor financial and operational performance.</li><li>Identify where NOI is leaking and develop solutions.</li><li>Research markets, financing conditions and competitors.</li><li>Source and coordinate attorneys, lenders, brokers, underwriters and property managers.</li><li>Keep external partners and vendors moving.</li><li>Manage critical follow-ups and action items.</li><li>Prepare executive meetings, briefings and decision materials.</li><li>Support the CFO/COO across priorities and business execution.</li><li>Bring research, analysis and solutions proactively.</li><li>Use AI and technology to improve investment and operational workflows.</li></ul></div><div><div class="role__sub">What we’re looking for</div><ul><li>Strong financial analysis and modeling skills.</li><li>Commercial real estate experience; multifamily strongly preferred.</li><li>Strong understanding of financing and investment structures.</li><li>Combination of finance and operations experience.</li><li>Excellent organizational and execution skills.</li><li>Strong written and verbal English.</li><li>Confidence dealing directly with lenders, brokers and attorneys.</li><li>Self-starter who owns outcomes.</li><li>Ability to move quickly and operate with judgment.</li><li>Genuine curiosity about AI and advanced tools.</li></ul></div></div>
+            <p class="role__apply">IF YOU BELIEVE YOU’RE THE RIGHT FIT FOR THIS ROLE, REACH OUT TO US AT <a href="mailto:operations@epochsinc.com?subject=Head%20of%20Investment%20and%20Operations%20%E2%80%94%20Teraskye">OPERATIONS@EPOCHSINC.COM</a></p>
+          </div>
+        </details>
+        <details name="roles" class="role">
+          <summary class="role__head">
+            <div class="role__team">Capital</div>
+            <div class="role__t">Director, Capital Formation</div>
+            <div class="role__d">Build the relationships that fund the next stage of growth.</div>
+            <span class="role__more" aria-hidden="true"></span>
+          </summary>
+          <div class="role__full">
+            <div class="role__reports">Reports to: CIO</div><p class="role__lead">Build and manage Teraskye’s investor base alongside the CIO. Develop relationships across individual, family-office and institutional capital while maintaining a qualified investor pipeline aligned with acquisition needs.</p>
+            <div class="role__cols"><div><div class="role__sub">Key responsibilities</div><ul><li>Source and develop individual investor relationships.</li><li>Develop family-office relationships.</li><li>Develop institutional capital relationships.</li><li>Run disciplined investor outreach, including cold outreach.</li><li>Execute strategic and timely follow-up.</li><li>Maintain and grow the investor base.</li><li>Serve as the first point of contact for investors.</li><li>Keep investor relationships active and warm.</li><li>Map funding strategies and capital sources.</li><li>Align acquisition plans with real, available capital.</li><li>Coordinate with fund managers, lenders and capital partners.</li></ul></div><div><div class="role__sub">What we’re looking for</div><ul><li>Proven track record raising capital for real estate or private investments.</li><li>Existing investor relationships that can be activated.</li><li>Outstanding interpersonal and persuasion skills.</li><li>Ability to read the room and handle pressure.</li><li>Strong closing ability.</li><li>Highly self-directed and able to build the pipeline independently.</li><li>Real estate or private-markets background strongly preferred.</li><li>Existing Series 7/63/82 licensing is a plus.</li></ul></div></div>
+            <p class="role__apply">IF YOU BELIEVE YOU’RE THE RIGHT FIT FOR THIS ROLE, REACH OUT TO US AT <a href="mailto:operations@epochsinc.com?subject=Director%20Capital%20Formation%20%E2%80%94%20Teraskye">OPERATIONS@EPOCHSINC.COM</a></p>
+          </div>
+        </details>
+        <details name="roles" class="role">
+          <summary class="role__head">
+            <div class="role__team">Investment</div>
+            <div class="role__t">Investment Analyst</div>
+            <div class="role__d">Turn opportunities into investment decisions.</div>
+            <span class="role__more" aria-hidden="true"></span>
+          </summary>
+          <div class="role__full">
+            <p class="role__lead">Analyze multifamily investment opportunities through underwriting, financial modeling, financing analysis, market research and acquisition support. Provide accurate numbers and insight before investment decisions are made.</p>
+            <div class="role__cols"><div><div class="role__sub">Key responsibilities</div><ul><li>Build and stress-test deal and investment models.</li><li>Analyze acquisition opportunities and investment returns.</li><li>Evaluate debt, assumable loans, non-recourse, JV, LP/GP and private-equity structures.</li><li>Model financing alternatives to determine which structure maximizes returns.</li><li>Research market trends, financing conditions and competitor activity.</li><li>Support the investment and acquisition pipeline.</li><li>Prepare accurate financial analysis for investment decisions.</li><li>Bring relevant investment insights proactively.</li></ul></div><div><div class="role__sub">What we’re looking for</div><ul><li>Strong financial analysis skills.</li><li>Commercial real estate experience; multifamily strongly preferred.</li><li>Finance and operations experience is a strong combination.</li><li>Strong analytical and problem-solving ability.</li><li>Self-starter who owns outcomes.</li><li>Excellent written and verbal English.</li><li>Confidence working with lenders, brokers and attorneys.</li><li>Genuine curiosity about AI and advanced tools.</li></ul></div></div>
+            <p class="role__apply">IF YOU BELIEVE YOU’RE THE RIGHT FIT FOR THIS ROLE, REACH OUT TO US AT <a href="mailto:operations@epochsinc.com?subject=Investment%20Analyst%20%E2%80%94%20Teraskye">OPERATIONS@EPOCHSINC.COM</a></p>
+          </div>
+        </details>
+        <details name="roles" class="role">
+          <summary class="role__head">
+            <div class="role__team">Operations</div>
+            <div class="role__t">Operations Coordinator</div>
+            <div class="role__d">Keep the business moving, organized and accountable.</div>
+            <span class="role__more" aria-hidden="true"></span>
+          </summary>
+          <div class="role__full">
+            <p class="role__lead">Support day-to-day operations by coordinating vendors, partners, financial information, follow-ups and operational priorities. Help identify performance issues and make sure solutions move from observation to execution.</p>
+            <div class="role__cols"><div><div class="role__sub">Key responsibilities</div><ul><li>Review financial and operational performance.</li><li>Identify where NOI is leaking and help surface solutions.</li><li>Source and coordinate attorneys, lenders, brokers, underwriters and property managers.</li><li>Manage follow-ups with external partners and vendors.</li><li>Keep operational tasks and priorities moving.</li><li>Support meetings, preparation and executive briefings.</li><li>Coordinate information across internal and external stakeholders.</li><li>Use company technology and AI tools to improve execution.</li></ul></div><div><div class="role__sub">What we’re looking for</div><ul><li>Strong organization and coordination skills.</li><li>Excellent attention to detail.</li><li>Self-starter who takes ownership.</li><li>Strong written and verbal communication.</li><li>Comfortable managing multiple stakeholders.</li><li>Solutions-oriented mindset.</li><li>Ability to move quickly and prioritize.</li><li>Genuine interest in AI and advanced tools.</li></ul></div></div>
+            <p class="role__apply">IF YOU BELIEVE YOU’RE THE RIGHT FIT FOR THIS ROLE, REACH OUT TO US AT <a href="mailto:operations@epochsinc.com?subject=Operations%20Coordinator%20%E2%80%94%20Teraskye">OPERATIONS@EPOCHSINC.COM</a></p>
+          </div>
+        </details>
+        <details name="roles" class="role">
+          <summary class="role__head">
+            <div class="role__team">Intelligence</div>
+            <div class="role__t">AI &amp; Automation Engineer</div>
+            <div class="role__d">Build and deploy the AI systems that make us faster.</div>
+            <span class="role__more" aria-hidden="true"></span>
+          </summary>
+          <div class="role__full">
+            <p class="role__lead">Build and deploy AI agents and automations across the company. Combine practical, hands-on AI capability with the judgment to determine which technologies to use, when and where.</p>
+            <div class="role__cols"><div><div class="role__sub">Key responsibilities</div><ul><li>Build and deploy AI agents.</li><li>Build automations across company functions.</li><li>Research and evaluate the AI landscape.</li><li>Determine what AI tools to use, when, where and why.</li><li>Prepare concise briefings on important AI and technology developments.</li><li>Execute technical and AI projects directly.</li><li>Identify opportunities to make workflows faster through AI.</li><li>Help implement AI-enabled processes across the company.</li></ul></div><div><div class="role__sub">What we’re looking for</div><ul><li>Practical, hands-on AI experience.</li><li>Experience actually building agents and automations.</li><li>Strong analytical and business judgment.</li><li>Builder mentality.</li><li>Ability to turn ideas into working solutions quickly.</li><li>Genuine curiosity about emerging AI technologies.</li><li>Ability to work across different business functions.</li></ul></div></div>
+            <p class="role__apply">IF YOU BELIEVE YOU’RE THE RIGHT FIT FOR THIS ROLE, REACH OUT TO US AT <a href="mailto:operations@epochsinc.com?subject=AI%20and%20Automation%20Engineer%20%E2%80%94%20Teraskye">OPERATIONS@EPOCHSINC.COM</a></p>
+          </div>
+        </details>
+        <details name="roles" class="role">
+          <summary class="role__head">
+            <div class="role__team">Strategy</div>
+            <div class="role__t">Strategy &amp; Business Specialist</div>
+            <div class="role__d">Find the signal, solve the problem, shape the strategy.</div>
+            <span class="role__more" aria-hidden="true"></span>
+          </summary>
+          <div class="role__full">
+            <p class="role__lead">Conduct deep research and critical analysis across markets, business models, risk, strategy, legal matters and people. Support business and acquisition decisions from target screening through operations, value creation and exit.</p>
+            <div class="role__cols"><div><div class="role__sub">Key responsibilities</div><ul><li>Conduct deep research across markets and industries.</li><li>Analyze business models, risk and strategic opportunities.</li><li>Research strategy, legal and people-related issues.</li><li>Identify creative solutions rather than obvious answers.</li><li>Support acquisition work end to end.</li><li>Evaluate businesses from target screening through operations, value creation and exit.</li><li>Analyze market and competitive conditions.</li><li>Prepare decision-useful strategic analysis.</li><li>Support senior leadership with research and written analysis.</li></ul></div><div><div class="role__sub">What we’re looking for</div><ul><li>Management consulting, strategy or equivalent analytical background.</li><li>Strong research and critical-thinking skills.</li><li>Broad business knowledge.</li><li>Global perspective and local compliance awareness.</li><li>Exceptional written and verbal communication.</li><li>Strong problem-solving ability.</li><li>Ability to work independently and take ownership.</li><li>Builder’s bias — ideas become working things quickly.</li></ul></div></div>
+            <p class="role__apply">IF YOU BELIEVE YOU’RE THE RIGHT FIT FOR THIS ROLE, REACH OUT TO US AT <a href="mailto:operations@epochsinc.com?subject=Strategy%20and%20Business%20Specialist%20%E2%80%94%20Teraskye">OPERATIONS@EPOCHSINC.COM</a></p>
+          </div>
+        </details>
+        <details name="roles" class="role">
+          <summary class="role__head">
+            <div class="role__team">Executive Support</div>
+            <div class="role__t">Executive Assistant to CIO</div>
+            <div class="role__d">Keep the CIO prepared, focused and moving.</div>
+            <span class="role__more" aria-hidden="true"></span>
+          </summary>
+          <div class="role__full">
+            <p class="role__lead">Provide executive support to the CIO across scheduling, follow-ups, meeting preparation, briefings, research coordination and investment-pipeline activities.</p>
+            <div class="role__cols"><div><div class="role__sub">Key responsibilities</div><ul><li>Manage the CIO’s calendar and scheduling.</li><li>Coordinate meetings and follow-ups.</li><li>Prepare meeting materials and briefings.</li><li>Track action items and ensure follow-through.</li><li>Organize information required for investment and acquisition discussions.</li><li>Support research and pipeline-related activities.</li><li>Coordinate with internal and external stakeholders.</li><li>Help ensure the CIO is prepared for important conversations and decisions.</li><li>Keep priorities organized and moving forward.</li></ul></div><div><div class="role__sub">What we’re looking for</div><ul><li>Exceptional organization and attention to detail.</li><li>Strong written and verbal communication.</li><li>Excellent follow-through.</li><li>Ability to manage multiple priorities.</li><li>Proactive and self-directed working style.</li><li>Professional and confident communication.</li><li>Ability to work with sensitive business information.</li><li>Comfortable working in a fast-moving environment.</li></ul></div></div>
+            <p class="role__apply">IF YOU BELIEVE YOU’RE THE RIGHT FIT FOR THIS ROLE, REACH OUT TO US AT <a href="mailto:operations@epochsinc.com?subject=Executive%20Assistant%20to%20CIO%20%E2%80%94%20Teraskye">OPERATIONS@EPOCHSINC.COM</a></p>
+          </div>
+        </details>
+      </div>
+                  <a class="talk r" style="--d:.42s" href="mailto:operations@epochsinc.com?subject=Open%20Roles%20at%20Teraskye">See Open Roles <span class="arrow">&rarr;</span></a>
+    </div>
+  </section>
+
+  <!-- 08 · LET'S TALK -->
+  <section class="s s--center" id="close" data-name="Let's talk">
+    <div class="scrim scrim--field"></div>
+    <div class="s__wrap stack">
+      <span class="cat r">The invitation</span>
+      <h2 class="statement s-hero r" style="--d:.1s">The next era of real estate<br><span class="gold">is being built right now.</span></h2>
+      <p class="lead r" style="--d:.26s; margin-inline:auto; text-align:center; max-width:54ch">The biggest players will either build it — or buy their way into it.<br>Either way, it starts here.</p>
+      <div class="contactrow r" style="--d:.4s">
+        <a class="contactrow__i" href="mailto:support@teraskye.com">
+          <span class="contactrow__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg></span>
+          <span class="contactrow__t"><b>Email</b>support@teraskye.com</span>
+        </a>
+        <span class="contactrow__sep" aria-hidden="true"></span>
+        <a class="contactrow__i" href="tel:+19093335077">
+          <span class="contactrow__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 3.5h3l1.5 4.5-2 1.5a12 12 0 0 0 5 5l1.5-2 4.5 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5z"/></svg></span>
+          <span class="contactrow__t"><b>Phone</b>+1 909 333 5077</span>
+        </a>
+      </div>
+      <a class="talk r" style="--d:.5s" href="mailto:support@teraskye.com?subject=Let%27s%20talk%20—%20Teraskye">Let's Talk <span class="arrow">&rarr;</span></a>
+    </div>
+  </section>
+
+</main>
+
+<script src="horizon.js?v=4" defer></script>
+<script src="companyorg.js?v=9" defer></script>
+<script src="../assets/fx.js?v=2" defer></script>
+</body>
+</html>

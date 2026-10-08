@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>TERASKYEE — Portfolio</title>
+<meta name="description" content="Enter the Teraskyee portfolio — an immersive 3D environment. Walk the corridor, approach an asset door, open it, and step inside the asset. Illustrative of the target acquisition criteria." />
+<meta name="theme-color" content="#0D1110" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="portfolio3d.css?v=4" />
+</head>
+<body>
+
+<!-- WebGL canvas mounts here -->
+<canvas id="scene" aria-hidden="true"></canvas>
+<div class="papergrain" aria-hidden="true"></div>
+
+<!-- persistent minimal UI -->
+<a class="hud hud--brand" id="hudBrand" href="../index.html">Teraskyee</a>
+<div class="hud hud--right">Portfolio</div>
+
+<!-- proximity / interaction prompt (3D-anchored feel, but HTML for crispness) -->
+<div class="prompt" id="prompt" hidden>
+  <div class="prompt__name" id="promptName"></div>
+  <div class="prompt__meta" id="promptMeta"></div>
+  <div class="prompt__act" id="promptAct">Open asset</div>
+</div>
+
+<!-- controls hint (fades after a while) -->
+<div class="controls" id="controls" hidden>
+  <span><b>Scroll</b> to travel the route</span><span><b>Click a door</b> to open it</span><span><b>Scroll back</b> to exit</span>
+</div>
+
+<!-- shown while an asset detail is open -->
+<div class="closehint" id="closehint">Scroll back to close <span>&uarr;</span></div>
+
+<!-- end-of-route card: the portfolio continues -->
+<div class="endcard" id="endcard">
+  <div class="endcard__in">
+    <div class="endcard__eye">The portfolio</div>
+    <h2 class="endcard__title">More doors<br>are opening.</h2>
+    <p class="endcard__sub">Teraskyee is acquiring across new markets. New assets join the portfolio as they close — stay tuned.</p>
+    <div class="endcard__flow"><span>Acquire</span><i>&rarr;</i><span>Operate</span><i>&rarr;</i><span>Scale</span><i>&rarr;</i><span>Exit</span></div>
+    <div class="endcard__cta">
+      <a href="../tide/">Explore the platform <span>&rarr;</span></a>
+      <a href="../capital-partners/">Talk to Teraskyee <span>&rarr;</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- asset info panel (inside an asset) -->
+<aside class="asset" id="asset" hidden>
+  <div class="asset__inner" id="assetInner"></div>
+  <button class="asset__return" id="assetReturn" type="button">Return to portfolio <span>&larr;</span></button>
+</aside>
+
+<!-- loading -->
+<div class="load" id="load"><div class="load__mark">Teraskyee</div><div class="load__bar"><i id="loadBar"></i></div><div class="load__t" id="loadPct">Preparing the environment…</div></div>
+
+<!-- OPENING SCREEN -->
+<div class="enter" id="enter" hidden>
+  <div class="enter__grain" aria-hidden="true"></div>
+  <div class="enter__mid">
+    <div class="enter__brand">TERASKYEE</div>
+    <div class="enter__title">Portfolio</div>
+    <div class="enter__sub">An immersive walk through the portfolio.</div>
+    <button class="enter__btn" id="enterBtn" type="button">Enter the portfolio</button>
+    <div class="enter__hint">Walk the corridor · approach a door · step inside the asset</div>
+  </div>
+</div>
+
+<!-- 2D FALLBACK (no WebGL / reduced motion / low power) -->
+<div class="fallback" id="fallback" hidden>
+  <header class="fb__head">
+    <span class="fb__eye">Teraskyee · Portfolio</span>
+    <h1 class="fb__title">The portfolio,<br>asset by asset.</h1>
+    <p class="fb__lead">The immersive 3D walkthrough isn't available on this device — here's the portfolio as a directory. Every asset shown is illustrative of the target acquisition criteria.</p>
+  </header>
+  <div class="fb__grid" id="fbGrid"></div>
+  <nav class="fb__ctas">
+    <a class="fb__cta" href="../tide/">Explore the platform &rarr;</a>
+    <a class="fb__cta ghost" href="../capital-partners/">Talk to Teraskyee &rarr;</a>
+  </nav>
+</div>
+
+<!-- scroll spacer: gives the page height so scrolling drives the route -->
+<div class="scrollspace" aria-hidden="true"></div>
+
+<!-- Three.js + addons via import map (no build step) -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/"
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script type="module" src="portfolio3d.js?v=9"></script>
+</body>
+</html>

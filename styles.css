@@ -1,0 +1,443 @@
+/* ============================================================
+   TERASKYE — CANOPY
+   One immersive page.  Scroll = camera + story.  Time = life.
+   Presentation: cinematic beats alternate with calm reading zones
+   (the forest recedes so content reads with total clarity).
+   ============================================================ */
+
+:root{
+  --bone:        #F1ECE2;
+  --bone-soft:   rgba(241,236,226,0.82);
+  --bone-faint:  rgba(241,236,226,0.54);
+
+  --ink:         8,11,9;          /* deep green-black (rgb) */
+  --signal:      201,212,181;     /* pale lichen sage */
+  --ember:       232,201,154;     /* warm morning accent */
+  --edge:        rgba(236,230,218,0.14);
+
+  /* --- ink-on-paper set (reading sections switch to this, Montfort-style) --- */
+  --ink-solid:   #14180f;         /* deep forest ink for text on a light page */
+  --ink-soft:    rgba(20,24,15,0.62);
+  --ink-faint:   rgba(20,24,15,0.42);
+  --sage-deep:   #5d6b45;         /* deep sage label on paper */
+  --edge-ink:    rgba(20,24,15,0.16);
+  --paper-wash:  247,244,237;     /* warm near-white reading ground */
+
+  --grade-bright: 0.7;            /* base film brightness (JS nudges up when forest opens) */
+  --grade-veil:   0.0;            /* extra top darkness in bright scenes (JS) */
+  --calm:         0.2;            /* 0 cinematic .. 1 quiet reading field (JS) */
+  --lum:          0.4;            /* live luminance behind text (JS) */
+
+  --pad: clamp(1.5rem, 6vw, 8rem);
+
+  /* thin, wide, uppercase statement scale (Montfort-calm clarity) */
+  --s-hero: clamp(2.15rem, 6.2vw, 5.4rem);
+  --s-lg:   clamp(1.65rem, 4.2vw, 3.5rem);
+  --s-md:   clamp(1.3rem, 2.9vw, 2.3rem);
+  --fs-lead:  clamp(1rem, 1.35vw, 1.24rem);
+  --fs-label: clamp(0.66rem, 0.86vw, 0.76rem);
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+body{
+  font-family:"Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color:var(--bone);
+  background:#05070a;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+#app{ position:relative; }
+
+/* ============================================================
+   STAGE — fixed cinematic environment (TIME lives here)
+   ============================================================ */
+.stage{ position:fixed; inset:0; z-index:0; overflow:hidden; background:#05070a; }
+.stage__inner{
+  position:absolute; inset:-6% -6%;
+  transform:scale(1.02); transform-origin:52% 46%;
+  will-change:transform;
+}
+.stage__video{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  /* colour grade + only the gentlest softening in reading zones — the CANOPY
+     stays clearly visible throughout; readability is handled locally, not by
+     hiding the forest. */
+  filter:brightness(var(--grade-bright)) contrast(1.05) saturate(0.9)
+         blur(calc(var(--calm) * 0.2px));
+}
+.stage__fx{ position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+
+/* per-section BACKGROUND THEME — JS crossfades this wash by scroll.
+   film → transparent (forest full & cinematic)
+   paper → luminous warm veil (a clean reading page; forest frosts back)
+   ink → deep ground (drama behind the big numbers).
+   This is what makes each section its own backdrop, Montfort-style. */
+.stage__wash{ position:absolute; inset:0; pointer-events:none; background:rgba(247,244,237,0);
+  backdrop-filter:blur(0px); -webkit-backdrop-filter:blur(0px); will-change:background; }
+
+/* cinematic vignette + gentle top/bottom falloff (light, not a text scrim) */
+.stage__grade{
+  position:absolute; inset:0; pointer-events:none;
+  background:
+    radial-gradient(132% 104% at 50% 40%, transparent 48%, rgba(3,5,4,0.5) 100%),
+    linear-gradient(to bottom,
+      rgba(3,5,4,0.38) 0%, rgba(3,5,4,0) 22%, rgba(3,5,4,0) 72%, rgba(3,5,4,0.46) 100%);
+}
+/* the CALM field — quiets the forest to a deep, clear reading ground.
+   forest stays faintly alive behind it (time system never stops). */
+.stage__calm{
+  position:absolute; inset:0; pointer-events:none;
+  /* barely-there cinematic vignette — the forest stays crisp and 70–80%
+     present in the middle; this only deepens the far edges a touch for depth. */
+  opacity:calc(var(--calm) * 0.24);
+  background:
+    radial-gradient(150% 130% at 50% 48%,
+      rgba(var(--ink),0.06) 0%, rgba(var(--ink),0.2) 55%, rgba(var(--ink),0.5) 100%);
+}
+.stage__veil{
+  position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(to bottom, rgba(var(--ink),0.5) 0%, rgba(var(--ink),0) 32%);
+  opacity:var(--grade-veil); transition:opacity 0.2s linear;
+}
+
+/* ============================================================
+   SCROLL SPACER — the journey's length (slow, spacious pacing)
+   ============================================================ */
+.scroll{ position:relative; height:900vh; z-index:1; pointer-events:none; }
+
+/* ============================================================
+   SCENES — fixed foreground; JS crossfades by scroll progress
+   ============================================================ */
+.scenes{ position:fixed; inset:0; z-index:2; pointer-events:none; }
+.scene{
+  position:absolute; inset:0; display:grid;
+  /* height-aware padding so content always fits the viewport (no clipped paragraphs) */
+  padding:clamp(4.75rem,10vh,7rem) var(--pad) clamp(3.25rem,7vh,5rem) var(--pad);
+  opacity:0; visibility:hidden; will-change:opacity;
+}
+.scene__wrap{ position:relative; width:100%; max-width:min(1000px, 84vw); }
+
+.scene--center      { place-items:center; text-align:center; }
+.scene--center .scene__wrap{ margin:0 auto; }
+.scene--left        { place-items:center start; }
+
+/* localized readability scrim — fades out in calm zones (calm field handles it) */
+.scrim{
+  position:absolute; z-index:-1; pointer-events:none; filter:blur(44px);
+  /* a soft pool of shade ONLY behind the words — strong at the core for
+     readability, fully transparent at the edges so the canopy reads around it.
+     Heavy edge-feather (blur 44px) keeps it from ever looking like a panel. */
+  opacity:calc(0.78 + var(--calm) * 0.2);
+}
+.scrim--left{
+  left:calc(var(--pad) * -0.5); top:50%; transform:translateY(-50%);
+  width:min(680px,78vw); height:min(480px,58vh);
+  background:radial-gradient(54% 56% at 34% 50%,
+    rgba(var(--ink), calc(0.86 + var(--lum)*0.1)) 0%,
+    rgba(var(--ink), calc(0.42 + var(--lum)*0.18)) 38%, rgba(var(--ink),0) 60%);
+}
+.scrim--center{
+  left:50%; top:50%; transform:translate(-50%,-50%);
+  width:min(900px,90vw); height:min(520px,64vh);
+  background:radial-gradient(52% 54% at 50% 50%,
+    rgba(var(--ink), calc(0.84 + var(--lum)*0.1)) 0%,
+    rgba(var(--ink), calc(0.4 + var(--lum)*0.18)) 38%, rgba(var(--ink),0) 60%);
+}
+
+/* ---------- typographic system (thin, wide, uppercase statements) ---------- */
+.statement{
+  font-weight:300; text-transform:uppercase; letter-spacing:0.03em;
+  line-height:1.14; color:var(--bone);
+  text-shadow:0 1px 40px rgba(0,0,0,0.5), 0 1px 8px rgba(0,0,0,0.4);
+}
+.s-hero{ font-size:var(--s-hero); }
+.s-lg  { font-size:var(--s-lg); }
+.s-md  { font-size:var(--s-md); letter-spacing:0.05em; }
+.statement .soft{ color:var(--bone-soft); }
+.statement .sage{ color:rgba(var(--signal),0.96); }
+
+.eyebrow, .tag{
+  display:inline-block; font-size:var(--fs-label);
+  letter-spacing:0.4em; text-transform:uppercase; font-weight:500;
+  text-shadow:0 1px 12px rgba(0,0,0,0.6);
+}
+.eyebrow{ color:var(--bone-soft); }
+.tag{ color:rgba(var(--signal),0.92); letter-spacing:0.34em; }
+
+.lead{
+  font-size:var(--fs-lead); line-height:1.62; font-weight:400;
+  color:var(--bone-soft); max-width:36ch;
+  text-shadow:0 1px 14px rgba(0,0,0,0.55);
+}
+.lead--narrow{ max-width:26ch; }
+
+.stack > * + *{ margin-top:clamp(1rem, 1.6vw + 0.5vh, 2.1rem); }
+.stack-s > * + *{ margin-top:clamp(0.7rem, 1.4vw, 1.1rem); }
+
+[data-reveal]{ opacity:0; transform:translateY(24px); will-change:opacity, transform; }
+
+/* ---------- brand lockup (mark | wordmark) ---------- */
+.lockup{ display:inline-flex; align-items:center; gap:1rem; justify-content:center; }
+.mark{ width:clamp(30px,3.4vw,44px); height:auto; opacity:0.95;
+  filter:drop-shadow(0 2px 12px rgba(0,0,0,0.5)); }
+.mark path, .mark line, .mark circle{ vector-effect:non-scaling-stroke; }
+.wordmark{
+  font-weight:400; letter-spacing:0.42em; text-transform:uppercase;
+  font-size:clamp(0.95rem, 1.9vw, 1.5rem); color:var(--bone);
+  text-shadow:0 1px 16px rgba(0,0,0,0.6); padding-left:0.42em;
+}
+.rule{ width:1px; height:1.6em; background:var(--edge); }
+
+/* ---------- page-name hero (Montfort: the name leads, left-aligned) ---------- */
+.pagelock{ display:inline-flex; align-items:center; gap:0.8rem; }
+.pagelock .mark{ width:clamp(24px,2.6vw,34px); }
+.pagelock .tag{ letter-spacing:0.42em; }
+.pagename{ font-weight:200; text-transform:uppercase; letter-spacing:0.12em; line-height:0.94;
+  font-size:clamp(2.9rem, 9.5vw, 8.6rem); color:var(--bone);
+  text-shadow:0 1px 50px rgba(0,0,0,0.5), 0 1px 10px rgba(0,0,0,0.4); }
+.scene[data-mode="paper"] .pagename{ color:var(--ink-solid); text-shadow:none; }
+
+.scroll-cue{
+  display:inline-flex; align-items:center; gap:0.9rem;
+  font-size:var(--fs-label); letter-spacing:0.34em; text-transform:uppercase;
+  color:var(--bone-soft); font-weight:500; text-shadow:0 1px 12px rgba(0,0,0,0.6);
+}
+.scroll-cue__rail{ width:46px; height:1px; background:rgba(236,230,218,0.28); position:relative; overflow:hidden; }
+.scroll-cue__rail::after{
+  content:""; position:absolute; inset:0; width:40%;
+  background:linear-gradient(90deg, transparent, var(--bone));
+  animation:cueSlide 2.6s var(--ease) infinite;
+}
+@keyframes cueSlide{ 0%{ transform:translateX(-100%);} 65%{ transform:translateX(280%);} 100%{ transform:translateX(280%);} }
+
+/* ---------- specialist systems (calm reading grid) ---------- */
+.systems{ display:grid; grid-template-columns:repeat(auto-fit, minmax(140px,1fr));
+  gap:clamp(1.4rem,3vw,2.4rem) clamp(1.6rem,4vw,3rem); width:100%; }
+.system{ position:relative; padding-top:1.4rem; border-top:1px solid var(--edge); }
+.system__no{ font-size:var(--fs-label); letter-spacing:0.28em; font-weight:600;
+  color:rgba(var(--signal),0.85); }
+.system__name{ margin-top:0.9rem; font-size:clamp(0.95rem, 1.24vw, 1.2rem); font-weight:400;
+  text-transform:uppercase; letter-spacing:0.03em; line-height:1.16; overflow-wrap:break-word; }
+.system__desc{ margin-top:0.7rem; font-size:var(--fs-lead); color:var(--bone-soft);
+  max-width:32ch; line-height:1.5; }
+
+/* ============================================================
+   PROCESS / NETWORK DIAGRAMS — present the process content as
+   quiet, premium infographics (no copy changed; only presentation).
+   A shared rail + glowing nodes sit on top of the forest theme.
+   --net  = connected intelligence network (Our approach, 5 nodes)
+   --flow = directional transformation (Operating model, 4 stages)
+   ============================================================ */
+.systems--net, .systems--flow{ position:relative; padding-top:0.6rem; }
+.systems--net .system, .systems--flow .system{ padding-top:1.9rem; border-top:none; }
+/* the rail */
+.systems--net::before, .systems--flow::before{
+  content:""; position:absolute; left:1%; right:1%; top:0.6rem; height:1px; pointer-events:none;
+  background:linear-gradient(90deg, rgba(var(--signal),0) 0%, rgba(var(--signal),0.42) 12%,
+    rgba(var(--signal),0.42) 88%, rgba(var(--signal),0) 100%); }
+/* a node where each item meets the rail */
+.systems--net .system::before, .systems--flow .system::before{
+  content:""; position:absolute; top:0.6rem; left:0; width:9px; height:9px; border-radius:50%;
+  transform:translateY(-50%); background:rgba(var(--signal),0.95);
+  box-shadow:0 0 0 4px rgba(var(--ink),0.45), 0 0 16px rgba(var(--signal),0.65); }
+/* NET — nodes gently breathe (a living, connected system) */
+.systems--net .system::before{ animation:nodePulse 3.6s var(--ease) infinite; }
+.systems--net .system:nth-child(2)::before{ animation-delay:.5s; }
+.systems--net .system:nth-child(3)::before{ animation-delay:1s; }
+.systems--net .system:nth-child(4)::before{ animation-delay:1.5s; }
+.systems--net .system:nth-child(5)::before{ animation-delay:2s; }
+@keyframes nodePulse{ 0%,100%{ box-shadow:0 0 0 4px rgba(var(--ink),0.45), 0 0 10px rgba(var(--signal),0.45); }
+  50%{ box-shadow:0 0 0 4px rgba(var(--ink),0.45), 0 0 20px rgba(var(--signal),0.9); } }
+/* FLOW — a travelling pulse of light runs the rail (Acquire → Exit) + stage numbers */
+.systems--flow{ counter-reset:stg; }
+.systems--flow::after{
+  content:""; position:absolute; top:calc(0.6rem - 1.5px); left:1%; width:72px; height:3px; border-radius:3px; pointer-events:none;
+  background:linear-gradient(90deg, rgba(var(--signal),0), rgba(var(--signal),0.95), rgba(var(--signal),0));
+  animation:flowRun 6.5s var(--ease) infinite; }
+@keyframes flowRun{ 0%{ left:1%; opacity:0; } 10%{ opacity:1; } 90%{ opacity:1; } 100%{ left:95%; opacity:0; } }
+.systems--flow .system__no{ display:flex; align-items:baseline; gap:0.55rem; }
+.systems--flow .system__no::before{ counter-increment:stg; content:counter(stg, decimal-leading-zero);
+  font-size:0.64rem; font-weight:600; letter-spacing:0.12em; color:rgba(var(--signal),0.8); }
+@media (prefers-reduced-motion:reduce){
+  .systems--net .system::before, .systems--flow::after{ animation:none; }
+}
+
+/* ---------- lifecycle ---------- */
+.life{ display:flex; flex-wrap:wrap; align-items:baseline; gap:clamp(0.8rem,2.4vw,2rem); }
+.life__stage{ font-size:clamp(1.6rem,4.6vw,3.4rem); font-weight:300;
+  text-transform:uppercase; letter-spacing:0.04em; line-height:1; color:var(--bone); }
+.life__stage.sep{ color:rgba(var(--signal),0.55); font-weight:300; }
+
+/* ---------- proof (big, clear numbers) ---------- */
+.proof{ display:grid; gap:clamp(2.4rem,6vh,4.6rem); width:100%; }
+.stat__num{ font-size:clamp(2.8rem,10vw,8.5rem); font-weight:300; letter-spacing:-0.01em;
+  line-height:0.9; text-shadow:0 1px 40px rgba(0,0,0,0.5); }
+.stat__num em{ font-style:normal; color:rgba(var(--signal),0.95); }
+.stat__label{ margin-top:0.8rem; font-size:var(--fs-label); letter-spacing:0.32em;
+  text-transform:uppercase; color:var(--bone-soft); font-weight:500; }
+
+/* ---------- final / CTAs ---------- */
+.ctas{ display:flex; flex-direction:column; gap:0.1rem; margin-top:clamp(1.8rem,4vh,3.2rem); }
+.cta{
+  pointer-events:auto; position:relative; align-self:center;
+  display:inline-flex; align-items:center; gap:1rem; padding:0.9rem 0.2rem;
+  font-size:clamp(0.95rem,1.5vw,1.2rem); font-weight:400; letter-spacing:0.06em;
+  text-transform:uppercase; color:var(--bone); text-decoration:none;
+  text-shadow:0 1px 16px rgba(0,0,0,0.6); transition:color 0.4s var(--ease);
+}
+.cta .arrow{ color:rgba(var(--ember),0.95); transition:transform 0.45s var(--ease); }
+.cta::after{ content:""; position:absolute; left:0; bottom:0.5rem; height:1px; width:100%;
+  background:linear-gradient(90deg, rgba(var(--ember),0.8), rgba(236,230,218,0.18));
+  transform:scaleX(0); transform-origin:left; transition:transform 0.5s var(--ease); }
+.cta:hover{ color:#fff; }
+.cta:hover::after{ transform:scaleX(1); }
+.cta:hover .arrow{ transform:translateX(7px); }
+.cta:focus-visible{ outline:2px solid rgba(var(--ember),0.9); outline-offset:6px; border-radius:2px; }
+
+/* ============================================================
+   CHROME — minimal nav + progress
+   ============================================================ */
+.chrome{ position:fixed; inset:0 0 auto 0; z-index:6; pointer-events:none; }
+.nav{ display:flex; align-items:center; justify-content:space-between;
+  padding:clamp(1.1rem,2.4vw,1.9rem) var(--pad); }
+.nav__brand{ pointer-events:auto; display:flex; align-items:center; gap:0.6rem; text-decoration:none;
+  font-size:var(--fs-label); letter-spacing:0.34em; text-transform:uppercase; font-weight:600;
+  color:var(--bone); text-shadow:0 1px 14px rgba(0,0,0,0.65); }
+.nav__brand .dot{ width:5px; height:5px; border-radius:50%; background:rgba(var(--signal),0.95);
+  box-shadow:0 0 12px rgba(var(--signal),0.6); }
+.nav__links{ display:flex; align-items:center; gap:clamp(1rem,2.4vw,1.8rem); }
+.nav__link{ pointer-events:auto; position:relative; text-decoration:none;
+  font-size:var(--fs-label); letter-spacing:0.34em; text-transform:uppercase; font-weight:500;
+  color:var(--bone-faint); text-shadow:0 1px 14px rgba(0,0,0,0.65); transition:color 0.35s var(--ease); }
+.nav__link:hover{ color:var(--bone); }
+.nav__link.is-active{ color:var(--bone); }
+.nav__link.is-active::after{ content:""; position:absolute; left:0; right:0; bottom:-0.5em; height:1px;
+  background:rgba(var(--signal),0.8); }
+.nav__link.is-soon{ opacity:0.5; }
+.nav__link:focus-visible{ outline:2px solid rgba(var(--signal),0.9); outline-offset:4px; border-radius:2px; }
+@media (max-width:760px){ .nav__links{ gap:0.85rem; } .nav__link:not(.is-active){ display:none; } }
+.progress{ position:fixed; left:0; top:0; height:1px; width:100%; z-index:6; pointer-events:none;
+  transform-origin:left; transform:scaleX(0);
+  background:linear-gradient(90deg, rgba(var(--signal),0.85), rgba(var(--ember),0.8)); }
+.ticker{ position:fixed; right:var(--pad); bottom:clamp(1.3rem,3vh,2.4rem); z-index:6;
+  pointer-events:none; text-align:right; font-size:var(--fs-label); letter-spacing:0.28em;
+  text-transform:uppercase; font-weight:500; color:var(--bone-soft);
+  text-shadow:0 1px 14px rgba(0,0,0,0.7); }
+.ticker b{ color:var(--bone); font-weight:600; }
+
+/* first-paint loader */
+.boot{ position:fixed; inset:0; z-index:20; display:grid; place-items:center;
+  background:#05070a; transition:opacity 0.9s ease, visibility 0.9s; }
+.boot.is-done{ opacity:0; visibility:hidden; }
+.boot__mark{ font-size:var(--fs-label); letter-spacing:0.5em; text-transform:uppercase;
+  color:var(--bone-soft); font-weight:500; }
+
+/* ============================================================
+   PER-SECTION THEME  —  PAPER (reading) sections flip to ink-on-light
+   ============================================================ */
+/* only cinematic (film) sections keep the local shade pool; on a light
+   reading page the wash itself carries the contrast. */
+.scene:not([data-mode="film"]) .scrim{ display:none; }
+
+.scene[data-mode="paper"] .statement{ color:var(--ink-solid); text-shadow:none; }
+.scene[data-mode="paper"] .statement .soft{ color:var(--ink-soft); }
+.scene[data-mode="paper"] .statement .sage{ color:var(--sage-deep); }
+.scene[data-mode="paper"] .lead{ color:var(--ink-soft); text-shadow:none; }
+.scene[data-mode="paper"] .tag{ color:var(--sage-deep); text-shadow:none; }
+.scene[data-mode="paper"] .eyebrow{ color:var(--ink-soft); text-shadow:none; }
+.scene[data-mode="paper"] .system{ border-top-color:var(--edge-ink); }
+.scene[data-mode="paper"] .system__no{ color:var(--sage-deep); }
+.scene[data-mode="paper"] .system__name{ color:var(--ink-solid); }
+.scene[data-mode="paper"] .system__desc{ color:var(--ink-soft); }
+.scene[data-mode="paper"] .life__stage{ color:var(--ink-solid); }
+.scene[data-mode="paper"] .life__stage.sep{ color:var(--sage-deep); opacity:0.5; }
+.scene[data-mode="paper"] .stat__num{ color:var(--ink-solid); text-shadow:none; }
+.scene[data-mode="paper"] .stat__num em{ color:var(--sage-deep); }
+.scene[data-mode="paper"] .stat__label{ color:var(--ink-soft); }
+.scene[data-mode="paper"] .scroll-cue{ color:var(--ink-soft); text-shadow:none; }
+.scene[data-mode="paper"] .scroll-cue__rail{ background:var(--edge-ink); }
+.scene[data-mode="paper"] .scroll-cue__rail::after{ background:linear-gradient(90deg,transparent,var(--ink-solid)); }
+
+/* ============================================================
+   MONTFORT-STYLE SECTION INDEX  (bottom-right numeral + name)
+   ============================================================ */
+.index{ position:fixed; right:var(--pad); bottom:clamp(1.4rem,3.4vh,2.6rem); z-index:6;
+  pointer-events:none; display:flex; align-items:baseline; gap:0.7rem; text-align:right;
+  color:var(--bone-soft); text-shadow:0 1px 14px rgba(0,0,0,0.7); transition:color 0.5s var(--ease), text-shadow 0.5s var(--ease); }
+.index__no{ font-size:clamp(1.5rem,2.4vw,2.1rem); font-weight:300; letter-spacing:0.04em;
+  color:var(--bone); line-height:1; font-variant-numeric:tabular-nums; transition:color 0.5s var(--ease); }
+.index__total{ font-size:var(--fs-label); letter-spacing:0.24em; color:var(--bone-faint); transition:color 0.5s var(--ease); }
+.index__name{ position:fixed; right:var(--pad); bottom:calc(clamp(1.4rem,3.4vh,2.6rem) + clamp(1.9rem,2.7vw,2.5rem));
+  font-size:var(--fs-label); letter-spacing:0.34em; text-transform:uppercase; font-weight:500;
+  color:var(--bone-soft); text-shadow:0 1px 14px rgba(0,0,0,0.7); transition:color 0.5s var(--ease), text-shadow 0.5s var(--ease); }
+
+/* ============================================================
+   RIGHT-EDGE DOT NAV  (interactive — click a dot to travel there)
+   ============================================================ */
+.dots{ position:fixed; right:clamp(0.7rem,1.6vw,1.5rem); top:50%; transform:translateY(-50%);
+  z-index:6; display:flex; flex-direction:column; gap:clamp(0.7rem,1.4vh,1.1rem); align-items:center; }
+.dots__dot{ pointer-events:auto; position:relative; width:22px; height:22px; padding:0; border:0; background:none;
+  cursor:pointer; display:grid; place-items:center; }
+.dots__dot::before{ content:""; width:6px; height:6px; border-radius:50%;
+  background:var(--bone-faint); transition:background 0.35s var(--ease), transform 0.35s var(--ease); }
+.dots__dot:hover::before{ background:var(--bone); transform:scale(1.4); }
+.dots__dot.is-active::before{ background:rgba(var(--signal),0.98); transform:scale(1.55);
+  box-shadow:0 0 10px rgba(var(--signal),0.7); }
+.dots__dot .dots__tip{ position:absolute; right:26px; top:50%; transform:translateY(-50%) translateX(6px);
+  white-space:nowrap; font-size:0.6rem; letter-spacing:0.24em; text-transform:uppercase; font-weight:600;
+  color:var(--bone); text-shadow:0 1px 10px rgba(0,0,0,0.7); opacity:0; pointer-events:none; transition:opacity 0.3s var(--ease), transform 0.3s var(--ease); }
+.dots__dot:hover .dots__tip{ opacity:1; transform:translateY(-50%) translateX(0); }
+
+/* chrome / index / dots flip dark on a light reading page */
+body.paper-chrome .nav__brand{ color:var(--ink-solid); text-shadow:none; }
+body.paper-chrome .nav__brand .dot{ background:var(--sage-deep); box-shadow:none; }
+body.paper-chrome .nav__link{ color:var(--ink-faint); text-shadow:none; }
+body.paper-chrome .nav__link:hover,
+body.paper-chrome .nav__link.is-active{ color:var(--ink-solid); }
+body.paper-chrome .nav__link.is-active::after{ background:var(--sage-deep); }
+body.paper-chrome .index{ color:var(--ink-soft); text-shadow:none; }
+body.paper-chrome .index__no{ color:var(--ink-solid); }
+body.paper-chrome .index__total{ color:var(--ink-faint); }
+body.paper-chrome .index__name{ color:var(--ink-soft); text-shadow:none; }
+body.paper-chrome .dots__dot::before{ background:var(--ink-faint); }
+body.paper-chrome .dots__dot:hover::before{ background:var(--ink-solid); }
+body.paper-chrome .dots__dot.is-active::before{ background:var(--sage-deep); box-shadow:none; }
+body.paper-chrome .dots__dot .dots__tip{ color:var(--ink-solid); text-shadow:none; }
+.nav__brand, .nav__link{ transition:color 0.5s var(--ease), text-shadow 0.5s var(--ease); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:760px){
+  :root{ --pad:1.5rem; }
+  .scene{ padding:calc(var(--pad)+4.4rem) var(--pad) calc(var(--pad)+3.4rem) var(--pad); }
+  .scene--left{ align-items:end; }
+  .scene__wrap{ max-width:100%; }
+  .systems{ grid-template-columns:1fr; gap:1.4rem; }
+  .system__desc{ max-width:42ch; }
+  .life{ gap:0.5rem 1.1rem; }
+  .life__stage.sep{ display:none; }
+  .lead, .lead--narrow{ max-width:40ch; }
+  .lockup{ gap:0.7rem; }
+  .ticker{ display:none; }
+  .dots{ display:none; }
+  .index__no{ font-size:1.35rem; }
+}
+@media (max-width:760px) and (orientation:landscape){
+  .scene{ padding-top:calc(var(--pad)+3.4rem); }
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion:reduce){
+  .stage__inner{ transform:none !important; }
+  .stage__video{ filter:brightness(var(--grade-bright)) contrast(1.05) saturate(0.9); }
+  .scroll-cue__rail::after{ animation:none; }
+  [data-reveal]{ transform:none !important; }
+}
+
+@media (max-width:1180px){ .nav__link.is-soon{ display:none; } }

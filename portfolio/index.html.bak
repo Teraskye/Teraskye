@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>TERASKYE — The Asset Vault</title>
+<meta name="description" content="The Teraskye Asset Vault — a private institutional collection of assets, revealed one at a time. Enter the vault, walk the archive, open each asset chamber." />
+<meta name="theme-color" content="#08070500" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@200;300;400;500;600;700&family=Sora:wght@300;400;500;600&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="vault.css?v=3" />
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/"
+  }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body>
+
+<!-- WEBGL STAGE -->
+<canvas id="stage"></canvas>
+<div id="vignette" aria-hidden="true"></div>
+<div id="fade" aria-hidden="true"></div>
+
+<!-- TOP CHROME -->
+<nav class="vn" aria-label="Primary">
+  <a class="vn__brand" href="../index.html"><span class="dot"></span> TERASKYE</a>
+  <div class="vn__links">
+    <a class="vn__link" href="../index.html">Canopy</a>
+    <a class="vn__link" href="../tide/">Aurora</a>
+    <a class="vn__link" href="../sellers/">The Wild</a>
+    <a class="vn__link" href="../capital-partners/">For Investors</a>
+    <a class="vn__link" href="../buyers/">For Buyers</a>
+    <a class="vn__link is-active" href="./">Portfolio</a>
+    <a class="vn__link" href="../company/">Company</a>
+  </div>
+</nav>
+
+<!-- 0 · LOADER -->
+<section id="loader" class="scr is-on">
+  <div class="loader__mark">TERASKYE</div>
+  <div class="loader__sub">Initializing portfolio</div>
+  <ul class="loader__seq">
+    <li data-i="0"><i>01</i> Asset archive</li>
+    <li data-i="1"><i>02</i> Market data</li>
+    <li data-i="2"><i>03</i> Intelligence layer</li>
+  </ul>
+  <div class="loader__bar"><span id="loaderFill"></span></div>
+</section>
+
+<!-- 1 · ENTRANCE -->
+<section id="entry" class="scr">
+  <div class="entry__inner">
+    <div class="entry__ey">Teraskye Portfolio</div>
+    <h1 class="entry__title">The Asset Vault</h1>
+    <p class="entry__sub">A curated collection of assets built for long-term value.</p>
+    <button id="enterBtn" class="vbtn vbtn--lg" type="button">Enter the Portfolio <span class="vbtn__x">&rarr;</span></button>
+    <div class="entry__hint">or select the vault</div>
+  </div>
+</section>
+
+<!-- CORRIDOR HUD -->
+<div id="hud" class="hud">
+  <!-- focused door plaque -->
+  <div id="plaque" class="plaque">
+    <div class="plaque__no" id="plaqueNo">01</div>
+    <div class="plaque__name" id="plaqueName">The Foundation</div>
+    <div class="plaque__region" id="plaqueRegion">The track record</div>
+    <button id="openBtn" class="vbtn" type="button">Open the Chamber <span class="vbtn__x">&rarr;</span></button>
+  </div>
+  <!-- walk hint -->
+  <div id="walkHint" class="walkhint"><span class="walkhint__rail"></span> Scroll to walk the archive</div>
+  <!-- index tool -->
+  <aside id="index" class="pindex" aria-label="Portfolio index">
+    <div class="pindex__head"><span>Portfolio</span><b id="pindexProg">01 / 04</b></div>
+    <ul id="pindexList" class="pindex__list"></ul>
+  </aside>
+</div>
+
+<!-- CHAMBER UI -->
+<section id="chamber" class="chamber">
+  <div class="chamber__asset-wrap" id="chAssetWrap" aria-hidden="true">
+    <div class="chamber__asset-bg"></div>
+    <img class="chamber__asset" id="chAsset" alt="" />
+    <video class="chamber__asset-vid" id="chAssetVid" muted loop playsinline preload="auto" aria-hidden="true"></video>
+  </div>
+  <div class="chamber__scrim chamber__scrim--l" aria-hidden="true"></div>
+  <div class="chamber__scrim chamber__scrim--r" aria-hidden="true"></div>
+  <button id="returnBtn" class="vbtn vbtn--ghost chamber__return" type="button"><span class="vbtn__x">&larr;</span> Return to Archive</button>
+  <header class="chamber__head">
+    <div class="chamber__no" id="chNo">01</div>
+    <div>
+      <div class="chamber__phase" id="chPhase">Proven track record</div>
+      <h2 class="chamber__name" id="chName">The Foundation</h2>
+      <div class="chamber__region" id="chRegion">The track record</div>
+    </div>
+  </header>
+  <nav class="chamber__tabs" id="chTabs" aria-label="Asset views">
+    <button class="ctab is-on" data-tab="overview">Overview</button>
+    <button class="ctab" data-tab="strategy">Strategy</button>
+    <button class="ctab" data-tab="performance">Performance</button>
+    <button class="ctab" data-tab="asset">Asset</button>
+  </nav>
+  <div class="chamber__panel" id="chPanel" aria-live="polite"></div>
+  <div class="chamber__foot">
+    <div class="chamber__foot-i"><b>Discipline</b> Buy right · run it better · exit with discipline.</div>
+    <div class="chamber__foot-i"><b>Technology</b> Operated on the Teraskye intelligence platform.</div>
+  </div>
+  <div class="chamber__cue">Drag to rotate · scroll to zoom</div>
+</section>
+
+<!-- FINAL · THE TREASURY -->
+<section id="finale" class="finale">
+  <div class="finale__bg" aria-hidden="true">
+    <div class="finale__rays"></div>
+    <canvas class="finale__fx" id="finaleFx"></canvas>
+    <div class="finale__glow"></div>
+    <div class="finale__grade"></div>
+  </div>
+  <div class="finale__inner finale__inner--tr">
+    <div class="finale__ey">The Treasury</div>
+    <h2 class="tr__title"><span class="tr__num"><span data-count="100" data-pre="$" data-suf="M+">$100M+</span></span><span class="tr__num tr__num--sec"><span class="tr__sep" aria-hidden="true">·</span><span data-count="1500" data-suf="+ Doors">1,500+ Doors</span></span></h2>
+    <p class="finale__sub">Total portfolio &amp; pipeline targeted this year — a multifamily operating platform built on a decade of multi-market execution.</p>
+    <div class="tr__grid">
+      <div class="tr__card"><div class="tr__k">Assets under management</div><div class="tr__v">$35M+ · 400+ Doors</div></div>
+      <div class="tr__card"><div class="tr__k">Under contract</div><div class="tr__v">$75M+ · 800+ Doors</div></div>
+      <div class="tr__card tr__card--hi"><div class="tr__k">Targeted this year</div><div class="tr__v">$100M+ · 1,500+ Doors</div></div>
+      <div class="tr__card"><div class="tr__k">Markets</div><div class="tr__v">12 across the United States</div></div>
+    </div>
+    <div class="tr__focus"><span>Focus</span> <b>Multifamily.</b> 100% of current acquisition activity.</div>
+    <p class="finale__note">Asset-level detail disclosed to qualified counterparties under NDA.</p>
+    <div class="tr__cta">
+      <a class="vbtn vbtn--lg" href="mailto:operations@epochsinc.com?subject=The%20Teraskye%20Treasury%20—%20data%20room">Request the Data Room <span class="vbtn__x">&rarr;</span></a>
+      <button id="finaleBack" class="vbtn vbtn--ghost" type="button"><span class="vbtn__x">&larr;</span> Back to the Archive</button>
+    </div>
+  </div>
+</section>
+
+<noscript><div class="scr is-on" style="z-index:999"><div class="loader__mark">TERASKYE</div><div class="loader__sub">This experience requires JavaScript.</div></div></noscript>
+
+<script type="module" src="vault.js?v=3"></script>
+</body>
+</html>

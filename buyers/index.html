@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>TERASKYE — For Buyers</title>
+<meta name="description" content="You're not buying buildings. You're buying a portfolio that already runs — stabilized, optimized, high-growth-market assets transferred with the technology built to run them." />
+<meta name="theme-color" content="#05070a" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../home.css?v=20" />
+<link rel="stylesheet" href="../assets/forms.css?v=2" />
+<link rel="stylesheet" href="../assets/fx.css?v=1" />
+<style>
+  /* Buyers · stormy-valley video — balanced so BOTH the video theme and the
+     content stay clearly visible. Video a touch brighter than the global default,
+     with a gentle top/bottom grade + a soft centre reading veil. */
+  .env__video{ filter:brightness(0.72) saturate(1.1) contrast(1.05) !important; }
+  .env__grade{
+    background:
+      linear-gradient(to bottom, rgba(5,7,10,0.42) 0%, rgba(5,7,10,0.08) 26%, rgba(5,7,10,0.14) 60%, rgba(5,7,10,0.62) 100%) !important;
+  }
+  /* soft radial reading veil that keeps centre text crisp without hiding the valley */
+  .env::after{
+    content:""; position:absolute; inset:0; pointer-events:none; z-index:1;
+    background:radial-gradient(78% 62% at 50% 52%, rgba(5,8,12,0.30) 0%, rgba(5,8,12,0.10) 42%, rgba(5,8,12,0) 72%);
+  }
+  /* lift text legibility over the bright grass / rain */
+  #main .statement, #main .lead, #main .eyebrow, #main .name__word, #main .pull{
+    text-shadow:0 2px 22px rgba(3,6,10,0.66), 0 1px 3px rgba(3,6,10,0.5);
+  }
+</style>
+</head>
+<body data-fx-tilt=".pflow, .flow.flow--row, .dcard, .doors .door, .detail, .statstrip__i, .iclist, .gband, .d3">
+
+<div class="boot" id="boot"><div class="boot__m">TERASKYE · FOR BUYERS</div></div>
+
+<div class="env" aria-hidden="true">
+  <div class="env__inner" id="envInner">
+    <video class="env__video" id="forest" poster="assets/buyers-poster.jpg" muted playsinline preload="auto"
+           data-src="assets/buyers.mp4"></video>
+  </div>
+  <div class="env__grade"></div>
+</div>
+
+<div class="progress" id="progress"></div>
+<nav class="nav" aria-label="Primary">
+  <a class="nav__brand" href="../index.html"><object class="nav__logo" data="../assets/logo.svg" type="image/svg+xml" aria-label="Teraskye" tabindex="-1" style="height:34px;width:auto;display:block;pointer-events:none;filter:drop-shadow(0 1px 5px rgba(0,0,0,0.5))"></object></a>
+  <div class="nav__links">
+    <a class="nav__link" href="../index.html">Canopy</a>
+    <a class="nav__link" href="../tide/">Aurora</a>
+    <a class="nav__link" href="../sellers/">The Wild</a>
+    <a class="nav__link" href="../capital-partners/">For Investors</a>
+    <a class="nav__link is-active" href="./">For Buyers</a>
+    <a class="nav__link" href="../portfolio/">Portfolio</a>
+    <a class="nav__link" href="../company/">Company</a>
+  </div>
+</nav>
+<div class="secindex" id="secindex" aria-hidden="true">
+  <span class="secindex__name" id="secName">Buyers</span>
+  <span class="secindex__no"><b id="secNo">01</b> <em>/ 05</em></span>
+</div>
+
+<main id="main">
+
+  <!-- 01 · NAME -->
+  <section class="hsec" id="s01" data-name="Buyers">
+    <div class="scrim scrim--l"></div>
+    <div class="hwrap">
+      <div class="name">
+        <h1 class="name__word r" style="--d:.1s">Teraskye<br>for Buyers</h1>
+        <div class="scrollcue r" style="--d:.34s"><span class="rail"></span> Scroll through the clearing</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 · HERO -->
+  <section class="hsec hsec--center" id="s02" data-name="The reframe">
+    <div class="scrim scrim--band"></div>
+    <div class="hwrap">
+      <div class="stack">
+        <span class="eyebrow r">For Buyers</span>
+        <h2 class="statement s-hero r" style="--d:.08s; margin-inline:auto; text-align:center"><span class="ph">You're not buying buildings.</span><br><span class="ph sig">You're buying a portfolio that already runs.</span></h2>
+        <p class="lead r" style="--d:.22s">Stabilized, optimized, high-growth-market assets — transferred with the custom technology built to run them.<br>The performance you buy is the performance you keep.</p>
+        <div class="poutcomes r" style="--d:.34s">
+          <a class="cta" href="#s05">Explore Opportunities <span class="arrow">&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 · WHAT ACTUALLY TRANSFERS -->
+  <section class="hsec hsec--center" id="s03" data-name="What transfers">
+    <div class="scrim scrim--band"></div>
+    <div class="hwrap">
+      <div class="stack">
+        <span class="eyebrow r">What actually transfers</span>
+        <h2 class="statement s-lg r" style="--d:.08s; margin-inline:auto"><span class="ph">The edge usually walks out the door.</span><br><span class="ph sig">Not here.</span></h2>
+        <div class="pflow r" style="--d:.22s">
+          <div class="pnode"><span class="icb icb--lg"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="9" width="7.5" height="11" rx="1"/><rect x="10.5" y="4" width="10.5" height="16" rx="1"/><line x1="14" y1="8" x2="17.5" y2="8"/><line x1="14" y1="12" x2="17.5" y2="12"/><line x1="14" y1="16" x2="17.5" y2="16"/></svg></span><span class="pnode__l">The portfolio</span></div>
+          <span class="pflow__arr">+</span>
+          <div class="pnode"><span class="icb icb--lg"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2.5 20 7 20 17 12 21.5 4 17 4 7"/><circle cx="12" cy="12" r="2.6"/></svg></span><span class="pnode__l">Operating<br>system</span></div>
+          <span class="pflow__arr">&rarr;</span>
+          <div class="pnode"><span class="icb icb--lg"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg></span><span class="pnode__l">Runs from<br>day one</span></div>
+        </div>
+        <p class="pull r" style="--d:.34s">Acquired as one self-running system — not a pile of buildings.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 · THE DILIGENCE, ALREADY DONE -->
+  <section class="hsec hsec--center" id="s04" data-name="Diligence, done">
+    <div class="scrim scrim--band"></div>
+    <div class="hwrap">
+      <div class="stack">
+        <span class="eyebrow r">The diligence, already done</span>
+        <h2 class="statement s-lg r" style="--d:.08s; margin-inline:auto"><span class="ph">Every question your committee asks —</span> <span class="ph sig">answered before you ask it.</span></h2>
+        <div class="deck deck--5 r" style="--d:.2s">
+          <div class="d3 d3--v"><div class="d3__no">01</div>
+            <span class="d3__icb"><svg viewBox="0 0 24 24"><path d="M12 3l7 2.7v5.3c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V5.7z"/><polyline points="8.8 12 11.2 14.4 15.4 10"/></svg></span>
+            <div class="d3__t">Capital at scale</div><div class="d3__d">Deployed in a single transaction.</div><span class="d3__bar"></span></div>
+          <div class="d3 d3--v"><div class="d3__no">02</div>
+            <span class="d3__icb"><svg viewBox="0 0 24 24"><path d="M4 18V9M9 18V5M14 18v-7M19 18V8"/><polyline points="3 20 21 20"/></svg></span>
+            <div class="d3__t">Stabilized income</div><div class="d3__d">From day one — not a turnaround.</div><span class="d3__bar"></span></div>
+          <div class="d3 d3--v"><div class="d3__no">03</div>
+            <span class="d3__icb"><svg viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="3.2"/></svg></span>
+            <div class="d3__t">Efficiency inherited</div><div class="d3__d">Kept, not rebuilt.</div><span class="d3__bar"></span></div>
+          <div class="d3 d3--v"><div class="d3__no">04</div>
+            <span class="d3__icb"><svg viewBox="0 0 24 24"><polygon points="12 2.5 20 7 20 17 12 21.5 4 17 4 7"/><path d="M4 12l8 4.5 8-4.5"/></svg></span>
+            <div class="d3__t">System transfers</div><div class="d3__d">The operating system comes with the assets.</div><span class="d3__bar"></span></div>
+          <div class="d3 d3--v"><div class="d3__no">05</div>
+            <span class="d3__icb"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg></span>
+            <div class="d3__t">Data room ready</div><div class="d3__d">Before diligence even begins.</div><span class="d3__bar"></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 · CLOSE -->
+  <section class="hsec hsec--center" id="s05" data-name="Close">
+    <div class="scrim scrim--band"></div>
+    <div class="hwrap">
+      <div class="formsplit">
+        <div class="formsplit__text">
+          <span class="eyebrow r">Close</span>
+          <h2 class="statement s-lg r" style="--d:.08s"><span class="ph">When a portfolio is ready,</span> <span class="ph sig">the right buyer already knows.</span></h2>
+          <p class="lead r" style="--d:.18s">Tell us who you are. The moment a stabilized, tech-run portfolio matches your mandate, you'll be the first call we make.</p>
+          <div class="chiprow r" style="--d:.28s">
+            <span class="chiprow__sub">Who buys from us</span>
+            <span class="chip">Institutions</span><span class="chip">Funds</span><span class="chip">Strategic acquirers</span><span class="chip chip--accent">Private buyers</span>
+          </div>
+          <div class="poutcomes poutcomes--left r" style="--d:.38s">
+            <a class="cta" href="../company/#close">Talk to Us <span class="arrow">&rarr;</span></a>
+          </div>
+        </div>
+
+        <form class="leadform r" id="buyerForm" style="--d:.22s" action="https://api.web3forms.com/submit" method="POST">
+          <div class="lf__h">Register your interest</div>
+          <p class="lf__sub">A few details — we'll be in touch with what's available.</p>
+          <input type="hidden" name="access_key" value="8d7f0778-7b1d-46fd-8a4f-c80ec9ff8c11">
+          <input type="hidden" name="subject" value="New buyer interest — Teraskye (For Buyers)">
+          <input type="hidden" name="from_name" value="Teraskye · For Buyers">
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+          <label class="lf__field"><span>Name</span><input type="text" name="name" required></label>
+          <div class="lf__row">
+            <label class="lf__field"><span>Email</span><input type="email" name="email" required></label>
+            <label class="lf__field"><span>Phone</span><input type="tel" name="phone" required></label>
+          </div>
+          <label class="lf__field"><span>Company <em>(optional)</em></span><input type="text" name="company"></label>
+          <button type="submit" class="cta lf__submit">Register Interest <span class="arrow">&rarr;</span></button>
+          <p class="lf__note" id="buyerNote" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="../home.js?v=2" defer></script>
+<script src="../assets/fx.js?v=2" defer></script>
+<script src="../assets/leadform.js?v=1" defer></script>
+</body>
+</html>

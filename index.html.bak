@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>TERASKYE — Canopy</title>
+<meta name="description" content="A Commercial Real Estate Platform Engineered by Artificial Intelligence. We acquire multifamily assets, plug them into our digital operating system, and compound them into portfolios that pay from day one." />
+<meta name="theme-color" content="#05070a" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="home.css?v=29" />
+<link rel="stylesheet" href="assets/fx.css?v=1" />
+<style>
+  /* Section 4 (The lifecycle) — lift the eyebrow and headline clearly above the flywheel,
+     using the same techniques already in use (a stronger reading scrim + text shadow). */
+  #s04 .scrim--band{ background:radial-gradient(56% 60% at 50% 44%, rgba(5,7,10,0.9), rgba(5,7,10,0.52) 52%, rgba(5,7,10,0) 78%); }
+  #s04 .eyebrow{ color:rgba(238,226,203,1); text-shadow:0 1px 3px rgba(0,0,0,0.9), 0 2px 22px rgba(0,0,0,0.9); }
+  #s04 .statement{ text-shadow:0 2px 5px rgba(0,0,0,0.8), 0 2px 40px rgba(0,0,0,0.9); }
+</style>
+</head>
+<body data-fx-scene3d=".hwrap">
+
+<div class="boot" id="boot"><div class="boot__m">TERASKYE · CANOPY</div></div>
+
+<!-- fixed forest environment (theme) -->
+<div class="env" aria-hidden="true">
+  <div class="env__inner" id="envInner">
+    <video class="env__video" id="forest" poster="assets/forest-poster.jpg?v=2" muted playsinline preload="auto" loop
+           data-src="assets/forest-intra.mp4?v=2"></video>
+  </div>
+  <div class="env__grade"></div>
+</div>
+
+<!-- chrome -->
+<div class="progress" id="progress"></div>
+<nav class="nav" aria-label="Primary">
+  <a class="nav__brand" href="index.html"><object class="nav__logo" data="assets/logo.svg" type="image/svg+xml" aria-label="Teraskye" tabindex="-1" style="height:34px;width:auto;display:block;pointer-events:none;filter:drop-shadow(0 1px 5px rgba(0,0,0,0.5))"></object></a>
+  <div class="nav__links">
+    <a class="nav__link is-active" href="index.html">Canopy</a>
+    <a class="nav__link" href="tide/">Aurora</a>
+    <a class="nav__link" href="sellers/">The Wild</a>
+    <a class="nav__link" href="capital-partners/">For Investors</a>
+    <a class="nav__link" href="buyers/">For Buyers</a>
+    <a class="nav__link" href="portfolio/">Portfolio</a>
+    <a class="nav__link" href="company/">Company</a>
+  </div>
+</nav>
+<div class="secindex" id="secindex" aria-hidden="true">
+  <span class="secindex__name" id="secName">Teraskye</span>
+  <span class="secindex__no"><b id="secNo">01</b> <em>/ 07</em></span>
+</div>
+
+<main id="main">
+
+  <!-- ============ 01 · NAME ONLY ============ -->
+  <section class="hsec" id="s01" data-name="Teraskye">
+    <div class="scrim scrim--l"></div>
+    <div class="hwrap">
+      <div class="name">
+        <span class="name__tag r"><span class="mk"></span> Canopy</span>
+        <h1 class="name__word r" style="--d:.1s">Teraskye</h1>
+        <div class="scrollcue r" style="--d:.34s"><span class="rail"></span> Scroll to enter</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 02 · HERO — centered ============ -->
+  <section class="hsec" id="s02" data-name="The platform">
+    <div class="scrim scrim--band"></div>
+    <div class="hwrap">
+      <div class="psplit">
+        <!-- LEFT · the positioning -->
+        <div class="psplit__l">
+          <span class="eyebrow r">The platform</span>
+          <h2 class="statement s-hero r" style="--d:.08s"><span class="ph">A Commercial Real Estate Platform</span> <span class="ph sig">Engineered by Artificial Intelligence.</span></h2>
+          <div class="creed r" style="--d:.16s">
+            <span class="creed__mark" aria-hidden="true"></span>
+            <p class="creed__neg">We're <em>not</em> a real estate company that added AI.</p>
+            <p class="creed__pos">We're a technology-driven multifamily platform that turned its focus to real estate.</p>
+          </div>
+          <p class="pull r" style="--d:.24s">Real estate has run on instinct for a century.<br>We run it on intelligence.</p>
+        </div>
+        <!-- RIGHT · how it works, one clean pictograph -->
+        <div class="psplit__r r" style="--d:.3s">
+          <div class="pdiagram">
+            <div class="pdiagram__cap">How it works</div>
+            <div class="pflow3">
+              <div class="pcol">
+                <span class="icb icb--lg"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 21V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v17"/><line x1="3" y1="21" x2="21" y2="21"/><line x1="9.5" y1="7" x2="10.5" y2="7"/><line x1="13.5" y1="7" x2="14.5" y2="7"/><line x1="9.5" y1="11" x2="10.5" y2="11"/><line x1="13.5" y1="11" x2="14.5" y2="11"/><line x1="9.5" y1="15" x2="10.5" y2="15"/><line x1="13.5" y1="15" x2="14.5" y2="15"/></svg></span>
+                <span class="pcol__l">We buy Assets</span>
+                <span class="pcol__drop" aria-hidden="true"></span>
+                <span class="beat beat--out"><b>Pays</b> from day one</span>
+              </div>
+              <span class="pflow__arr"><i class="pflow__dot" aria-hidden="true"></i></span>
+              <div class="pcol">
+                <span class="icb icb--lg"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2.5 20 7 20 17 12 21.5 4 17 4 7"/><circle cx="12" cy="12" r="2.6"/></svg></span>
+                <span class="pcol__l">Powered by our<br><span style="white-space:nowrap">operating system</span></span>
+                <span class="pcol__drop" aria-hidden="true"></span>
+                <span class="beat beat--out"><b>Accelerates</b> Growth &amp; Value</span>
+              </div>
+              <span class="pflow__arr"><i class="pflow__dot" aria-hidden="true"></i></span>
+              <div class="pcol">
+                <span class="icb icb--lg"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="9" width="7.5" height="11" rx="1"/><rect x="10.5" y="4" width="10.5" height="16" rx="1"/><line x1="14" y1="8" x2="17.5" y2="8"/><line x1="14" y1="12" x2="17.5" y2="12"/><line x1="14" y1="16" x2="17.5" y2="16"/></svg></span>
+                <span class="pcol__l">Exit as portfolio</span>
+                <span class="pcol__drop" aria-hidden="true"></span>
+                <span class="beat beat--out"><b>Exits</b> with high returns</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 03 · THE OPPORTUNITY & STRATEGY — centered ============ -->
+  <section class="hsec hsec--center" id="s03" data-name="The opportunity &amp; strategy">
+    <div class="scrim scrim--band"></div>
+    <div class="hwrap">
+      <div class="stack">
+        <span class="eyebrow r">The opportunity &amp; strategy</span>
+        <h2 class="statement s-lg r" style="--d:.08s; margin-inline:auto"><span class="ph">Most investors wait years for their first dollar.</span><br><span class="ph sig">Ours earn from day one.</span></h2>
+        <div class="flow flow--row">
+          <div class="step r" style="--d:.06s">
+            <span class="icb"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="1.5" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22.5"/><line x1="1.5" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22.5" y2="12"/></svg></span>
+            <div class="step__t"><div class="step__name">Acquire Smart</div><div class="step__desc">Built-in Day-1 equity</div></div></div>
+          <div class="step r" style="--d:.12s">
+            <span class="icb"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="3 16 9 10 13 14 21 5"/><polyline points="15 5 21 5 21 11"/></svg></span>
+            <div class="step__t"><div class="step__name">Upgrade Smart</div><div class="step__desc">Light, high-ROI improvements</div></div></div>
+          <div class="step r" style="--d:.18s">
+            <span class="icb"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="7" r="2"/><circle cx="19" cy="7" r="2"/><circle cx="12" cy="18" r="2"/><line x1="6.6" y1="8.3" x2="10.6" y2="16.4"/><line x1="17.4" y1="8.3" x2="13.4" y2="16.4"/><line x1="7" y1="7" x2="17" y2="7"/></svg></span>
+            <div class="step__t"><div class="step__name">Operate Smart</div><div class="step__desc">Lower cost &middot; higher income</div></div></div>
+          <div class="step r" style="--d:.24s">
+            <span class="icb"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 3h6v18h-6"/><polyline points="8 8 12 12 8 16"/><line x1="3" y1="12" x2="12" y2="12"/></svg></span>
+            <div class="step__t"><div class="step__name">Exit Smart</div><div class="step__desc">Right buyer &middot; max returns</div></div></div>
+        </div>
+        <div class="beats r" style="--d:.3s">
+          <span class="beat"><b>Income</b> day one</span>
+          <span class="beat"><b>Growth</b> in the middle</span>
+          <span class="beat"><b>Premium</b> at exit</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 04 · THE LIFECYCLE ============ -->
+  <section class="hsec hsec--center" id="s04" data-name="The lifecycle">
+    <div class="scrim scrim--band"></div>
+    <div class="hwrap">
+      <div class="stack">
+        <span class="eyebrow r">The lifecycle</span>
+        <h2 class="statement s-lg r" style="--d:.08s; margin-inline:auto"><span class="ph">A $100 million portfolio isn't the finish line for us.</span><br><span class="ph sig">It's one lap.</span></h2>
+        <div class="wheel r" style="--d:.24s; margin-top:clamp(0.6rem,1.4vh,1.2rem)" role="img" aria-label="The $100M lifecycle flywheel: Acquire, Improve, Operate, Scale, Aggregate, Exit — repeating.">
+          <svg viewBox="0 0 460 460">
+            <circle class="wheel__ring" cx="230" cy="230" r="155"/>
+            <circle class="wheel__dash" cx="230" cy="230" r="175"/>
+            <g class="wheel__spin"><circle class="wheel__pip" cx="230" cy="75" r="5.5"/></g>
+            <g class="wheel__node">
+              <g><circle cx="230" cy="75" r="6"/><text x="230" y="52" text-anchor="middle">Acquire</text></g>
+              <g><circle cx="364.2" cy="152.5" r="6"/><text x="384" y="150" text-anchor="start">Improve</text></g>
+              <g><circle cx="364.2" cy="307.5" r="6"/><text x="384" y="312" text-anchor="start">Operate</text></g>
+              <g><circle cx="230" cy="385" r="6"/><text x="230" y="410" text-anchor="middle">Scale</text></g>
+              <g><circle cx="95.8" cy="307.5" r="6"/><text x="76" y="312" text-anchor="end">Aggregate</text></g>
+              <g><circle cx="95.8" cy="152.5" r="6"/><text x="76" y="150" text-anchor="end">Exit</text></g>
+            </g>
+            <path class="wheel__repeat" d="M95.8 152.5 A 155 155 0 0 1 226 80" marker-end="url(#rp)"/>
+            <defs><marker id="rp" markerWidth="9" markerHeight="9" refX="4" refY="4" orient="auto">
+              <path d="M0 0 L9 4 L0 8 z" fill="rgba(232,201,154,0.95)"/></marker></defs>
+            <text class="wheel__rep" x="150" y="70" text-anchor="middle">Repeat</text>
+            <g class="wheel__ctr" text-anchor="middle">
+              <text class="big" x="230" y="212">$100M</text>
+              <text class="sm" x="230" y="234">One lap</text>
+              <line class="wheel__div" x1="190" y1="248" x2="270" y2="248"/>
+              <text class="goal" x="230" y="272">&rarr; $1 Billion &amp; Beyond</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 05 · THE TECHNOLOGY — centered ============ -->
+  <section class="hsec hsec--center" id="s05" data-name="The technology">
+    <div class="scrim scrim--band"></div>
+    <div class="hwrap">
+      <div class="stack">
+        <span class="eyebrow r">The technology</span>
+        <h2 class="statement s-lg r" style="--d:.08s; margin-inline:auto"><span class="ph">Real estate leaks money in four places.</span><br><span class="ph sig">We seal all four.</span></h2>
+        <div class="flow flow--row">
+          <div class="step r" style="--d:.06s">
+            <span class="icb"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="13 2 4 14 11 14 10 22 20 9 13 9 13 2"/></svg></span>
+            <div class="step__t"><div class="step__name">Overhead</div><div class="step__desc">Automate the busywork</div></div></div>
+          <div class="step r" style="--d:.12s">
+            <span class="icb"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span>
+            <div class="step__t"><div class="step__name">Information</div><div class="step__desc">Every signal in one place</div></div></div>
+          <div class="step r" style="--d:.18s">
+            <span class="icb"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.5-6.5-11a6.5 6.5 0 0 1 13 0c0 5.5-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg></span>
+            <div class="step__t"><div class="step__name">Geography</div><div class="step__desc">Any market, one system</div></div></div>
+          <div class="step r" style="--d:.24s">
+            <span class="icb"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 21V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v17"/><line x1="3" y1="21" x2="21" y2="21"/><line x1="9.5" y1="7" x2="10.5" y2="7"/><line x1="13.5" y1="7" x2="14.5" y2="7"/><line x1="9.5" y1="11" x2="10.5" y2="11"/><line x1="13.5" y1="11" x2="14.5" y2="11"/></svg></span>
+            <div class="step__t"><div class="step__name">Occupancy</div><div class="step__desc">Priced local, stay full</div></div></div>
+        </div>
+        <a class="cta r" style="--d:.36s; align-self:center" href="tide/">See the full system <span class="arrow">&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 06 · THE DIFFERENCE — centered ============ -->
+  <section class="hsec hsec--center" id="s06" data-name="The difference">
+    <div class="scrim scrim--band"></div>
+    <div class="hwrap">
+      <div class="stack">
+        <span class="eyebrow r">The difference</span>
+        <h2 class="statement s-lg r" style="--d:.08s; margin-inline:auto"><span class="ph">Anyone can buy an apartment building.</span> <span class="ph sig">Almost no one can build what runs it.</span></h2>
+        <div class="flow flow--row">
+          <div class="step r" style="--d:.06s">
+            <span class="icb"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="13" height="14" rx="1"/><path d="M15 3h6v6"/><line x1="21" y1="3" x2="12.5" y2="11.5"/></svg></span>
+            <div class="step__t"><div class="step__name">The tech is its own company</div><div class="step__desc">Built to license &amp; sell on its own</div></div></div>
+          <div class="step r" style="--d:.12s">
+            <span class="icb"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><line x1="3" y1="12" x2="21" y2="12"/></svg></span>
+            <div class="step__t"><div class="step__name">Built for any market</div><div class="step__desc">Returns engineered, not bought cheap</div></div></div>
+          <div class="step r" style="--d:.18s">
+            <span class="icb"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="9" r="4.5"/><line x1="11.2" y1="12.2" x2="20" y2="21"/><line x1="17" y1="18" x2="20" y2="15"/></svg></span>
+            <div class="step__t"><div class="step__name">Operators who own</div><div class="step__desc">Equity on the ground, aligned to exit</div></div></div>
+          <div class="step r" style="--d:.24s">
+            <span class="icb"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="3 16 9 10 13 14 21 5"/><polyline points="15 5 21 5 21 11"/></svg></span>
+            <div class="step__t"><div class="step__name">Upside left on purpose</div><div class="step__desc">Room to grow — buyers come back</div></div></div>
+        </div>
+        <p class="pull r" style="--d:.32s">Most firms are a bet on a market.<br>We're a machine that works regardless of it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 07 · CHOOSE YOUR PATH ============ -->
+  <section class="hsec" id="s07" data-name="Choose your path">
+    <div class="scrim scrim--c"></div>
+    <div class="hwrap">
+      <div class="eco__head">
+        <span class="eyebrow r">Choose your path</span>
+        <h2 class="statement s-lg r" style="--d:.08s; margin-top:0.5rem">Find your way in.</h2>
+        <div class="eco__core r" style="--d:.16s"><span class="dot"></span><span class="nm">Teraskye</span></div>
+      </div>
+      <div class="paths">
+        <a class="path r" style="--d:.06s" href="capital-partners/">
+          <div class="path__k">Investors</div>
+          <p class="path__v">Every investor.<br>Every structure.<br>Every opportunity.</p>
+          <span class="path__cta">See the Numbers <span class="arrow">&rarr;</span></span></a>
+        <a class="path r" style="--d:.11s" href="sellers/">
+          <div class="path__k">Sellers</div>
+          <p class="path__v">On a deadline?<br>We close faster and cleaner than the rest.</p>
+          <span class="path__cta">Submit Your Property <span class="arrow">&rarr;</span></span></a>
+        <a class="path r" style="--d:.16s" href="buyers/">
+          <div class="path__k">Buyers</div>
+          <p class="path__v">A portfolio that already runs like a machine.</p>
+          <span class="path__cta">Explore Opportunities <span class="arrow">&rarr;</span></span></a>
+        <a class="path r" style="--d:.21s" href="mailto:operations@epochsinc.com?subject=Broker%20partnership">
+          <div class="path__k">Deal Partners</div>
+          <p class="path__v">Bring us the deal.<br>We're the buyer who closes.</p>
+          <span class="path__cta">Partner With Us <span class="arrow">&rarr;</span></span></a>
+        <a class="path r" style="--d:.26s" href="mailto:operations@epochsinc.com?subject=Operating%20Partner%20integration">
+          <div class="path__k">Operating Partners</div>
+          <p class="path__v">You bring the local expertise;<br>we bring the technology, capital, asset and platform.</p>
+          <span class="path__cta">Explore Integration <span class="arrow">&rarr;</span></span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="home.js?v=2" defer></script>
+<script src="assets/fx.js?v=2" defer></script>
+</body>
+</html>

@@ -1,0 +1,336 @@
+/* ============================================================
+   TERASKYE — TIDE ("Teraskye Intelligence") · page visuals
+   Layered on ../home.css (centered sections, chips, cta).
+   The network, made calm: one operator → three domains →
+   twenty-two agents → two hundred five processes.
+   ============================================================ */
+
+/* ---- brand label highlight: "Teraskye Intelligence" reads as the product ---- */
+#s01 .name__tag, #s02 .eyebrow.is-brand{
+  color:rgba(232,201,154,0.98);
+  background:rgba(232,201,154,0.09);
+  border:1px solid rgba(232,201,154,0.4);
+  padding:0.4rem 0.9rem; border-radius:30px;
+}
+#s01 .name__tag .mk{ background:rgba(232,201,154,0.98); box-shadow:0 0 12px rgba(232,201,154,0.8); }
+
+/* ---- 01 · THE MODEL — glowing Master AI Operator node + branches ---- */
+.operator{ position:relative; width:min(760px,92%); height:clamp(148px,22vh,182px);
+  margin:clamp(0.9rem,2.4vh,1.6rem) auto 0; }
+.operator__svg{ position:absolute; inset:0; width:100%; height:100%; overflow:visible; }
+.op-path{ fill:none; stroke:rgba(150,190,222,0.5); stroke-width:1;
+  stroke-dasharray:640; stroke-dashoffset:640; }
+.operator.in .op-path{ animation:opdraw 1.7s .35s var(--ease) forwards; }
+.operator.in .op-path:nth-child(2){ animation-delay:.5s; }
+.operator.in .op-path:nth-child(3){ animation-delay:.65s; }
+@keyframes opdraw{ to{ stroke-dashoffset:0; } }
+.operator__core{ position:absolute; left:50%; top:4px; transform:translateX(-50%); text-align:center; width:100%; }
+.op-orb{ width:clamp(56px,7vw,74px); height:clamp(56px,7vw,74px); border-radius:50%;
+  margin:0 auto clamp(9px,1.5vh,15px);
+  background:radial-gradient(circle at 50% 38%, #eef8fc 0%, #a6cbe6 38%, rgba(126,170,208,0.18) 70%, transparent 72%);
+  box-shadow:0 0 48px 8px rgba(142,186,226,0.42); animation:oppulse 4.2s ease-in-out infinite; }
+@keyframes oppulse{ 0%,100%{ box-shadow:0 0 42px 6px rgba(142,186,226,0.32); } 50%{ box-shadow:0 0 66px 15px rgba(142,186,226,0.56); } }
+.op-name{ font-family:'Sora',var(--sans); font-weight:300; letter-spacing:0.2em; text-transform:uppercase;
+  font-size:clamp(0.82rem,1.1vw,0.98rem); color:var(--bone); }
+.op-sub{ color:var(--bone-faint); font-size:clamp(0.72rem,0.95vw,0.82rem); margin-top:0.35rem; }
+@media (prefers-reduced-motion:reduce){ .op-path{ stroke-dashoffset:0; } .op-orb{ animation:none; } }
+.dcard{ padding:clamp(0.85rem,1.5vw,1.15rem); border-radius:16px; text-align:left;
+  border:1px solid rgba(201,212,181,0.22); background:rgba(8,11,9,0.34);
+  -webkit-backdrop-filter:blur(5px); backdrop-filter:blur(5px); }
+.dcard__no{ font-size:0.62rem; letter-spacing:0.24em; color:var(--bone-faint); }
+.dcard__name{ font-size:clamp(0.98rem,1.5vw,1.18rem); font-weight:600; color:var(--bone); margin:0.2rem 0 0.25rem; }
+.dcard__line{ font-size:clamp(0.76rem,1vw,0.86rem); line-height:1.45; color:var(--bone-soft); }
+.dcard__meta{ display:flex; gap:0.5rem; margin-top:0.7rem; font-size:0.68rem; letter-spacing:0.02em; }
+.dcard__meta b{ color:rgba(201,212,181,0.98); font-weight:600; }
+.dcard__meta span{ color:var(--bone-faint); }
+
+.statstrip{ display:flex; flex-wrap:wrap; justify-content:center; gap:clamp(1.2rem,4vw,3rem);
+  margin-top:clamp(1.1rem,2.6vh,1.8rem); }
+.statstrip__i{ text-align:center; }
+.statstrip__n{ font-family:'Sora',var(--sans); font-size:clamp(1.7rem,3vw,2.4rem); font-weight:600; line-height:1;
+  color:var(--bone); letter-spacing:-0.01em; }
+.statstrip__n em{ font-style:normal; color:rgba(232,201,154,0.98); }
+.statstrip__l{ margin-top:0.42rem; font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--bone-soft); font-weight:500; }
+
+/* ---- 02 · THE EXPLORER — domain → agent → processes ---- */
+.explore{ width:min(1080px,95%); margin:clamp(1rem,2.4vh,1.6rem) auto 0; }
+.tabs{ display:inline-flex; gap:0.3rem; padding:0.3rem; border-radius:40px;
+  border:1px solid rgba(201,212,181,0.2); background:rgba(8,11,9,0.4); }
+.tab{ border:0; cursor:pointer; font:inherit; color:var(--bone-soft); background:transparent;
+  padding:0.4rem 1.05rem; border-radius:30px; font-size:clamp(0.76rem,1vw,0.88rem); letter-spacing:0.01em;
+  transition:background .3s, color .3s; }
+.tab.is-on{ background:rgba(201,212,181,0.16); color:var(--bone); }
+.tab:hover{ color:var(--bone); }
+
+.exgrid{ display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,1fr); gap:clamp(0.8rem,2vw,1.5rem);
+  margin-top:clamp(0.9rem,2vh,1.3rem); align-items:start; text-align:left; }
+.agents{ display:flex; flex-wrap:wrap; gap:0.4rem 0.45rem; align-content:flex-start; }
+.abtn{ border:1px solid rgba(201,212,181,0.28); cursor:pointer; font:inherit;
+  color:var(--bone-soft); background:rgba(8,11,9,0.3); padding:0.34rem 0.72rem; border-radius:22px;
+  font-size:clamp(0.72rem,0.95vw,0.82rem); transition:border-color .25s, color .25s, background .25s; }
+.abtn:hover{ border-color:rgba(201,212,181,0.6); color:var(--bone); }
+.abtn.is-on{ border-color:rgba(232,201,154,0.7); background:rgba(232,201,154,0.12); color:rgba(232,201,154,0.98); }
+.abtn .an{ opacity:.5; margin-right:0.35rem; font-variant-numeric:tabular-nums; }
+
+.detail{ border:1px solid rgba(201,212,181,0.22); border-radius:16px; padding:clamp(1rem,1.8vw,1.35rem);
+  background:rgba(8,11,9,0.4); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px);
+  min-height:clamp(200px,30vh,260px); }
+.detail__no{ font-size:0.62rem; letter-spacing:0.24em; color:var(--bone-faint); }
+.detail__name{ font-size:clamp(1.05rem,1.7vw,1.32rem); font-weight:600; color:var(--bone); margin:0.15rem 0 0.3rem; }
+.detail__fn{ font-size:clamp(0.8rem,1.05vw,0.92rem); line-height:1.5; color:var(--bone-soft); }
+.detail__cnt{ margin:0.75rem 0 0.55rem; font-size:0.64rem; letter-spacing:0.2em; text-transform:uppercase;
+  color:rgba(201,212,181,0.9); }
+.detail__cnt b{ color:rgba(232,201,154,0.98); font-weight:700; }
+.procs{ display:flex; flex-wrap:wrap; gap:0.34rem 0.4rem; max-height:clamp(120px,17vh,160px); overflow:auto;
+  -webkit-mask-image:linear-gradient(180deg,#000 82%,transparent); mask-image:linear-gradient(180deg,#000 82%,transparent); }
+.procs::-webkit-scrollbar{ width:4px; } .procs::-webkit-scrollbar-thumb{ background:rgba(201,212,181,0.3); border-radius:4px; }
+.pchip{ font-size:clamp(0.68rem,0.9vw,0.76rem); color:var(--bone-soft); padding:0.24rem 0.6rem; border-radius:16px;
+  border:1px solid rgba(201,212,181,0.18); background:rgba(8,11,9,0.25); }
+.exhint{ margin-top:0.7rem; font-size:0.68rem; letter-spacing:0.02em; color:var(--bone-faint); text-align:center; }
+
+@media (max-width:720px){
+  .arch__domains{ grid-template-columns:1fr; }
+  .exgrid{ grid-template-columns:1fr; }
+}
+@media (prefers-reduced-motion:reduce){ .arch__master .pip{ animation:none; } }
+
+/* ---- THE NETWORK — 3 domain columns · 22 agents · one frame ---- */
+.netgrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(0.75rem,1.7vw,1.4rem);
+  width:min(1180px,96vw); margin:clamp(0.8rem,2vh,1.3rem) auto 0; text-align:left; align-items:start; }
+.ndom__head{ border-top:2px solid rgba(var(--acc),0.85); padding-top:0.6rem; }
+.ndom__no{ font-size:0.56rem; letter-spacing:0.24em; text-transform:uppercase; color:rgba(var(--acc),0.95); }
+.ndom__name{ font-family:'Sora',var(--sans); font-weight:300; font-size:clamp(0.95rem,1.25vw,1.14rem); color:var(--bone); margin:0.22rem 0 0.18rem; line-height:1.15; }
+.ndom__line{ font-size:0.74rem; color:var(--bone-soft); line-height:1.34; min-height:2.5em; }
+.ndom__meta{ font-size:0.6rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--bone-faint); margin-top:0.4rem; }
+.ndom__meta b{ color:rgba(var(--acc),0.95); font-weight:600; }
+.ndom__agents{ margin-top:0.55rem; max-height:min(46vh,432px); overflow-y:auto; display:grid; gap:0.28rem; padding-right:3px; }
+.ndom__agents::-webkit-scrollbar{ width:4px; }
+.ndom__agents::-webkit-scrollbar-thumb{ background:rgba(var(--acc),0.35); border-radius:4px; }
+.nag{ border:1px solid rgba(201,212,181,0.15); border-radius:8px; background:rgba(8,11,9,0.32); overflow:hidden;
+  transition:border-color .25s var(--ease), background .25s var(--ease); }
+.nag:hover{ border-color:rgba(201,212,181,0.3); }
+.nag.is-open{ border-color:rgba(var(--acc),0.6); background:rgba(8,11,9,0.55); }
+.nag__btn{ all:unset; display:flex; align-items:center; gap:0.5rem; width:100%; box-sizing:border-box;
+  padding:0.5rem 0.62rem; cursor:pointer; }
+.nag__btn:focus-visible{ outline:2px solid rgba(var(--acc),0.8); outline-offset:-2px; }
+.nag__no{ font-size:0.64rem; color:var(--bone-faint); font-variant-numeric:tabular-nums; min-width:1.5em; }
+.nag__name{ flex:1; min-width:0; font-size:0.85rem; font-weight:500; color:var(--bone); line-height:1.15; }
+.nag__badge{ font-size:0.64rem; color:rgba(var(--acc),0.98); border:1px solid rgba(var(--acc),0.55); border-radius:20px;
+  padding:0.04rem 0.5rem; font-variant-numeric:tabular-nums; }
+.nag__chev{ color:var(--bone-faint); font-size:0.9rem; line-height:1; transition:transform .25s var(--ease), color .25s; }
+.nag.is-open .nag__chev{ transform:rotate(90deg); color:rgba(var(--acc),0.98); }
+.nag__wrap{ display:grid; grid-template-rows:0fr; transition:grid-template-rows .32s var(--ease); }
+.nag.is-open .nag__wrap{ grid-template-rows:1fr; }
+.nag__in{ overflow:hidden; }
+.nag__fn{ font-size:0.75rem; color:var(--bone-soft); padding:0 0.7rem 0.35rem; line-height:1.35; }
+.nag__procs{ display:flex; flex-wrap:wrap; gap:0.28rem; padding:0 0.7rem 0.65rem; }
+.npchip{ font-size:0.64rem; color:var(--bone-soft); background:rgba(8,11,9,0.4); border:1px solid rgba(201,212,181,0.15);
+  border-radius:5px; padding:0.18rem 0.42rem; }
+.exhint em{ font-style:normal; color:var(--bone-faint); }
+@media (max-width:860px){
+  .netgrid{ grid-template-columns:1fr; }
+  .ndom__agents{ max-height:none; }
+  .ndom__line{ min-height:0; }
+}
+
+/* ---- 04 · OPERATOR MAP — orb → 3 domain tables (fits one frame) ---- */
+.opmap{ position:relative; width:min(1120px,96vw); margin:clamp(0.5rem,1.6vh,1.1rem) auto 0; }
+.opmap__orb{ text-align:center; }
+.opmap__ball{ display:block; width:clamp(46px,5.6vw,62px); height:clamp(46px,5.6vw,62px); border-radius:50%; margin:0 auto 0.5rem;
+  background:radial-gradient(circle at 50% 38%, #eef8fc 0%, #a6cbe6 38%, rgba(126,170,208,0.18) 70%, transparent 72%);
+  box-shadow:0 0 44px 7px rgba(142,186,226,0.42); animation:oppulse 4.2s ease-in-out infinite; }
+.opmap__olabel{ display:block; font-family:'Sora',var(--sans); font-weight:300; letter-spacing:0.2em; text-transform:uppercase;
+  font-size:clamp(0.8rem,1.05vw,0.95rem); color:var(--bone); }
+.opmap__osub{ display:block; color:var(--bone-faint); font-size:clamp(0.68rem,0.9vw,0.78rem); margin-top:0.25rem; }
+.opmap__fan{ height:clamp(44px,6.5vh,66px); margin:0.2rem 0 0.15rem; }
+.opmap__fan svg{ width:100%; height:100%; overflow:visible; }
+.opmap__fan path{ fill:none; stroke:rgba(150,190,222,0.42); stroke-width:1; stroke-dasharray:700; stroke-dashoffset:700; }
+.opmap.in .opmap__fan path{ animation:opdraw 1.5s .3s var(--ease) forwards; }
+.opmap.in .opmap__fan path:nth-child(2){ animation-delay:.42s; }
+.opmap.in .opmap__fan path:nth-child(3){ animation-delay:.54s; }
+.opmap__doms{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(0.7rem,1.6vw,1.3rem); align-items:start; text-align:left; }
+.opdom{ border-top:2px solid rgba(var(--acc),0.85); border-radius:0 0 12px 12px; padding:0.7rem 0.85rem 0.85rem;
+  background:rgba(8,11,9,0.36); -webkit-backdrop-filter:blur(5px); backdrop-filter:blur(5px);
+  border-left:1px solid rgba(201,212,181,0.12); border-right:1px solid rgba(201,212,181,0.12); border-bottom:1px solid rgba(201,212,181,0.12); }
+.opdom__no{ font-size:0.56rem; letter-spacing:0.24em; text-transform:uppercase; color:rgba(var(--acc),0.95); }
+.opdom__name{ font-family:'Sora',var(--sans); font-weight:300; font-size:clamp(0.9rem,1.2vw,1.08rem); color:var(--bone); margin:0.2rem 0 0.16rem; line-height:1.15; }
+.opdom__line{ font-size:0.72rem; color:var(--bone-soft); line-height:1.34; }
+.opdom__agents{ display:flex; flex-wrap:wrap; gap:0.26rem; margin:0.55rem 0; }
+.opag{ font:inherit; cursor:pointer; display:inline-flex; align-items:center; gap:0.32rem;
+  font-size:0.63rem; color:var(--bone-soft); background:rgba(8,11,9,0.42); border:1px solid rgba(var(--acc),0.24);
+  border-radius:5px; padding:0.2rem 0.42rem; line-height:1.2; transition:border-color .22s var(--ease), color .22s var(--ease), background .22s var(--ease); }
+.opag:hover{ border-color:rgba(var(--acc),0.55); color:var(--bone); }
+.opag.is-on{ border-color:rgba(var(--acc),0.85); background:rgba(var(--acc),0.14); color:var(--bone); }
+.opag__n{ font-size:0.54rem; color:rgba(var(--acc),0.98); border:1px solid rgba(var(--acc),0.45); border-radius:16px;
+  padding:0 0.32rem; font-variant-numeric:tabular-nums; }
+.opag:focus-visible{ outline:2px solid rgba(var(--acc),0.85); outline-offset:1px; }
+.opdom__detail{ margin:0 0 0.55rem; padding:0.5rem 0.55rem; border-radius:8px; border:1px solid rgba(var(--acc),0.3);
+  background:rgba(8,11,9,0.55); animation:opDetail .28s var(--ease); }
+@keyframes opDetail{ from{ opacity:0; transform:translateY(-6px); } to{ opacity:1; transform:none; } }
+.opdom__dh{ font-size:0.68rem; color:var(--bone-soft); line-height:1.35; margin-bottom:0.4rem; }
+.opdom__dh b{ color:rgba(var(--acc),0.98); font-weight:600; }
+.opdom__procs{ display:flex; flex-wrap:wrap; gap:0.24rem; }
+.opproc{ font-size:0.56rem; color:var(--bone-soft); background:rgba(8,11,9,0.42); border:1px solid rgba(var(--acc),0.2);
+  border-radius:5px; padding:0.16rem 0.4rem; line-height:1.2; }
+.opdom__meta{ font-size:0.6rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--bone-faint); margin-top:0.5rem; }
+.opdom__meta b{ color:rgba(var(--acc),0.95); font-weight:600; }
+.opdom__hint{ letter-spacing:0.04em; text-transform:none; color:var(--bone-faint); font-size:0.58rem; }
+/* scrollable agent list inside each domain table (equal heights, click to expand) */
+.opmap .ndom__agents{ margin-top:0.55rem; max-height:min(40vh,360px); overflow-y:auto; display:grid; gap:0.28rem; padding-right:4px; }
+@media (max-width:860px){ .opmap__doms{ grid-template-columns:1fr; } .opmap__fan{ display:none; } }
+
+/* s1 name — dial "Teraskye Intelligence" back a touch (premium/elegant, not oversized) */
+#s01 .name__word{ font-size:clamp(2.3rem,5.6vw,4.9rem); letter-spacing:0.06em; font-weight:200; line-height:1.02; }
+
+/* s5 — "Who decides": setup stats → punchline. Better hierarchy than a run-on line. */
+.decide__stack{ align-items:center; }
+.decstats{ display:inline-flex; align-items:center; justify-content:center; gap:clamp(1.1rem,3vw,2.4rem); }
+.decstat{ text-align:center; }
+.decstat b{ display:block; font-family:'Sora',var(--sans); font-weight:600; line-height:1; letter-spacing:-0.01em;
+  font-size:clamp(2rem,4vw,3.4rem); color:var(--bone); text-shadow:0 2px 24px rgba(0,0,0,0.7); }
+.decstat span{ display:block; margin-top:0.4rem; font-size:0.6rem; letter-spacing:0.26em; text-transform:uppercase; color:var(--bone-faint); }
+.decstats__x{ font-size:clamp(1rem,1.8vw,1.5rem); color:rgba(232,201,154,0.7); font-weight:300; }
+.decidehead{ font-size:clamp(1.9rem,4.4vw,3.4rem); font-weight:300; line-height:1.1; letter-spacing:0.01em; }
+.decidehead .decide{ white-space:nowrap; }
+
+/* s5 — "people decide" is THE point (humans decide, not the AI): ember highlight,
+   glow + an underline that draws in on reveal */
+.decide{ position:relative; color:rgba(232,201,154,0.98); font-weight:500; white-space:nowrap;
+  text-shadow:0 0 20px rgba(232,201,154,0.45), 0 1px 8px rgba(0,0,0,0.7); }
+.decide::after{ content:""; position:absolute; left:0; right:0; bottom:-0.08em; height:2px; border-radius:2px;
+  background:linear-gradient(90deg, rgba(232,201,154,0.95), rgba(201,212,181,0.55)); transform:scaleX(0); transform-origin:left; }
+.in .decide::after{ animation:decideLine 0.9s .7s var(--ease) forwards; }
+@keyframes decideLine{ to{ transform:scaleX(1); } }
+@media (prefers-reduced-motion:reduce){ .decide::after{ transform:scaleX(1); animation:none; } }
+
+/* ============================================================
+   BLOOM (formerly Tide) — the dawn-meadow video is BRIGHT, so
+   darken the theme and lift the content so text reads 100%.
+   Video is scroll-scrubbed by home.js (moves only on scroll).
+   ============================================================ */
+/* AURORA background — colours kept true (no sepia), balanced so BOTH the aurora and the
+   content read clearly: darkened just enough for text, never washed out. */
+.env__video{ filter:brightness(0.6) saturate(1.14) contrast(1.06) !important; }
+.env__grade{ background:linear-gradient(to bottom,
+   rgba(5,7,12,0.5) 0%, rgba(5,7,12,0.16) 30%, rgba(5,7,12,0.2) 60%, rgba(4,5,9,0.74) 100%) !important; }
+/* soft top scrim over the bright aurora sky + a left reading gradient + a clean-centre vignette */
+.env::after{ content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+   background:
+     radial-gradient(66% 50% at 50% 14%, rgba(4,6,11,0.34), transparent 60%),
+     linear-gradient(90deg, rgba(5,7,10,0.44) 0%, rgba(5,7,10,0.1) 24%, rgba(5,7,10,0) 44%),
+     radial-gradient(140% 110% at 50% 46%, transparent 46%, rgba(4,6,9,0.54) 100%); }
+/* content contrast: every text element reads cleanly over the theme */
+#main .statement, #main .lead, #main .pull, #main .eyebrow, #main .is-brand,
+#main .name__word, #main .name__tag, #main .decstat b, #main .decstat span,
+#main .decidehead, #main .statstrip__n, #main .statstrip__l, #main .opdom__name, #main .opdom__line,
+#main .scrollcue, #main .exhint{
+   text-shadow:0 2px 22px rgba(0,0,0,0.92), 0 1px 6px rgba(0,0,0,0.82) !important; }
+/* the domain-table panels get a touch more opacity so their text sits on solid glass */
+#s04 .opdom{ background:rgba(6,9,12,0.6) !important; }
+
+/* ============================================================
+   Section 2 — two columns: a short, punchy message on the LEFT and, on the
+   RIGHT, a hub pictograph (TERASKYE at the centre connecting the proven,
+   purpose-built technologies it integrates). The point it makes visually:
+   we don't build the tech — we make proven tech work as one intelligence.
+   ============================================================ */
+.aurorasplit{ display:grid; grid-template-columns:minmax(0,1fr) minmax(360px,1.04fr);
+  gap:clamp(1.6rem,4vw,4.2rem); align-items:center; width:100%; max-width:1180px; margin-inline:auto; text-align:left; }
+.aurorasplit__text{ text-align:left; min-width:0; }
+/* punchy headline — and let it WRAP inside its column (home.css pins .ph nowrap >1100px,
+   which otherwise forces the column into the hub) */
+.aurorasplit__text .eyebrow{ display:inline-block; margin-bottom:clamp(1rem,2.2vh,1.5rem); }  /* pill fits the text only */
+.aurorasplit__text .statement{ margin:0; font-weight:300; line-height:1.16; letter-spacing:0.004em;
+  font-size:clamp(1.8rem,2.9vw,2.5rem); }
+.aurorasplit__text .statement .ph{ white-space:normal; }
+.aurorasplit__text .lead{ margin:clamp(1.5rem,2.9vh,2.1rem) 0 0; max-width:42ch; }   /* decent gap */
+.aurorasplit__text .pull{ margin:clamp(1.3rem,2.5vh,1.8rem) 0 0; max-width:40ch; }
+
+/* the three descriptors — custom-built · purpose-built · proven */
+.hubtags{ display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:clamp(1.1rem,2.6vh,1.7rem); }
+.hubtags span{ font-size:0.64rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(232,201,154,0.95);
+  border:1px solid rgba(232,201,154,0.42); background:rgba(232,201,154,0.08); border-radius:30px; padding:0.4rem 0.85rem; }
+
+/* ---- the hub ---- */
+.hub{ position:relative; width:min(480px,94%); margin:0 auto; aspect-ratio:1; isolation:isolate; }
+/* backing glow so the gold diagram reads cleanly over the bright aurora sky */
+.hub::before{ content:""; position:absolute; inset:-7%; border-radius:50%; z-index:0; pointer-events:none;
+  background:radial-gradient(circle at 50% 50%, rgba(6,9,14,0.74) 0%, rgba(6,9,14,0.52) 36%, rgba(6,9,14,0.14) 62%, rgba(6,9,14,0) 78%); }
+.hub__links{ position:absolute; inset:0; width:100%; height:100%; overflow:visible; z-index:1; }
+.hub__ring{ fill:none; stroke:rgba(201,212,181,0.16); stroke-width:0.3; }
+.hub__pulse{ fill:none; stroke:rgba(232,201,154,0.55); stroke-width:0.4; transform-box:fill-box; transform-origin:center;
+  opacity:0; animation:hubpulse 4.5s ease-out infinite; }
+@keyframes hubpulse{ 0%{ transform:scale(0.42); opacity:0; } 12%{ opacity:0.5; } 100%{ transform:scale(1.04); opacity:0; } }
+.hub__orbit{ transform-box:fill-box; transform-origin:center; animation:hubspin 54s linear infinite; }
+.hub__orbitline{ fill:none; stroke:rgba(232,201,154,0.2); stroke-width:0.3; stroke-dasharray:1.3 2.6; }
+.hub__sat{ fill:rgba(232,201,154,0.7); }
+/* process route + the arrow that walks it (chip → find → prove → run → sell → loop) */
+.hub__track{ fill:none; stroke:rgba(232,201,154,0.42); stroke-width:0.6; stroke-linejoin:round;
+  stroke-dasharray:1.7 2.1; animation:hubflow 1.7s linear infinite; }
+.hub__arrow{ fill:rgba(250,236,205,1); filter:drop-shadow(0 0 3.4px rgba(232,201,154,1)); }
+/* INPUT lines: chip → each of the four nodes (per the reference sketch) */
+.hub__feed{ stroke:rgba(232,201,154,0.34); stroke-width:0.5; }
+/* small travelling ARROWS (chip → each node) in a contrasting aqua so they read apart from the gold lines */
+.hub__feeddot{ fill:rgba(125,231,214,0.98); filter:drop-shadow(0 0 2.4px rgba(125,231,214,0.9)); }
+@media (prefers-reduced-motion:reduce){ .hub__feeddot{ display:none; } }
+@keyframes hubflow{ to{ stroke-dashoffset:-7.6; } }
+@keyframes hubspin{ to{ transform:rotate(360deg); } }
+
+/* the centre is a MICROCHIP — gold IC package + pins + die, branded "TERASKYE
+   INTELLIGENCE". The proven technologies plug into one purpose-built processor. */
+.hub__core{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); z-index:2;
+  width:clamp(126px,33%,166px); aspect-ratio:1; }
+.chip__pins{ position:absolute; filter:drop-shadow(0 0 2px rgba(232,201,154,0.5)); }
+.chip__pins--t, .chip__pins--b{ left:17%; right:17%; height:10px;
+  background:repeating-linear-gradient(to right, rgba(236,207,161,0.92) 0 3px, transparent 3px 8px); }
+.chip__pins--t{ top:3%; } .chip__pins--b{ bottom:3%; }
+.chip__pins--l, .chip__pins--r{ top:17%; bottom:17%; width:10px;
+  background:repeating-linear-gradient(to bottom, rgba(236,207,161,0.92) 0 3px, transparent 3px 8px); }
+.chip__pins--l{ left:3%; } .chip__pins--r{ right:3%; }
+
+.chip__die{ position:absolute; inset:14%; border-radius:18%; overflow:hidden;
+  display:grid; place-content:center; text-align:center;
+  background:linear-gradient(152deg, rgba(36,28,17,0.97) 0%, rgba(18,15,10,0.98) 58%, rgba(10,9,7,0.99) 100%);
+  border:1px solid rgba(232,201,154,0.72);
+  box-shadow:0 0 54px -4px rgba(232,201,154,0.5), inset 0 1px 0 rgba(246,232,202,0.28), inset 0 0 24px rgba(232,201,154,0.14);
+  -webkit-backdrop-filter:blur(3px); backdrop-filter:blur(3px); animation:hubcore 4.8s ease-in-out infinite; }
+/* faint on-die circuitry */
+.chip__die::before{ content:""; position:absolute; inset:0; pointer-events:none; opacity:0.6;
+  background:
+    repeating-linear-gradient(0deg, rgba(232,201,154,0.16) 0 1px, transparent 1px 11px),
+    repeating-linear-gradient(90deg, rgba(232,201,154,0.16) 0 1px, transparent 1px 11px);
+  -webkit-mask:radial-gradient(circle at 50% 50%, transparent 20%, #000 46%, #000 64%, transparent 90%);
+  mask:radial-gradient(circle at 50% 50%, transparent 20%, #000 46%, #000 64%, transparent 90%); }
+.chip__notch{ position:absolute; top:11%; left:11%; width:6%; aspect-ratio:1; border-radius:50%;
+  background:rgba(246,232,202,0.85); box-shadow:0 0 6px rgba(232,201,154,0.9); }
+@keyframes hubcore{
+  0%,100%{ box-shadow:0 0 46px -8px rgba(232,201,154,0.44), inset 0 1px 0 rgba(246,232,202,0.24), inset 0 0 22px rgba(232,201,154,0.12); }
+  50%{ box-shadow:0 0 82px 2px rgba(232,201,154,0.64), inset 0 1px 0 rgba(246,232,202,0.3), inset 0 0 28px rgba(232,201,154,0.2); } }
+.hub__core-ai{ display:block; position:relative; width:clamp(18px,4.6vw,23px); aspect-ratio:1; margin:0 auto 0.14rem; }
+.hub__core-ai svg{ width:100%; height:100%; fill:none; stroke:rgba(246,232,202,0.98); stroke-width:1.4; stroke-linecap:round; stroke-linejoin:round; }
+.hub__core-ai svg circle{ fill:rgba(246,232,202,0.18); }
+.hub__core-mk{ position:relative; font-family:'Sora',var(--sans); font-weight:600; letter-spacing:0.05em;
+  font-size:clamp(0.86rem,1.8vw,1.1rem); color:rgba(248,242,230,1); text-shadow:0 1px 7px rgba(0,0,0,0.55); }
+.hub__core-sub{ position:relative; margin-top:0.1rem; font-size:clamp(0.46rem,0.95vw,0.56rem); letter-spacing:0.26em;
+  text-transform:uppercase; color:rgba(232,201,154,0.98); }
+
+.hub__node{ position:absolute; transform:translate(-50%,-50%); z-index:2; width:clamp(120px,32%,150px);
+  display:flex; flex-direction:column; align-items:center; gap:0.55rem; text-align:center; }
+.hub__node--nw{ left:20%; top:20%; } .hub__node--ne{ left:80%; top:20%; }
+.hub__node--se{ left:80%; top:80%; } .hub__node--sw{ left:20%; top:80%; }
+.hub__ic{ width:clamp(46px,12%,58px); aspect-ratio:1; display:grid; place-items:center; border-radius:15px;
+  border:1px solid rgba(232,201,154,0.5); background:rgba(12,15,20,0.74);
+  -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px);
+  box-shadow:0 14px 30px -16px rgba(0,0,0,0.85), 0 0 22px -8px rgba(232,201,154,0.5); }
+.hub__ic svg{ width:46%; height:46%; fill:none; stroke:rgba(244,222,180,1); stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+.hub__nl{ font-size:clamp(0.82rem,1.1vw,0.98rem); font-weight:600; color:var(--bone); line-height:1.2;
+  text-shadow:0 2px 16px rgba(0,0,0,0.92), 0 1px 4px rgba(0,0,0,0.8); }
+
+@media (prefers-reduced-motion:reduce){
+  .hub__orbit, .hub__track, .hub__core, .hub__pulse{ animation:none; }
+  .hub__pulse{ opacity:0.2; } .hub__arrow{ display:none; }
+}
+@media (max-width:900px){
+  .aurorasplit{ grid-template-columns:1fr; gap:clamp(1.8rem,5vh,2.8rem); justify-items:start; }
+  .hub{ width:min(410px,88%); margin:0.4rem auto 0; }
+}

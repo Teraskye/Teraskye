@@ -1,0 +1,58 @@
+/* ============================================================
+   TERASKYE — shared contact-capture form (Buyers · Investors)
+   two-column "split": copy on the left, a frosted form on the right.
+   Mirrors the seller broker-form styling so the site reads as one system.
+   ============================================================ */
+.formsplit{ display:grid; grid-template-columns:minmax(0,0.94fr) minmax(0,1.06fr);
+  gap:clamp(1.4rem,3.6vw,3.6rem); align-items:center; width:100%; text-align:left; }
+.formsplit__text{ text-align:left; }
+.formsplit__text .eyebrow{ margin-left:0; }
+.formsplit__text .lead{ max-width:38ch; margin:clamp(0.8rem,2vh,1.3rem) 0 0; }
+.formsplit .poutcomes, .poutcomes--left{ justify-content:flex-start; margin-inline:0; }
+/* left-align the audience chips inside the split (they default to centered) */
+.formsplit__text .chiprow{ justify-content:flex-start; }
+.formsplit__text .chiprow__sub{ text-align:left; }
+/* stack the two "doors" when they sit in the narrower left column (Investors) */
+.doors--stack{ grid-template-columns:1fr !important; gap:0.9rem; margin-top:clamp(1rem,2.5vh,1.6rem); }
+.doors--stack .door{ padding:clamp(1rem,1.8vw,1.4rem); }
+.doors--stack .door__list{ margin:0.6rem 0 0; }
+
+.leadform{ text-align:left; border-radius:16px; padding:clamp(1.2rem,2.3vw,1.8rem);
+  background:linear-gradient(155deg, rgba(238,241,233,0.09), rgba(238,241,233,0.02) 62%), rgba(8,11,12,0.44);
+  -webkit-backdrop-filter:blur(13px) saturate(1.1); backdrop-filter:blur(13px) saturate(1.1);
+  border:1px solid rgba(201,212,181,0.2);
+  box-shadow:0 28px 64px -30px rgba(0,0,0,0.82), inset 0 1px 0 rgba(255,255,255,0.07); }
+.lf__h{ font-size:0.62rem; letter-spacing:0.24em; text-transform:uppercase; color:rgba(232,201,154,0.95);
+  margin-bottom:0.3rem; font-weight:600; }
+.lf__sub{ font-size:0.82rem; color:rgba(238,241,233,0.62); margin:0 0 1rem; line-height:1.4; }
+
+/* creative segmented toggle (Investors: Institutional / Individual) */
+.lf__seg{ display:grid; grid-auto-flow:column; gap:0.4rem; margin:0 0 0.95rem; }
+.lf__seg label{ position:relative; cursor:pointer; }
+.lf__seg input{ position:absolute; opacity:0; inset:0; cursor:pointer; }
+.lf__seg span{ display:block; text-align:center; font-size:0.66rem; letter-spacing:0.12em; text-transform:uppercase;
+  color:rgba(238,241,233,0.72); padding:0.62rem 0.5rem; border-radius:10px;
+  border:1px solid rgba(201,212,181,0.22); background:rgba(6,9,10,0.5); transition:all .3s ease; }
+.lf__seg label:hover span{ border-color:rgba(232,201,154,0.5); color:var(--bone,#eef1e9); }
+.lf__seg input:checked + span{ color:#120d07; font-weight:600; border-color:transparent;
+  background:linear-gradient(135deg, rgba(232,201,154,0.98), rgba(214,178,100,0.92));
+  box-shadow:0 6px 18px -8px rgba(232,201,154,0.7); }
+.lf__seg input:focus-visible + span{ outline:2px solid rgba(232,201,154,0.7); outline-offset:2px; }
+
+.lf__row{ display:grid; grid-template-columns:1fr 1fr; gap:0.7rem; }
+.lf__field{ display:flex; flex-direction:column; gap:0.28rem; margin-bottom:0.7rem; }
+.lf__field > span{ font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--bone-soft,rgba(238,241,233,0.8)); }
+.lf__field > span em{ font-style:normal; color:rgba(238,241,233,0.42); letter-spacing:0.06em; }
+.lf__field input, .lf__field textarea{ width:100%; font:inherit; font-size:0.9rem; color:var(--bone,#eef1e9);
+  background:rgba(6,9,10,0.5); border:1px solid rgba(201,212,181,0.22); border-radius:9px; padding:0.58rem 0.72rem;
+  transition:border-color .3s ease, background .3s ease; }
+.lf__field textarea{ resize:vertical; min-height:2.4rem; }
+.lf__field input::placeholder, .lf__field textarea::placeholder{ color:rgba(238,241,233,0.35); }
+.lf__field input:focus, .lf__field textarea:focus{ outline:none; border-color:rgba(232,201,154,0.6); background:rgba(6,9,10,0.7); }
+.lf__submit{ width:100%; justify-content:center; margin-top:0.35rem; }
+.lf__note{ margin:0.7rem 0 0; font-size:0.8rem; min-height:1rem; color:var(--bone-soft,rgba(238,241,233,0.8)); }
+.lf__note.is-ok{ color:rgba(201,212,181,0.98); }
+.lf__note.is-err{ color:#e8a08c; }
+
+@media (max-width:900px){ .formsplit{ grid-template-columns:1fr; } }
+@media (max-width:520px){ .lf__row{ grid-template-columns:1fr; } }
