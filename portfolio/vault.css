@@ -217,23 +217,26 @@ body{ font-family:var(--sans); color:var(--bone); background:var(--void); overfl
     -webkit-overflow-scrolling:touch; pointer-events:none; background:#070605; }
   .chamber.is-on{ pointer-events:auto; }
   .chamber__scrim{ display:none; }
+  /* 0 · Return pill — sticks just UNDER the fixed nav, never overlapping the brand */
+  .chamber__return{ position:sticky; order:0; align-self:flex-start; z-index:36;
+    top:clamp(3.5rem,10vh,4.3rem); left:auto; right:auto; bottom:auto;
+    margin:clamp(4.2rem,12vh,5rem) 0 0 1.3rem; }
   /* 1 · header (no + phase + name + markets) */
   .chamber__head{ position:static; order:1; transform:none; max-width:none; width:100%; box-sizing:border-box;
-    margin:0; padding:clamp(5rem,15vh,6.2rem) 1.3rem 0.4rem; }
-  .chamber__region.is-list{ flex-flow:row wrap; gap:0.4rem 0.9rem; margin-top:0.6rem; }
-  /* 2 · diorama (sized block, not full-bleed) */
+    margin:0; padding:clamp(1rem,2.8vh,1.5rem) 1.3rem 0; }
+  .chamber__region.is-list{ flex-flow:row wrap; gap:0.4rem 0.9rem; margin-top:0.7rem; }
+  /* 2 · diorama — a generous sized block with clear space above & below */
   .chamber__asset-wrap{ position:relative; inset:auto; order:2; width:100%; flex:0 0 auto;
-    height:clamp(210px,36vh,310px); overflow:hidden; }
+    height:clamp(250px,42vh,350px); margin:clamp(1.4rem,3.8vh,2.2rem) 0; overflow:hidden; }
   .chamber__asset-bg{ width:min(560px,98%); height:100%; }
-  .chamber__asset{ position:relative; left:auto; top:auto; width:auto; max-width:88vw; max-height:100%; transform:none; }
-  .chamber__asset-vid{ width:auto; max-width:88vw; max-height:96%; }
+  .chamber__asset{ position:relative; left:auto; top:auto; width:auto; max-width:90vw; max-height:100%; transform:none; }
+  .chamber__asset-vid{ width:auto; max-width:90vw; max-height:98%; }
   /* 3 · data panel */
   .chamber__panel{ position:static; order:3; right:auto; left:auto; top:auto; bottom:auto; width:auto;
-    transform:none; box-sizing:border-box; padding:0.5rem 1.3rem 0.8rem; }
+    transform:none; box-sizing:border-box; padding:0.2rem 1.3rem 0.8rem; }
   /* 4 · footer notes */
-  .chamber__foot{ order:4; box-sizing:border-box; padding:0.2rem 1.3rem clamp(5.4rem,15vh,6.4rem); }
-  /* fixed controls on top of the scroll */
-  .chamber__return{ position:fixed; top:clamp(0.9rem,3vh,1.4rem); left:clamp(1rem,4vw,1.6rem); z-index:35; }
+  .chamber__foot{ order:4; box-sizing:border-box; padding:0.4rem 1.3rem clamp(5.6rem,15vh,6.6rem); }
+  /* tabs fixed at the bottom */
   .chamber__tabs{ position:fixed; left:50%; right:auto; bottom:clamp(0.8rem,2.6vh,1.3rem); z-index:35;
     max-width:calc(100vw - 1rem); padding:0.25rem; }
   .ctab{ padding:0.44rem 0.5rem; letter-spacing:0.04em; font-size:0.55rem; }

@@ -854,14 +854,19 @@ main{ position:relative; z-index:2; }
   .orgc__prins{ align-items:center; }
   .orgc__stage{ max-width:640px; margin:0 auto; }
 }
-/* narrow phones: stack the three divisions, connectors become a simple spine */
+/* narrow phones: KEEP the org-tree shape (3 across, with connectors) — just compact the pods
+   so they fit, instead of collapsing into a one-by-one list */
 @media (max-width:560px){
-  .tree{ --connH:26px; }
-  .tree__kids{ grid-template-columns:1fr; gap:0.5rem; justify-items:center; }
-  .tree__conn::after{ left:50%; right:auto; width:0; height:0; border:0; }
-  .tree__kids > .pod::before{ top:-0.5rem; height:0.5rem; }
-  .tree__kids > .pod{ padding-top:0.5rem; }
-  .tree__kids > .pod + .pod::before{ display:none; }
+  .orgc__stage{ max-width:none; }
+  .tree{ --connH:18px; max-width:none; }
+  .tree__kids{ grid-template-columns:repeat(3,1fr); gap:0; }
+  .tree__kids > .pod{ padding-inline:0.12rem; padding-top:0; }
+  .pod, .pod--root{ max-width:none; }
+  .tree .pod__photo{ width:clamp(42px,13vw,58px); height:clamp(42px,13vw,58px); padding:2px; }
+  .pod--root .pod__photo{ width:clamp(50px,15vw,68px); height:clamp(50px,15vw,68px); }
+  .tree .pod__nm{ font-size:clamp(0.6rem,2.4vw,0.74rem); margin-top:0.3rem; line-height:1.14; }
+  .pod__rl{ font-size:0.47rem; letter-spacing:0.05em; margin-top:0.12rem; line-height:1.26; }
+  .tree .pod__card, .pod__cue{ display:none; }   /* details available on tap (#orgDetail) */
 }
 
 .nav__name{ color:inherit; }
