@@ -19,7 +19,7 @@
   let wantOn = store.get(KEY) !== 'off';
 
   const audio = new Audio();
-  audio.loop = true; audio.preload = 'auto'; audio.volume = 0;
+  audio.loop = true; audio.preload = 'metadata'; audio.volume = 0;   // stream on play, don't pre-download the whole track
   const saved = parseFloat(store.get(POS, true));
   audio.addEventListener('loadedmetadata', () => { if (saved > 0 && saved < audio.duration) audio.currentTime = saved; });
 
@@ -89,7 +89,7 @@
   };
   ['pointerdown', 'keydown', 'touchstart'].forEach(t => addEventListener(t, kick, true));
 
-  audio.addEventListener('canplay', () => { btn.classList.add('is-ready'); if (wantOn && audio.paused) play(); }, { once: true });
+  audio.addEventListener('loadedmetadata', () => { btn.classList.add('is-ready'); if (wantOn && audio.paused) play(); }, { once: true });
   audio.addEventListener('error', () => btn.remove());
   addEventListener('pagehide', () => store.set(POS, String(audio.currentTime || 0), true));
 
