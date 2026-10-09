@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="horizon.css?v=24" />
+<link rel="stylesheet" href="horizon.css?v=25" />
 <link rel="stylesheet" href="../assets/fx.css?v=4" />
 </head>
 <body data-fx-scene3d=".s__wrap:not(.tilt3d)">
@@ -19,10 +19,10 @@
 <!-- ===== the horizon (fixed — scroll-scrubbed sunrise + living haze) ===== -->
 <div class="env" aria-hidden="true">
   <div class="env__inner" id="envInner">
-    <video class="env__video" id="sky" poster="assets/company-bg.jpg?v=3"
-           muted playsinline preload="auto" data-src="assets/company-bg.mp4?v=3"></video>
-    <canvas class="env__fx" id="fx"></canvas>
+    <video class="env__video" id="sky" poster="assets/company-bg.jpg?v=4"
+           muted playsinline preload="auto" data-src="assets/company-bg.mp4?v=4"></video>
   </div>
+  <canvas class="env__fx" id="fx"></canvas>
   <div class="env__grade"></div>
 </div>
 
@@ -214,6 +214,20 @@
     </div>
   </section>
 
+  <!-- 06 · ADVISORY BOARD -->
+  <section class="s s--center s--tight" id="advisory" data-name="Advisory board">
+    <div class="scrim scrim--field"></div>
+    <div class="s__wrap stack">
+      <span class="cat r">Advisory Board</span>
+      <h2 class="statement s-lg r" style="--d:.1s"><span class="gold">100+ years</span> of combined<br>industry experience.</h2>
+      <p class="lead r" style="--d:.24s; margin-inline:auto; text-align:center">Our board of advisors is being assembled deliberately — for depth across real estate, capital, and technology.</p>
+      <div class="advfocus r" style="--d:.34s">
+        <span>Real Estate</span><span>Capital</span><span>Technology</span><span>Legal &amp; Governance</span>
+      </div>
+      <span class="advsoon r" style="--d:.44s">Announced soon</span>
+    </div>
+  </section>
+
   <!-- 07 · CAREERS -->
   <section class="s s--center s--tight" id="careers" data-name="Careers">
     <div class="scrim scrim--field"></div>
@@ -363,7 +377,7 @@
 </main>
 
 <script src="horizon.js?v=4" defer></script>
-<script src="companyorg.js?v=9" defer></script>
+<script src="companyorg.js?v=10" defer></script>
 <script src="../assets/fx.js?v=3" defer></script>
 </body>
 </html>

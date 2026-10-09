@@ -124,7 +124,11 @@ body{ font-family:var(--sans); background:var(--bg); color:var(--text); -webkit-
     background:linear-gradient(0deg, rgba(5,8,14,0.94) 0%, rgba(5,8,14,0.6) 44%, rgba(5,8,14,0) 100%); }
   .blurb{ display:none; }
   .nav{ right:auto; left:50%; transform:translateX(-50%); bottom:1.4rem; }
-  .dots{ bottom:5.6rem; } .swipehint{ bottom:7.4rem; }
+  .dots{ bottom:5.6rem; }
+  /* hint lives in the bottom-right corner, beside the arrows — never under the designations */
+  .nav{ gap:0.6rem; }
+  .swipehint{ left:auto; right:clamp(0.9rem,4vw,1.4rem); bottom:1.55rem; transform:none; width:5.6rem;
+    text-align:right; font-size:0.5rem; letter-spacing:0.16em; line-height:1.55; }
   .c-l,.c-c,.c-r{ display:none; }
 }
 

@@ -25,10 +25,14 @@
     const pods = [...stage.querySelectorAll('.pod')];
     const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
     let hideT;
+    const home = detail.parentNode, phone = matchMedia('(max-width:560px)');
 
     function open(pod) {
       const p = PEOPLE[pod.dataset.person]; if (!p) return;
       clearTimeout(hideT);
+      // phones: lift the panel to <body> so it sits fixed on screen (ancestors carry transforms)
+      const host = phone.matches ? document.body : home;
+      if (detail.parentNode !== host) host.appendChild(detail);
       pods.forEach(x => { const on = x === pod; x.classList.toggle('is-open', on); x.setAttribute('aria-expanded', on ? 'true' : 'false'); });
       detail.innerHTML =
         '<button class="orgc__dx" aria-label="Close">&times;</button>' +
