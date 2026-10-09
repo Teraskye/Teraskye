@@ -33,7 +33,10 @@
     const ready=()=>{ videoReady=true; finishBoot();
       if(!MOTION){ try{ video.currentTime=0.6; }catch(_){} } };
     video.addEventListener('loadeddata',ready); video.addEventListener('canplaythrough',ready);
-    const src=video.dataset.src;
+    // portrait phones get an all-keyframe cut (every frame decodes on its own → instant, smooth
+    // scrubbing); the desktop gets the full 2560×1440 master
+    const portrait=matchMedia('(max-aspect-ratio:1/1)').matches;
+    const src=(portrait&&video.dataset.srcM)||video.dataset.src;
     fetch(src).then(r=>r.blob()).then(b=>{ video.src=URL.createObjectURL(b); video.load(); })
       .catch(()=>{ video.src=src; video.load(); });   // fallback (non-seekable, but visible)
     setTimeout(finishBoot,2600);
@@ -41,15 +44,20 @@
   function scrub(){
     if(!MOTION||!videoReady||seekPending) return;
     if(video.seekable.length && video.seekable.end(0) < 0.5) return;   // not seekable yet
-    const target=clamp(pSmooth,0,1)*(duration-0.05);
-    if(Math.abs(target-video.currentTime)>0.03){ seekPending=true; try{ video.currentTime=target; }catch(_){ seekPending=false; } }
+    // snap to whole frames (24 fps) so we never ask for the same picture twice
+    const target=Math.round(clamp(pSmooth,0,1)*(duration-0.05)*24)/24;
+    if(Math.abs(target-video.currentTime)>=0.02){ seekPending=true; try{ video.currentTime=target; }catch(_){ seekPending=false; } }
   }
 
   /* ---------- living TIME layer: twinkling stars ---------- */
   const ctx=fx.getContext('2d',{alpha:true});
   let W=0,H=0,DPR=1,stars=[];
+  // sized from the fixed backdrop (100lvh), not the window — so the phone's address bar
+  // sliding in/out doesn't resize it or re-scatter the stars while you scroll
+  const envEl=document.querySelector('.env');
+  const envW=()=>(envEl&&envEl.clientWidth)||innerWidth||1, envH=()=>(envEl&&envEl.clientHeight)||innerHeight||1;
   function layout(){ DPR=Math.min(devicePixelRatio||1,2);
-    W=innerWidth||root.clientWidth||1; H=innerHeight||root.clientHeight||1;
+    W=envW(); H=envH();
     fx.width=Math.floor(W*DPR); fx.height=Math.floor(H*DPR);
     fx.style.width=W+'px'; fx.style.height=H+'px'; ctx.setTransform(DPR,0,0,DPR,0,0); build(); }
   function build(){
@@ -82,6 +90,17 @@
     }
   }
 
+  /* ---------- team scan (WebGL iframe): only alive while near the screen ----------
+     a 3D scene rendering off-screen steals frames from the scroll on phones */
+  const teamFrame=document.querySelector('.teamembed__frame');
+  if(teamFrame && 'IntersectionObserver' in window){
+    const teamSrc=teamFrame.getAttribute('src');
+    new IntersectionObserver(es=>{ for(const e of es){
+      if(e.isIntersecting){ if(teamFrame.getAttribute('src')!==teamSrc) teamFrame.setAttribute('src',teamSrc); }
+      else if(teamFrame.getAttribute('src')===teamSrc) teamFrame.setAttribute('src','about:blank');
+    } }, { rootMargin:'60% 0px' }).observe(teamFrame);
+  }
+
   /* ---------- reveals ---------- */
   const io=new IntersectionObserver((entries)=>{ for(const e of entries){ if(e.isIntersecting){
     e.target.classList.add('in'); io.unobserve(e.target); } } }, { threshold:0.16, rootMargin:'0px 0px -8% 0px' });
@@ -91,7 +110,7 @@
   let last=performance.now(), DT=0.016;
   function frame(now){ requestAnimationFrame(frame);
     DT=Math.min((now-last)/1000,0.05); last=now; const t=now/1000;
-    const vw=innerWidth||root.clientWidth||0, vh=innerHeight||root.clientHeight||0;
+    const vw=envW(), vh=envH();
     if(vw>0&&vh>0&&(Math.abs(vw-W)>1||Math.abs(vh-H)>1)) layout();
     pSmooth+=(pTarget-pSmooth)*(1-Math.exp(-DT*8));
     // no camera zoom/pan: the video sits exactly in the frame; only its playhead follows the scroll
