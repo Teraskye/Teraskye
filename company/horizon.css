@@ -956,3 +956,16 @@ main{ position:relative; z-index:2; }
     -webkit-mask-image:linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%);
             mask-image:linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%); }
 }
+
+/* the backdrop is pinned to the LARGE viewport height, so it never moves or resizes
+   when a phone's address bar slides in/out during scrolling */
+.env{ top:0; bottom:auto; height:100vh; height:100lvh; }
+
+/* phones: smooth scrolling — no live blur filters over the moving video (the scrims are
+   already soft radial gradients), and a lighter hero scrim so the video keeps its brightness */
+@media (max-width:760px){
+  .scrim, #leadership .scrim, .scrim--field{ filter:none; }
+  .scrim--c{ background:radial-gradient(56% 58% at 50% 50%, rgba(var(--ink),0.5) 0%, rgba(var(--ink),0.3) 45%, rgba(var(--ink),0) 78%); }
+  main *{ -webkit-backdrop-filter:none !important; backdrop-filter:none !important; }
+  .env__video{ will-change:contents; }
+}
