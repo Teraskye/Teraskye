@@ -104,6 +104,11 @@ scene.background = new THREE.Color(0x070605);
 scene.fog = new THREE.Fog(0x070605, 18, 74);
 
 const camera = new THREE.PerspectiveCamera(52, innerWidth/innerHeight, 0.1, 400);
+// portrait phones: widen the lens so the whole vault door fits across the screen,
+// leaving clear bands above (index) and below (plaque) — desktop keeps the 52° lens
+function fitLens(){ const a = innerWidth/innerHeight;
+  camera.fov = a < 0.8 ? Math.min(80, 2*Math.atan(0.4/a)*180/Math.PI) : 52; camera.aspect = a; camera.updateProjectionMatrix(); }
+fitLens();
 
 const pmrem = new THREE.PMREMGenerator(renderer);
 scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
@@ -794,7 +799,7 @@ function showTab(tab){
 chTabs.addEventListener('click', e=>{ const b=e.target.closest('.ctab'); if(!b) return; showTab(b.dataset.tab);
   // on mobile the chamber scrolls — jump down to the freshly-changed data so the user sees it change
   if (innerWidth <= 760 && chamberEl){ setTimeout(()=>{ const pr=chPanel.getBoundingClientRect();
-    chamberEl.scrollBy({ top: pr.top - 96, behavior:'smooth' }); }, 70); }
+    chamberEl.scrollBy({ top: pr.top - 140, behavior:'smooth' }); }, 70); }
 });
 
 /* ---------------------------------------------------------------
@@ -860,7 +865,7 @@ addEventListener('pointerup', e=>{
   }
 });
 
-addEventListener('resize', ()=>{ camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth,innerHeight); composer.setSize(innerWidth,innerHeight); bloomPass.setSize(innerWidth,innerHeight); });
+addEventListener('resize', ()=>{ fitLens(); renderer.setSize(innerWidth,innerHeight); composer.setSize(innerWidth,innerHeight); bloomPass.setSize(innerWidth,innerHeight); });
 
 /* ---------------------------------------------------------------
    LOADER  → reveal entrance
