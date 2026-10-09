@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@200;300;400;500;600;700&family=Sora:wght@300;400;500;600&family=Cormorant+Garamond:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="vault.css?v=39" />
+<link rel="stylesheet" href="vault.css?v=42" />
 <script type="importmap">
 {
   "imports": {
@@ -85,22 +85,26 @@
 
 <!-- CHAMBER UI -->
 <section id="chamber" class="chamber">
-  <div class="chamber__asset-wrap" id="chAssetWrap" aria-hidden="true">
-    <div class="chamber__asset-bg"></div>
-    <img class="chamber__asset" id="chAsset" alt="" />
-    <video class="chamber__asset-vid" id="chAssetVid" muted loop playsinline preload="auto" aria-hidden="true"></video>
-  </div>
-  <div class="chamber__scrim chamber__scrim--l" aria-hidden="true"></div>
-  <div class="chamber__scrim chamber__scrim--r" aria-hidden="true"></div>
-  <button id="returnBtn" class="vbtn vbtn--ghost chamber__return" type="button"><span class="vbtn__x">&larr;</span> Return to Archive</button>
-  <header class="chamber__head">
-    <div class="chamber__no" id="chNo">01</div>
-    <div>
-      <div class="chamber__phase" id="chPhase">Proven track record</div>
-      <h2 class="chamber__name" id="chName">The Foundation</h2>
-      <div class="chamber__region" id="chRegion">The track record</div>
+  <!-- section 1 (phones): return · title · markets · diorama — a full first screen; details follow on scroll.
+       display:contents on desktop, so the fixed desktop composition is untouched -->
+  <div class="chamber__s1">
+    <div class="chamber__asset-wrap" id="chAssetWrap" aria-hidden="true">
+      <div class="chamber__asset-bg"></div>
+      <img class="chamber__asset" id="chAsset" alt="" />
+      <video class="chamber__asset-vid" id="chAssetVid" muted loop playsinline preload="auto" aria-hidden="true"></video>
     </div>
-  </header>
+    <div class="chamber__scrim chamber__scrim--l" aria-hidden="true"></div>
+    <div class="chamber__scrim chamber__scrim--r" aria-hidden="true"></div>
+    <button id="returnBtn" class="vbtn vbtn--ghost chamber__return" type="button"><span class="vbtn__x">&larr;</span> Return to Archive</button>
+    <header class="chamber__head">
+      <div class="chamber__no" id="chNo">01</div>
+      <div>
+        <div class="chamber__phase" id="chPhase">Proven track record</div>
+        <h2 class="chamber__name" id="chName">The Foundation</h2>
+        <div class="chamber__region" id="chRegion">The track record</div>
+      </div>
+    </header>
+  </div>
   <nav class="chamber__tabs" id="chTabs" aria-label="Asset views">
     <button class="ctab is-on" data-tab="overview">Overview</button>
     <button class="ctab" data-tab="strategy">Strategy</button>
@@ -165,7 +169,7 @@
 
 <noscript><div class="scr is-on" style="z-index:999"><div class="loader__mark">TERAMERGE</div><div class="loader__sub">This experience requires JavaScript.</div></div></noscript>
 
-<script type="module" src="vault.js?v=17"></script>
+<script type="module" src="vault.js?v=19"></script>
 <script>
 /* mobile hamburger (portfolio .vn — fx.js isn't loaded here) */
 (function(){
@@ -178,5 +182,6 @@
   document.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
 })();
 </script>
+<script src="../assets/music.js?v=1" defer></script>
 </body>
 </html>

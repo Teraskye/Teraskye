@@ -728,3 +728,11 @@ main{ position:relative; z-index:2; }
   margin-top:clamp(1.15rem,2.4vh,1.7rem); }
 .formsplit__text .chiprow, .formsplit__text .doors, .formsplit__text .poutcomes,
 .brokersplit__text .checks, .brokersplit__text .poutcomes{ margin-top:clamp(1.1rem,2.3vh,1.6rem); }
+
+/* Investors · strategy flow (phones): centre the vertical timeline as one block under the
+   centred heading, and keep the loop note on the same centre line */
+@media (max-width:680px){
+  .sflow{ width:fit-content; max-width:100%; margin-inline:auto; padding-right:0.6rem; }
+  .sstep{ width:auto; }
+  .sflow__repeat{ display:flex; justify-content:center; text-align:left; margin-inline:auto; max-width:30ch; }
+}

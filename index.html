@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="home.css?v=34" />
+<link rel="stylesheet" href="home.css?v=35" />
 <link rel="stylesheet" href="assets/fx.css?v=4" />
 <style>
   /* Section 4 (The lifecycle) — lift the eyebrow and headline clearly above the flywheel,
@@ -47,8 +47,20 @@
   .pflow3 .pcol{ flex:1 1 0 !important; min-width:0 !important; max-width:none !important; }
   .pflow3 .pflow__arr{ flex:0 0 20px !important; min-width:20px !important; width:20px !important;
     transform:none !important; align-self:flex-start !important; margin-top:16px !important; }
-  .pflow3 .pflow__arr::before{ left:1px !important; right:7px !important; }
-  .pflow3 .pflow__arr::after{ right:3px !important; width:8px !important; height:8px !important; margin-top:-4px !important; }
+  /* longer connectors: the line reaches across the gap from icon to icon as a row of dots,
+     with the glowing dot travelling along it and the arrowhead just before the next icon */
+  .pflow3 .pflow__arr{ margin-top:20px !important; }
+  .pflow3 .pflow__arr::before{ left:-19px !important; right:-17px !important; height:3px !important; margin-top:-1.5px !important;
+    background:radial-gradient(circle, rgba(var(--signal),0.95) 0 1.3px, transparent 1.7px) 0 50% / 6px 3px repeat-x !important;
+    animation:pDotsRun 1.1s linear infinite !important; }
+  .pflow3 .pflow__arr::after{ right:-17px !important; left:auto !important; opacity:1 !important; width:8px !important; height:8px !important; margin-top:-4px !important; }
+  .pflow__dot{ animation-name:pDotTravelM !important; }
+}
+@keyframes pDotsRun{ to{ background-position:6px 50%; } }
+@keyframes pDotTravelM{ 0%{ left:-19px; opacity:0; transform:scale(0.6); }
+  14%{ opacity:1; transform:scale(1); } 86%{ opacity:1; transform:scale(1); }
+  100%{ left:calc(100% + 9px); opacity:0; transform:scale(0.6); } }
+@media (max-width:560px){
   .pflow3 .icb--lg{ width:40px !important; height:40px !important; }
   .pcol__l{ font-size:0.56rem !important; min-height:3.4em !important; letter-spacing:0.05em !important; }
   .pflow3 .beat--out{ font-size:0.56rem !important; padding:0.3rem 0.35rem !important; }
@@ -307,5 +319,6 @@
 
 <script src="home.js?v=2" defer></script>
 <script src="assets/fx.js?v=3" defer></script>
+<script src="assets/music.js?v=1" defer></script>
 </body>
 </html>

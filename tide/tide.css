@@ -204,7 +204,9 @@
   /* §2 intelligence: tighten so the Teramerge chip sits fully in view (not split across the fold) */
   .aurorasplit{ gap:clamp(1.3rem,3.6vh,2rem) !important; }
   #main .aurorasplit__text .statement{ font-size:clamp(1.45rem,6.2vw,1.95rem); line-height:1.12; }
-  .aurorasplit .hub{ width:min(248px,70%) !important; margin:0 auto; }
+  /* the hub keeps its desktop proportions — full-width square, so chip, nodes, labels and arrows never collide */
+  .aurorasplit .hub{ width:min(380px,94vw) !important; margin:0.6rem auto 0; justify-self:center; }
+  .aurorasplit .hub .hub__nl{ font-size:0.8rem; }
   /* §3 model: Master Operator · Domains · Agents · Processes → even 2×2 */
   .statstrip{ display:grid; grid-template-columns:repeat(2,1fr); gap:clamp(1.4rem,5vw,2rem) clamp(1rem,4vw,1.6rem); }
   /* §5 who decides: everything centred */

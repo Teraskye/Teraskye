@@ -18,9 +18,11 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     def log_message(self, fmt, *args):
         pass  # quiet
 
-class DualStackServer(socketserver.TCPServer):
-    """Listen on IPv6 with V6ONLY off so both ::1 and 127.0.0.1 (i.e. `localhost`) work."""
+class DualStackServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
+    """Listen on IPv6 with V6ONLY off so both ::1 and 127.0.0.1 (i.e. `localhost`) work.
+    Threaded, so a long download (videos, the music track) never blocks other pages."""
     allow_reuse_address = True
+    daemon_threads = True
     address_family = socket.AF_INET6
 
     def server_bind(self):
@@ -35,8 +37,9 @@ if __name__ == "__main__":
         server = DualStackServer(("", PORT), Handler)
     except OSError:
         # fall back to IPv4-only if dual-stack is unavailable
-        socketserver.TCPServer.allow_reuse_address = True
-        server = socketserver.TCPServer(("", PORT), Handler)
+        socketserver.ThreadingTCPServer.allow_reuse_address = True
+        socketserver.ThreadingTCPServer.daemon_threads = True
+        server = socketserver.ThreadingTCPServer(("", PORT), Handler)
     with server as httpd:
         print(f"TERASKYEE serving on http://localhost:{PORT}/")
         httpd.serve_forever()
