@@ -10,7 +10,7 @@
 (function () {
   if (window.top !== window) return;               // embedded frames (e.g. the team scan) stay silent
   const base = (document.currentScript && document.currentScript.src) || location.href;
-  const SRC = new URL('music.mp3?v=1', base).href;
+  const SRC = new URL('music.mp3?v=2', base).href;
   const KEY = 'tm-music', POS = 'tm-music-pos', VOL = 0.35;
   const store = {
     get(k, s) { try { return (s ? sessionStorage : localStorage).getItem(k); } catch (_) { return null; } },

@@ -988,15 +988,15 @@ body{ font-family:var(--sans); color:var(--bone); background:var(--void); overfl
 
   /* § 2 — raised sheet with a sticky tab bar as its header */
   .chamber__foot{ display:none; }   /* removed on phones */
-  .chamber__tabs{ order:3; position:sticky; top:calc(env(safe-area-inset-top,0px) + 4.5rem); bottom:auto;
+  /* tabs sit at the END of section 2, under the data sheet */
+  .chamber__tabs{ order:5; position:static; top:auto; bottom:auto;
     left:auto; transform:none; align-self:stretch; z-index:35; justify-content:space-between;
-    max-width:none; margin:0 1rem; padding:0.3rem; border-radius:10px;
+    max-width:none; margin:0.9rem 1rem calc(env(safe-area-inset-bottom,0px) + 4.6rem); padding:0.3rem; border-radius:10px;
     background:rgba(16,12,8,0.94); border-color:rgba(199,154,91,0.26); }
   .ctab{ flex:1 1 0; text-align:center; padding:0.6rem 0.2rem; font-size:0.56rem; letter-spacing:0.1em; border-radius:7px; }
   .chamber__panel{ order:4; margin:0.9rem 1rem 0; padding:0.6rem 1.15rem 1.2rem;
     border:1px solid rgba(199,154,91,0.16); border-radius:14px;
     background:linear-gradient(180deg, rgba(28,21,14,0.72), rgba(12,9,6,0.72)); }
-  .chamber__panel::after{ content:""; display:block; height:calc(env(safe-area-inset-bottom,0px) + 2.4rem); }
   .chamber__panel .pfield:first-child{ padding-top:0.6rem; }
 }
 @media (max-width:360px){ .ctab{ font-size:0.5rem; letter-spacing:0.04em; } }
@@ -1010,7 +1010,6 @@ body{ font-family:var(--sans); color:var(--bone); background:var(--void); overfl
   .chamber__s1 .chamber__asset-wrap{ margin:auto 0; }
   .chamber__s1::after{ content:"Scroll for details  \2193"; position:absolute; left:0; right:0; bottom:0.9rem;
     text-align:center; font-size:0.56rem; letter-spacing:0.28em; text-transform:uppercase; color:rgba(230,214,186,0.6); }
-  .chamber__tabs{ margin-top:0.6rem; }
   /* markets: clear, readable list — one below another (two columns only when there are many) */
   .chamber__region.is-list{ display:flex; flex-direction:column; gap:0.55rem; margin-top:1rem; }
   .chamber__region.is-list:has(span:nth-child(5)){ display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 1rem; }
@@ -1020,10 +1019,13 @@ body{ font-family:var(--sans); color:var(--bone); background:var(--void); overfl
 
   /* door index: clearly readable above the door */
   .pindex{ background:rgba(8,6,4,0.86); border-color:rgba(199,154,91,0.32); }
-  .pindex__head, .pindex__head span{ color:rgba(232,206,160,0.95); font-size:0.6rem; }
+  .pindex__head, .pindex__head span{ color:rgba(240,214,170,1); font-size:0.64rem; font-weight:600; }
   .pindex__head b{ color:rgba(236,196,130,1); }
   .pindex__list li{ color:rgba(240,230,212,0.82); }
   .pindex__list li span{ font-size:0.8rem; font-weight:500; }
   .pindex__list li i{ color:rgba(214,170,104,0.95); }
   .pindex__list li.on{ color:#fff7ea; }
 }
+/* in the corridor the door index sits right under the menu — end the menu's dark fade at its
+   bottom edge there, so the index (incl. the PORTFOLIO header) reads at full brightness */
+@media (max-width:900px){ body.in-corridor .vn::before{ height:100%; } }
