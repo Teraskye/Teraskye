@@ -969,10 +969,3 @@ main{ position:relative; z-index:2; }
   main *{ -webkit-backdrop-filter:none !important; backdrop-filter:none !important; }
   .env__video{ will-change:contents; }
 }
-
-/* desktop hero: a much lighter, neutral shade behind the title so the stars behind it stay
-   bright and true-coloured (the title still reads clearly against the night sky) */
-@media (min-width:761px){
-  #hero .scrim--c{ filter:blur(30px);
-    background:radial-gradient(40% 34% at 50% 54%, rgba(4,4,8,0.42) 0%, rgba(4,4,8,0.22) 55%, rgba(4,4,8,0) 100%); }
-}
