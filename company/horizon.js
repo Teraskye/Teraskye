@@ -26,6 +26,7 @@
      src is NOT seekable and can't be scrubbed. We fetch the file as a Blob
      and play it from an object URL — fully seekable in memory. */
   let duration=10, videoReady=false, seekPending=false;
+  const PORTRAIT=matchMedia('(max-aspect-ratio:1/1)').matches;
   const finishBoot=()=> boot&&boot.classList.add('is-done');
   if(video){
     video.addEventListener('loadedmetadata',()=>{ if(video.duration&&isFinite(video.duration)) duration=video.duration; });
@@ -35,7 +36,7 @@
     video.addEventListener('loadeddata',ready); video.addEventListener('canplaythrough',ready);
     // portrait phones get a vertical, all-keyframe cut that fills the screen and follows the nebula
     // (every frame decodes on its own → instant, smooth scrubbing); desktop gets the 2560×1440 master
-    const portrait=matchMedia('(max-aspect-ratio:1/1)').matches;
+    const portrait=PORTRAIT;
     const src=(portrait&&video.dataset.srcM)||video.dataset.src;
     if(portrait&&video.dataset.posterM) video.poster=video.dataset.posterM;
     fetch(src).then(r=>r.blob()).then(b=>{ video.src=URL.createObjectURL(b); video.load(); })
@@ -46,7 +47,10 @@
     if(!MOTION||!videoReady||seekPending) return;
     if(video.seekable.length && video.seekable.end(0) < 0.5) return;   // not seekable yet
     // snap to whole frames (24 fps) so we never ask for the same picture twice
-    const target=Math.round(clamp(pSmooth,0,1)*(duration-0.05)*24)/24;
+    // desktop: ease-out so the nebula visibly moves in over the first few screens of scrolling
+    // (phones keep the straight 1:1 mapping)
+    const p=clamp(pSmooth,0,1), q=PORTRAIT?p:1-Math.pow(1-p,2.2);
+    const target=Math.round(q*(duration-0.05)*24)/24;
     if(Math.abs(target-video.currentTime)>=0.02){ seekPending=true; try{ video.currentTime=target; }catch(_){ seekPending=false; } }
   }
 
