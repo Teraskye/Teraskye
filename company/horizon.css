@@ -948,14 +948,10 @@ main{ position:relative; z-index:2; }
 .nav__ai{ color:#e9c46a; }
 .nav__mark{ filter:drop-shadow(0 1px 6px rgba(0,0,0,0.5)); }
 
-/* portrait screens (phones): show the WHOLE video — full width, nothing cut off, no zoom —
-   as a band in the middle of the screen whose top/bottom edges fade into the star field */
+/* portrait screens (phones) use a dedicated VERTICAL cut of the video (company-bg-m.mp4):
+   it fills the whole screen edge to edge, and its frame follows the nebula through the clip,
+   so nothing important is cut off and nothing is stretched or zoomed */
 .env{ background:#030304; }
-@media (max-aspect-ratio:1/1){
-  .env__video{ top:50%; bottom:auto; height:calc(100vw * 9 / 16); transform:translateY(-50%); object-fit:cover;
-    -webkit-mask-image:linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%);
-            mask-image:linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%); }
-}
 
 /* the backdrop is pinned to the LARGE viewport height, so it never moves or resizes
    when a phone's address bar slides in/out during scrolling */
@@ -965,6 +961,10 @@ main{ position:relative; z-index:2; }
    already soft radial gradients), and a lighter hero scrim so the video keeps its brightness */
 @media (max-width:760px){
   .scrim, #leadership .scrim, .scrim--field{ filter:none; }
+  /* feather the text panels' top/bottom edges (cheap mask instead of the costly blur) */
+  #leadership .scrim, .scrim--field{
+    -webkit-mask-image:linear-gradient(to bottom, transparent 0%, #000 18%, #000 82%, transparent 100%);
+            mask-image:linear-gradient(to bottom, transparent 0%, #000 18%, #000 82%, transparent 100%); }
   .scrim--c{ background:radial-gradient(56% 58% at 50% 50%, rgba(var(--ink),0.5) 0%, rgba(var(--ink),0.3) 45%, rgba(var(--ink),0) 78%); }
   main *{ -webkit-backdrop-filter:none !important; backdrop-filter:none !important; }
   .env__video{ will-change:contents; }
