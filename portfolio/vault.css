@@ -1000,3 +1000,30 @@ body{ font-family:var(--sans); color:var(--bone); background:var(--void); overfl
   .chamber__panel .pfield:first-child{ padding-top:0.6rem; }
 }
 @media (max-width:360px){ .ctab{ font-size:0.5rem; letter-spacing:0.04em; } }
+
+/* section-1 wrapper: invisible to layout on desktop */
+.chamber__s1{ display:contents; }
+@media (max-width:760px){
+  /* § 1 fills the whole first screen; the tabs + details start only after you scroll */
+  .chamber__s1{ display:flex; flex-direction:column; flex:0 0 auto; order:0; position:relative;
+    min-height:100vh; min-height:100svh; box-sizing:border-box; padding-bottom:2.6rem; }
+  .chamber__s1 .chamber__asset-wrap{ margin:auto 0; }
+  .chamber__s1::after{ content:"Scroll for details  \2193"; position:absolute; left:0; right:0; bottom:0.9rem;
+    text-align:center; font-size:0.56rem; letter-spacing:0.28em; text-transform:uppercase; color:rgba(230,214,186,0.6); }
+  .chamber__tabs{ margin-top:0.6rem; }
+  /* markets: clear, readable list — one below another (two columns only when there are many) */
+  .chamber__region.is-list{ display:flex; flex-direction:column; gap:0.55rem; margin-top:1rem; }
+  .chamber__region.is-list:has(span:nth-child(5)){ display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 1rem; }
+  .chamber__region.is-list span{ font-size:0.86rem; letter-spacing:0.02em; text-transform:none; line-height:1.3;
+    color:rgba(244,234,216,0.95); }
+  .chamber__region.is-list span::before{ margin-top:0.45em; }
+
+  /* door index: clearly readable above the door */
+  .pindex{ background:rgba(8,6,4,0.86); border-color:rgba(199,154,91,0.32); }
+  .pindex__head, .pindex__head span{ color:rgba(232,206,160,0.95); font-size:0.6rem; }
+  .pindex__head b{ color:rgba(236,196,130,1); }
+  .pindex__list li{ color:rgba(240,230,212,0.82); }
+  .pindex__list li span{ font-size:0.8rem; font-weight:500; }
+  .pindex__list li i{ color:rgba(214,170,104,0.95); }
+  .pindex__list li.on{ color:#fff7ea; }
+}
