@@ -1,7 +1,7 @@
 /* ============================================================
    TERAMERGE — THE HORIZON  ·  engine (isolated)
-   SCROLL = video time (scrubbed) + camera rise + story reveals
-   TIME   = warm atmospheric haze + a faint sun shimmer, kept alive
+   SCROLL = video time (scrubbed) + story reveals
+   TIME   = twinkling stars, kept alive
    ============================================================ */
 (() => {
   'use strict';
@@ -12,7 +12,6 @@
   const root=document.documentElement;
   const boot=document.getElementById('boot');
   const video=document.getElementById('sky');
-  const envInner=document.getElementById('envInner');
   const fx=document.getElementById('fx');
   const progress=document.getElementById('progress');
 
@@ -46,18 +45,14 @@
     if(Math.abs(target-video.currentTime)>0.03){ seekPending=true; try{ video.currentTime=target; }catch(_){ seekPending=false; } }
   }
 
-  /* ---------- living TIME layer: warm haze + faint sun shimmer ---------- */
+  /* ---------- living TIME layer: twinkling stars ---------- */
   const ctx=fx.getContext('2d',{alpha:true});
-  let W=0,H=0,DPR=1,haze=[],stars=[];
+  let W=0,H=0,DPR=1,stars=[];
   function layout(){ DPR=Math.min(devicePixelRatio||1,2);
     W=innerWidth||root.clientWidth||1; H=innerHeight||root.clientHeight||1;
     fx.width=Math.floor(W*DPR); fx.height=Math.floor(H*DPR);
     fx.style.width=W+'px'; fx.style.height=H+'px'; ctx.setTransform(DPR,0,0,DPR,0,0); build(); }
   function build(){
-    haze=new Array(4).fill(0).map((_,i)=>({
-      x:Math.random()*W, y:lerp(0.42,0.82,Math.random())*H,
-      r:lerp(0.42,0.78,Math.random())*Math.max(W,H),
-      a:lerp(0.014,0.036,Math.random()), dx:lerp(5,12,Math.random()), phase:i*1.9 }));
     // twinkling stars — kept alive every frame so they blink even when the scroll-scrubbed video is paused
     const n=Math.round(clamp((W*H)/16000,70,150));
     stars=new Array(n).fill(0).map(()=>({
@@ -85,23 +80,6 @@
         }
       }
     }
-    // warm atmospheric haze drifting low across the horizon
-    for(const m of haze){ const span=W+m.r;
-      const drift=MOTION?(Math.sin(t*0.045+m.phase)*32 + t*m.dx*3.4):0;
-      const cx=(((m.x+drift)%span)+span)%span; if(!Number.isFinite(cx)) continue;
-      const g=ctx.createRadialGradient(cx,m.y,0,cx,m.y,Math.max(m.r,1));
-      g.addColorStop(0,`rgba(244,214,168,${m.a})`); g.addColorStop(1,'rgba(244,214,168,0)');
-      ctx.fillStyle=g; ctx.fillRect(0,0,W,H); }
-    // faint sun shimmer — a soft warm bloom that breathes as light expands with scroll
-    if(MOTION){
-      const grow=clamp(pSmooth*1.2,0,1);
-      const sx=W*0.5, sy=lerp(0.62,0.5,pSmooth)*H;
-      const rr=lerp(0.14,0.34,grow)*Math.max(W,H)*(1+0.03*Math.sin(t*0.6));
-      const a=lerp(0.022,0.072,grow)*(0.9+0.1*Math.sin(t*0.8));
-      const g=ctx.createRadialGradient(sx,sy,0,sx,sy,Math.max(rr,1));
-      g.addColorStop(0,`rgba(255,236,196,${a})`); g.addColorStop(0.6,`rgba(255,226,170,${a*0.35})`); g.addColorStop(1,'rgba(255,226,170,0)');
-      ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
-    }
   }
 
   /* ---------- reveals ---------- */
@@ -116,12 +94,7 @@
     const vw=innerWidth||root.clientWidth||0, vh=innerHeight||root.clientHeight||0;
     if(vw>0&&vh>0&&(Math.abs(vw-W)>1||Math.abs(vh-H)>1)) layout();
     pSmooth+=(pTarget-pSmooth)*(1-Math.exp(-DT*8));
-    if(MOTION){
-      // camera rises: gentle scale + a subtle upward pan as you ascend
-      const scale=lerp(1.06,1.14,pSmooth);
-      const rise=lerp(2.2,-3.4,pSmooth);          // % — pan up as the camera climbs
-      envInner.style.transform=`scale(${scale.toFixed(4)}) translateY(${rise.toFixed(2)}%)`;
-    }
+    // no camera zoom/pan: the video sits exactly in the frame; only its playhead follows the scroll
     scrub();
     progress.style.transform=`scaleX(${pSmooth.toFixed(4)})`;
     if(W>0&&H>0){ try{ draw(t); }catch(_){} }

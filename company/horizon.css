@@ -52,7 +52,7 @@ body{
 
 /* ===== the horizon (fixed, scroll-scrubbed video + subtle haze canvas) ===== */
 .env{ position:fixed; inset:0; z-index:0; overflow:hidden; background:#1b2733; }
-.env__inner{ position:absolute; inset:-6% -6%; transform:scale(1.04); transform-origin:50% 46%; will-change:transform; }
+.env__inner{ position:absolute; inset:0; }   /* no overscan / zoom — the video fills the frame exactly */
 .env__video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
   filter:brightness(var(--grade)) contrast(1.03) saturate(1.04); }
 .env__fx{ position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }   /* warm haze / sun shimmer */
@@ -298,8 +298,7 @@ main{ position:relative; z-index:2; }
   .s--tall{ min-height:auto; }
   .lead{ max-width:100%; }
   .tier__items{ gap:0.4rem 0; }
-  /* phone: less overscan so the sky isn't over-zoomed, and a touch brighter so it reads as clear video */
-  .env__inner{ inset:-2.5%; }
+  /* phone: a touch brighter so the video reads clearly */
   .env__video{ filter:brightness(1.12) contrast(1.06) saturate(1.1); }
 }
 @media (max-width:400px){ .nav__brand{ font-size:0.6rem; letter-spacing:0.2em; } }

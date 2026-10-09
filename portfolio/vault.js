@@ -799,7 +799,7 @@ function showTab(tab){
 chTabs.addEventListener('click', e=>{ const b=e.target.closest('.ctab'); if(!b) return; showTab(b.dataset.tab);
   // on mobile the chamber scrolls — jump down to the freshly-changed data so the user sees it change
   if (innerWidth <= 760 && chamberEl){ setTimeout(()=>{ const pr=chPanel.getBoundingClientRect();
-    chamberEl.scrollBy({ top: pr.top - 140, behavior:'smooth' }); }, 70); }
+    chamberEl.scrollBy({ top: pr.top - 96, behavior:'smooth' }); }, 70); }
 });
 
 /* ---------------------------------------------------------------
@@ -885,6 +885,42 @@ const loadTimer = setInterval(()=>{
 /* ---------------------------------------------------------------
    RENDER LOOP
 --------------------------------------------------------------- */
+/* phones (portrait): lay the corridor out in three clear bands, on any screen height —
+   [ menu ] [ door index ] [ the vault door, sized to fit ] [ plaque + CTA ]
+   The lens is chosen so the door fills the middle band, and a view offset slides the
+   picture so the door sits centred in it (no distortion — it's an off-axis crop). */
+const indexEl = $('#index'), navEl = $('.vn'), _v = new THREE.Vector3();
+const _probe = new THREE.PerspectiveCamera(52, 1, 0.1, 400);
+let phoneLens = false;
+function phoneCorridorLayout(){
+  const phone = innerWidth <= 640 && innerHeight > innerWidth && mode === 'corridor';
+  document.body.classList.toggle('in-corridor', mode === 'corridor');
+  if (!phone){
+    if (phoneLens){ phoneLens = false; camera.clearViewOffset(); fitLens(); if (indexEl) indexEl.style.top = ''; }
+    return;
+  }
+  const W = innerWidth, H = innerHeight;
+  const navB = navEl ? navEl.getBoundingClientRect().bottom : 64;
+  const boxTop = navB + 10;
+  if (indexEl) indexEl.style.top = Math.round(boxTop) + 'px';
+  const bandTop = boxTop + (indexEl ? indexEl.offsetHeight : 90) + 16;
+  const bandBot = plaqueEl.getBoundingClientRect().top - 12;
+  const band = Math.max(140, bandBot - bandTop);
+  const doorPx = Math.min(band, W * 0.94);
+  const tanV = (2 * DOOR_R + 0.35) * H / (2 * STOP * doorPx);          // vertical half-angle that gives that size
+  const fov = Math.min(100, Math.max(40, 2 * Math.atan(tanV) * 180 / Math.PI));
+  // where would the door centre land with this lens, from the standing spot in front of a door?
+  const p = corridorPose(DOOR_Z[0] + STOP);
+  _probe.fov = fov; _probe.aspect = W / H; _probe.updateProjectionMatrix();
+  _probe.position.set(p.px, p.py, p.pz); _probe.lookAt(p.lx, p.ly, p.lz); _probe.updateMatrixWorld();
+  _v.set(0, DOOR_Y, DOOR_Z[0]).project(_probe);
+  const dy = (1 - _v.y) * 0.5 * H - (bandTop + band / 2);
+  camera.fov = fov; camera.aspect = W / H;
+  camera.setViewOffset(W, H, 0, Math.round(dy), W, H);                 // also updates the projection
+  phoneLens = true;
+}
+addEventListener('resize', ()=> requestAnimationFrame(phoneCorridorLayout));
+
 const clock = new THREE.Clock();
 function frame(){
   const dt = Math.min(clock.getDelta(), 0.05);
@@ -912,6 +948,7 @@ function frame(){
   } else if (mode==='entry'){
     rig.pz += (10.5 - rig.pz)*0.01;   // slow breathing push toward the entrance door
   }
+  phoneCorridorLayout();
   // gentle lock idle shimmer on entrance while waiting
   applyRig();
   renderScene();
