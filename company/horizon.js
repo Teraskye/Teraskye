@@ -54,7 +54,7 @@
     fx.style.width=W+'px'; fx.style.height=H+'px'; ctx.setTransform(DPR,0,0,DPR,0,0); build(); }
   function build(){
     // twinkling stars — kept alive every frame so they blink even when the scroll-scrubbed video is paused
-    const n=Math.round(clamp((W*H)/16000,70,150));
+    const n=Math.round(clamp((W*H)/16000, H>W?120:70, 150));   // portrait: a fuller star field around the video band
     stars=new Array(n).fill(0).map(()=>({
       x:Math.random()*W, y:Math.random()*H,
       r:lerp(0.4,1.5,Math.random()*Math.random()),      // mostly small, a few bigger
