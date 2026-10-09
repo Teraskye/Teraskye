@@ -67,12 +67,13 @@
     fx.style.width=W+'px'; fx.style.height=H+'px'; ctx.setTransform(DPR,0,0,DPR,0,0); build(); }
   function build(){
     // twinkling stars — kept alive every frame so they blink even when the scroll-scrubbed video is paused
-    const n=Math.round(clamp((W*H)/16000, H>W?120:70, 150));   // portrait: a fuller star field around the video band
+    const n=Math.round(clamp((W*H)/16000, H>W?120:110, H>W?150:190));   // portrait: a fuller star field around the video band
     stars=new Array(n).fill(0).map(()=>({
       x:Math.random()*W, y:Math.random()*H,
       r:lerp(0.4,1.5,Math.random()*Math.random()),      // mostly small, a few bigger
       sp:lerp(0.5,2.4,Math.random()), ph:Math.random()*6.2832,
-      base:lerp(0.22,0.85,Math.random()), glint:Math.random()<0.16 }));
+      base:H>W?lerp(0.22,0.85,Math.random()):lerp(0.45,1,Math.random()),          // desktop: brighter
+      glint:Math.random()<(H>W?0.16:0.32) }));                                   // desktop: more sparkle
   }
   addEventListener('resize', ()=>{ readScroll(); layout(); });
 
@@ -82,7 +83,7 @@
     // twinkling stars — animate on their own clock, independent of scroll
     if(MOTION){
       for(const s of stars){
-        const tw=0.3+0.7*Math.abs(Math.sin(t*s.sp+s.ph));
+        const tw=0.15+0.85*Math.pow(Math.abs(Math.sin(t*s.sp+s.ph)),1.6);   // clear on/off blink
         const a=s.base*tw;
         ctx.beginPath(); ctx.fillStyle=`rgba(255,248,232,${a.toFixed(3)})`;
         ctx.arc(s.x,s.y,s.r,0,6.2832); ctx.fill();
