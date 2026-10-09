@@ -33,10 +33,11 @@
     const ready=()=>{ videoReady=true; finishBoot();
       if(!MOTION){ try{ video.currentTime=0.6; }catch(_){} } };
     video.addEventListener('loadeddata',ready); video.addEventListener('canplaythrough',ready);
-    // portrait phones get an all-keyframe cut (every frame decodes on its own → instant, smooth
-    // scrubbing); the desktop gets the full 2560×1440 master
+    // portrait phones get a vertical, all-keyframe cut that fills the screen and follows the nebula
+    // (every frame decodes on its own → instant, smooth scrubbing); desktop gets the 2560×1440 master
     const portrait=matchMedia('(max-aspect-ratio:1/1)').matches;
     const src=(portrait&&video.dataset.srcM)||video.dataset.src;
+    if(portrait&&video.dataset.posterM) video.poster=video.dataset.posterM;
     fetch(src).then(r=>r.blob()).then(b=>{ video.src=URL.createObjectURL(b); video.load(); })
       .catch(()=>{ video.src=src; video.load(); });   // fallback (non-seekable, but visible)
     setTimeout(finishBoot,2600);
